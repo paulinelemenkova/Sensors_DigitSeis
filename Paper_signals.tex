@@ -65,8 +65,6 @@
 \acsetup{first-style=long-short,list/display = used}
 \input{Abbrev.tex} %define abbreviations in this file.
 
-
-
 %------------------------------------------------------------------
 % The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
 %\pdfoutput=1
@@ -557,9 +555,13 @@ Afterwards, the resulted data were exported into the MATLAB format, and saved as
 \subsection{Validating Results in Python}
 Validating the results and checking quality control of the digitised traces have been performed using Python \cite{van1995python}. For export and graphical visualisation of the MAT files we sued library Matplotlib \cite{Hunter}. For tuning the parameters of the digitising process in the next series of recoding we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the file of MAT format into Python, Fig. \ref{fig:20} and \ref{fig:21}. 
 
-The digitised time gaps are visible in Fig. \ref{fig:20} as green dots, while blue dots signify the selected dots, and red dots signify the remaining noise and edge regions where the automatic classification was more difficult compared to the central parts of seismograms. The misclassified pixels were induced by the distortions of paper which caused the erroneous recognition of pixels in the edge of paper (red dots). Such pixels are classified as noise in the segments of trace in a way that it erroneously depicts the edges of seismic trace, as shown in Fig. \ref{fig:20}. 
+The length distribution of the segments imported is represented in Fig. \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for one minute of recording).
+We arbitrarily keep as valid the segment inside the range $[.8*S_{typ},1.1*S_{typ}]$. The starting position of these segments is represented as green dots in Fig. \ref{fig:20} (a). 
+From the distribution of short invalid segments, as represented in Fig. \ref{fig:20} (a), we can identify the small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range $[.9*H_{typ},1.1*H_{typ}]$. The respective graphs are presented for the seismogram UCC19540311Gal\_E\_0727\_280.mat taken on March 11, 1954, Fig. \ref{fig:22}.
 
-The average length of segments divided automatically by DigitSeis was assessed and visualised using Matplotlib, Fig. \ref{fig:21}. Because the program classifies seismic traces and short time gaps based on their geometrical characteristics and threshold, the quality of scanned paper may affect the automatic recognition and interpretation. Therefore, some segments were merged into one continuous line, while others were broken apart. So, Fig. \ref{fig:21} illustrate the analysis of the performance of DigitSeis in vectorising segments of a trace: the average length of the segment identified by the program as 'trace' and the frequency of the segments per hour.  
+The starting position of the hours segments is represented by blue dots in Fig. \ref{fig:20}. 
+Most of the hours marks are aligned, since the rotation speed of the main drum is 2 revolution per hours, some marks having the same length are also present in the border and noise segments.
+By simply looking to the color dot distribution, it is easy to check the overall quality of the detected segments. 
 
 \begin{figure}[H]
      \centering
@@ -578,23 +580,45 @@ The average length of segments divided automatically by DigitSeis was assessed a
      \caption{Controlling digitising results using Python (Matplotlib library)} \label{fig:20}
 \end{figure}
 
+The misclassified pixels were induced by the distortions of paper which caused the erroneous recognition of pixels in the edge of paper (red dots). Such pixels are classified as noise in the segments of trace in a way that it erroneously depicts the edges of seismic trace, as shown in Fig. \ref{fig:20}. The average length of segments divided automatically by DigitSeis, assessed and visualised by Matplotlib, Fig. \ref{fig:21}. 
+
 \begin{figure}[H]
      \centering
      \begin{subfigure}[H]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_21a.png}
+         	\includegraphics[width=12.0cm]{fig_21a.png}
          	\caption{Frequency of segment length visualized in Matplotlib: size of various segments in a trace}
      \end{subfigure}
      \vspace{1mm}   
 
      \begin{subfigure}[H]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_21b.png}
+        		 \includegraphics[width=12.0cm]{fig_21b.png}
         		 \caption{Analysis of statistics on segment length per hours of recording in Matplotlib}
      \end{subfigure}
-     \caption{Validating the results of segments tracing in Python for selected seismogram} \label{fig:21}
+     \caption{Validating the results of segments tracing in Python for selected seismogram. Here: UCC19540109Gal\_E\_0812} \label{fig:21}
 \end{figure}
 
+Because the program classifies seismic traces and short time gaps based on their geometrical characteristics and threshold, the quality of scanned paper may affect the automatic recognition and interpretation. Therefore, some segments were merged into one continuous line, while others were broken apart. 
+
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[H]{0.7\textwidth}
+      	\centering
+         	\includegraphics[width=12.0cm]{fig_22a.png}
+         	\caption{Frequency of segment length visualized in Matplotlib: size of various segments in a trace}
+     \end{subfigure}
+     \vspace{1mm}   
+
+     \begin{subfigure}[H]{0.7\textwidth}
+         \centering
+        		 \includegraphics[width=12.0cm]{fig_22b.png}
+        		 \caption{Analysis of statistics on segment length per hours of recording in Matplotlib}
+     \end{subfigure}
+     \caption{Validating the results of segments tracing in Python for selected seismogram. Here: UCC19540311Gal\_E\_0727\_280.mat} \label{fig:22}
+\end{figure}
+
+Fig. \ref{fig:21} illustrate the analysis of the performance of DigitSeis in vectorising segments of a trace: the average length of the segment identified by the program as 'trace' and the frequency of the segments per hour.  
 Seismic lines were separated by the DigitSeis into segments according to the traced lines (a 30-minute trace on each seismograms). The program searched for the correct path of the line and zero-lines using parameters. The separating of traces and noise from the time gaps and background on the paper was performed automatically. Therefore, screening and examining each pixel of the raster image was performed through the defined classifier thresholds. This resulted in variations of segments of the traces. 
 
 For example, the parameters for image classification included image threshold 82\%, time mark width for gaps as -12 (in some cases up to -22, depending on the quality of scanned paper). The setup parameters included threshold and intervals of time gaps corresponding to the minute marks made by the drum of the seismometer. Some gaps were identified better while other were blurred, Fig. \ref{fig:20}. As a results, discrimination of the traces differed based on admissible properties using thresholds, as assessed by Python, Fig. \ref{fig:21}. 
