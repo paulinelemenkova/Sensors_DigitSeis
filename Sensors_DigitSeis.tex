@@ -2,7 +2,7 @@
 %  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
 
 %=================================================================
-\documentclass[informatics,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+\documentclass[sensors,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
 
 %--------------------
 % Class Options:
@@ -35,10 +35,10 @@
 \issuenum{1}
 \articlenumber{0}
 %\doinum{}
-\pubyear{2021}
+\pubyear{2022}
 \copyrightyear{2020}
 %\externaleditor{Academic Editor: Firstname Lastname} % For journal Automation, please change Academic Editor to "Communicated by"
-\datereceived{} 
+\datereceived{17 October 2022} 
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -54,6 +54,10 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \graphicspath{{figures/}} % path to folder with figures
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{graphicx}
 
 \usepackage{acro} %list of abbreviations
 \acsetup{first-style=long-short,list/display = used}
@@ -80,10 +84,10 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{Evaluation of DigitSeis Software for Building a Vectorised Dataset of Historical Seismograms}
+\Title{Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
 
 % MDPI internal command: Title for citation in the left column
-\TitleCitation{Evaluation of DigitSeis Software for Building a Vectorised Dataset of Historical Seismograms}
+\TitleCitation{Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{0000-0002-5759-1089} % Add \orcidA{} behind the author's name
@@ -115,7 +119,7 @@ $^{1}$ \quad Université Libre de Bruxelles, École polytechnique de Bruxelles (
 
 % Abstract (Do not insert blank lines, i.e. \\) 
 \abstract{
-Archived seismograms recorded in \nth{20} century present valuable source of information for monitoring earthquake activity and geophysical modelling. However, old data are only available as scanned paper-based images that should be digitised and converted from raster to vector format. Seismograms have special characteristics recorded by seismometer and encrypted in the images: traces, minute time gaps, timing and wave amplitudes. This information should be recognised and interpreted. Our objective was to automatically digitise historical seismograms recorded by Galitzine seismometer in 1954 in Uccle seismic station, Belgium. A dataset included 145 TIFF images. Software for digitising seismograms are limited and many have disadvantages. We used DigitSeis and performed a full workflow which included pattern recognition, classification, digitising, corrections and converting TIFFs to digital output. Selected images were damaged with identified defects (spots, overlaps of traces). Such files were corrected interactively. The generated contours of signals were presented as time series and converted into digital MATLAB format (.mat files) which preserved the ground motion information contained in analog seismograms. The DigitSeis approach demonstrated a powerful and reliable toolset for processing analog seismic signals. This study contributed to methodological development of signal processing for seismograms archived in Royal Observatory of Belgium.
+Archived seismograms recorded in \nth{20} century present valuable source of information for monitoring earthquake activity and geophysical modelling. However, old data are only available as scanned paper-based images that should be digitised and converted from raster to vector format. Seismograms have special characteristics recorded by seismometer and encrypted in the images: traces, minute time gaps, timing and wave amplitudes. This information should be recognised and interpreted. Our objective was to automatically digitise historical seismograms recorded by Galitzine seismometer in 1954 in Uccle seismic station, Belgium. A dataset included 145 TIFF images. Software for digitising seismograms are limited and many have disadvantages. We used DigitSeis and performed a full workflow which included pattern recognition, classification, digitising, corrections and converting TIFFs to digital output. Selected images were damaged with identified defects (spots, overlaps of traces). Such files were corrected interactively. The generated contours of signals were presented as time series and converted into digital MATLAB format (.mat files) which preserved the ground motion information contained in analog seismograms. The DigitSeis approach demonstrated a powerful and reliable toolset for processing analog seismic signals. This study contributed to methodological development of signal processing for seismograms archived in Royal Observatory of Belgium (ROB).
 }  
 
 % Keywords
@@ -167,13 +171,26 @@ Software for digitising seismograms is based on pattern recognition. For example
 \section{Materials and Methods}
 
 \subsection{Study Area}
-The study was performed in the Université Libre de Bruxelles, École polytechnique de Bruxelles, Laboratory of Image Synthesis and Analysis (LISA), Belgium. We used archives obtained as a courtesy of \ac{ROB}, Department of Seismology \& Gravimetry, \ac{UCC}, Fig. \ref{fig:1}. The process is done within the framework of the SeismoStorm project.
+The study was performed in the Université Libre de Bruxelles, École polytechnique de Bruxelles, Laboratory of Image Synthesis and Analysis (LISA), Belgium. We used archives obtained as a courtesy of \ac{ROB}, Department of Seismology \& Gravimetry, \ac{UCC}, Fig. \ref{fig:01}. The process is done within the framework of the SeismoStorm project.
 
 \begin{figure}[H]
-        	\centering
-        		 \includegraphics[width=13.0cm]{fig_01.jpg}
-        		 \caption{Location of Uccle station on a topographic map of Belgium. Map source: authors.}
-     \label{fig:1}
+     \centering
+     %\begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}{.47\linewidth}
+         \centering
+       	  	\includegraphics[width=6.7cm]{fig_01a.jpg}
+         \caption{Location of Uccle seismic station, ROB.}
+         \label{fig:01a}
+     \end{subfigure} \hfill %\hspace{1mm}
+  %  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}{.47\linewidth}
+         \centering
+         	\includegraphics[width=6.2cm]{fig_01b.jpg}
+         \caption{Seismicity in Belgium.}
+         \label{fig:01b}
+     \end{subfigure}
+        \caption{Study area: topographic map of Belgium (a) and seismicity in Belgium visualised using \ac{IRIS} catalogue (b). Software: \ac{GMT}. Cartography source: authors.}
+        \label{fig:01}
 \end{figure}
 
 Established in 1899 by Eugène Lagrange, Uccle was the only seismic station in Belgium for the most of the \nth{20} century. Afterwards seismic monitoring gradually expanded to a larger seismic network system of Belgium \cite{Camelbeeck1985} with Uccle remaining its important centre. 
@@ -655,14 +672,13 @@ In this study we demonstrated the successful approach of automated digitising se
 
 Integration of workflow with \ac{ML} is possible due to another advantage of the DigitSeis, which consists in conversion of generated file to the .mat format for post-processing in MATLAB. This enable data integration and overlay of vectorised traces over the scanned images for data control. The advantages of DigitSeis in digitising seismograms enable recurrent and consistent information capture on seismic signal levels, repeatability of the recorded peaks, time gaps, period of data capture, intensity of signals and strength of Earth's ground motion. All this information can be used for seismicity analysis and relevant geophysical studies. 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \authorcontributions{Conceptualization, O.D.; methodology, O.D. and P.L.; software, P.L.; validation, O.D.; formal analysis, O.D. and P.L.; investigation, O.D. and P.L.; resources, P.L.; data curation; writing---original draft preparation, P.L.; writing---review and editing, O.D. and P.L.; visualization, P.L.; supervision, O.D.; project administration at ULB, O.D.; funding acquisition, O.D. All authors have read and agreed to the published version of the manuscript.}
 
-\funding{This research received funding from the Belgian Science Policy Office (BELSPO) for SeismoStorm project. We thank Rapha\"el S. M. De Plaen and Thomas Lecocq for the dataset.}
+\funding{This research received funding from the Belgian Science Policy Office (BELSPO) for SeismoStorm project. We thank R. S. M. De Plaen and T. Lecocq for the dataset.}
 
 \dataavailability{Data supporting reported results are the courtesy of Royal Observatory of Belgium, Department of Seismology and Gravimetry (OD2), used in this study as available archived datasets of seismograms. Data are available in the Cytomine workspace}
 
