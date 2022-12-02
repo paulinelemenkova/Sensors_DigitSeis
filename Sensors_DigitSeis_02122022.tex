@@ -226,7 +226,7 @@ The\hl{ }digitised seismic traces \hl{present }a series of traces \hl{with }time
 
 %\newpage
 \subsection{Data}
-The dataset received from the Uccle station presents a large collection of scanned paper-based seismograms (selected examples are presented in Figure \ref{fig:04}). 
+The dataset received from the Uccle station presents a large collection of scanned paper-based seismograms \hl{with }selected examples\hl{ }presented in Figure \ref{fig:04}). 
 
 \begin{figure}[H]
      \centering
@@ -240,14 +240,14 @@ The dataset received from the Uccle station presents a large collection of scann
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
         		 \includegraphics[width=12.0cm]{fig_04b.png}
-        		 \caption{Partially spotted image caused by storage, with enlarged fragment of seismogram. Here: UCC19540107Gal\_N\_0815.TIFF}
+        		 \caption{Partially spotted image caused by storage\hl{ }with enlarged fragment of seismogram. Here: UCC19540107Gal\_N\_0815.TIFF}
      \end{subfigure}
           
  \vspace{3mm}
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
         		 \includegraphics[width=12.0cm]{fig_04c.png}
-        		 \caption{Continuous noise dark background on the image with blurred traces which cause lack of contrast for automated image recognition. Here: UCC19540108Gal\_N\_0815.TIFF}
+        		 \caption{Continuous noise dark background on the image with blurred traces which \hl{causes }lack of contrast for \hl{the }automated image recognition. Here: UCC19540108Gal\_N\_0815.TIFF}
      \end{subfigure} 
      
   \vspace{3mm}
@@ -259,23 +259,23 @@ The dataset received from the Uccle station presents a large collection of scann
      \caption{Examples of the raw data: old analog seismograms recorded by Uccle seismic station, Belgium, 1954, scanned and saved as TIFF files. Some images have visible distortions and defects.} \label{fig:04}
 \end{figure}
 
-The final images are stored as TIFF files which present a matrix of 2D arrays of pixels where each pixel is represented by a number of grayscale corresponding to that pixel \cite{Poynton}. The images have been stored at a resolution of 300 dpi, ca. 350-400 MB size each, in 256 B/W monochrome scales. The standard format of all the images ensured the integrity and compatibility of the whole dataset used for analysis. The 300 dpi was considered enough for ambient seismic noise analysis, even though some files were originally saved at 1200 dpi. The records from the Galitzine seismometer are monochrome but those of Wiecherts are stored in color.
+The\hl{ }images are stored as TIFF files which present a matrix of 2D arrays of pixels\hl{. Each} pixel is represented by a \hl{corresponding }number of grayscale \cite{Poynton}. The images \hl{were }stored at a resolution of 300 dpi, ca. 350-400 MB size each, in 256 B/W monochrome scales. The standard format of all the images ensured the integrity and compatibility of the whole dataset used for \hl{data }analysis. The 300 dpi was considered enough for \hl{the }ambient seismic noise analysis, even though some files were originally saved at 1200 dpi. The records from the Galitzine seismometer are monochrome\hl{ while }those of Wiecherts are stored in color.
 
-The dataset included a collection of 145 images covering the period from 1 January 1954 to 12 March 1954. Some of the images are well preserved yet some have distortions and defects visible on the aged paper, Figure \ref{fig:04}. The scanned images of old seismograms have different features and characteristics, which increase technical difficulties of processing such data: line breaks, distortions, defects, blurred lines, spots, etc. For instance, some data had defects due to the record imperfectness or storage cases. Oftentimes the traces are slanted (e.g. Figure \ref{fig:06}, \ref{fig:10}, \ref{fig:11}) while some others appear more horizontal Figure \ref{fig:07}, which is caused by the physical features of spiral recording by a rotating drum in the seismometer. Technical tasks concerned the quality of the recordings on such data with each individual seismogram and challenges to automatically recognise traces on the old scanned paper. 
+The dataset included a collection of 145 images covering the period from 1 January 1954 to 12 March 1954. Some of the images are well preserved\hl{, while others} have distortions and defects visible on the aged paper, Figure \ref{fig:04}. The scanned images of old seismograms have different features and characteristics, which increase technical difficulties of processing such data: line breaks, distortions, defects, blurred lines, spots, etc. For instance, some data had defects due to the record imperfectness or\hl{ various cases related to }storage\hl{. }Oftentimes\hl{, }the traces are slanted\hl{ as shown, e.g., in }Figure \ref{fig:06}, \ref{fig:10}, \ref{fig:11})\hl{, }while\hl{ }others appear more horizontal\hl{, see }Figure \ref{fig:07}\hl{. This is basically }caused by the physical features of spiral recording by a rotating drum \hl{of }the seismometer. Technical tasks concerned the quality of the recordings on such data with each individual seismogram and challenges to \hl{the semi-} automatic\hl{ recognition of }traces on the old scanned paper. 
 
 \subsection{Software and Workflow}
-In this study we used the DigitSeis, a MATLAB based software for processing analog scanned seismograms \cite{BogiatzisIshii2016} using a structured workflow, Fig \ref{fig:05}.
+\hl{The software used }in this study \hl{included }DigitSeis, a MATLAB based software for processing analog scanned seismograms \cite{BogiatzisIshii2016}\hl{. We followed }a structured workflow \hl{for data processing}, Fig \ref{fig:05}.
 
 \begin{figure}[H]
         	\centering
         		 \includegraphics[width=13.0cm]{fig_05.jpg}
-        		 \caption{Pipeline schematic diagram for workflow process used in this study}
+        		 \caption{Pipeline schematic diagram for workflow process \hl{for vectorising seismograms}}
      \label{fig:05}
 \end{figure}
 
-The DigitSeis is developed as a software instrument for digitising seismograms obtained by scanning the paper. It applies the extracts information from the scanned seismograms processed as an image matrix. DigitSeis converts scanned raster images of analog seismograms from original TIFF format into the convenient digital format using signal processing algorithms. The approach of DigitSeis is based on the principles of semi-automated algorithms of signal processing as time series. It applies minor human supervision, mostly for adjustment of functionality in selected processes and monitoring technical workflow (Figure \ref{fig:06}). 
+The DigitSeis \hl{software }is developed as \hl{an }instrument for digitising \hl{scanned }seismograms\hl{. }It\hl{ }extracts \hl{the data }from the\hl{ }seismograms \hl{and processes them }as an image matrix. \hl{The }DigitSeis converts scanned raster images of analog seismograms from \hl{the }original TIFF format into the convenient digital format using \hl{algorithms of }signal processing. The approach of \hl{the }DigitSeis is based on the principles of semi-automated algorithms of signal processing as time series. It applies minor human supervision, mostly for \hl{the }adjustment of \hl{the }functionality in selected process \hl{steps} and \hl{for }monitoring technical workflow (Figure \ref{fig:06}). 
 
-An embedded algorithm in the DigitSeis uses trace analyses which enables to track the lines and record their values using time gaps. We applied this method to identify traces on the scanned TIFF files of seismograms and processes them by automatic detection of lines and distortions (broken lines, spots, repetitive gaps on the series of lines, etc). The digitising was adjusted to distinguish the presence of lines, similar to the '0-1' matrix, using methods of colour recognition on the image. However, the directions of vector lines present another task that can only be solved using advanced analysis of the geometric trend of the trace by \ac{ML} tools. The thickness of the traces and time gaps on the data were considered for each 30-min line on the seismograms. 
+An\hl{ }algorithm \hl{embedded in }DigitSeis uses trace analyses which enables to track the lines and \hl{to }record their values using time gaps. We applied this method to identify traces on the scanned TIFF files of seismograms and \hl{processed }them by \hl{a semi-}automatic detection of lines and distortions\hl{. The latter include, for instance, }broken lines, spots, repetitive gaps on the series of lines\hl{. }The digitising was adjusted \hl{with aim }to distinguish the \hl{skeleton }of lines, similar to the '0-1' matrix, using methods of colour recognition on the image. However, the directions of vector lines present another task that can only be solved using \hl{the }advanced analysis of the geometric trend of the trace by \hl{the automated }tools. The thickness of the traces and \hl{the }time gaps\hl{ }were considered for each 30-min line on \hl{each }seismogram\hl{.} 
 
 \begin{figure}[H]
      \centering
@@ -296,8 +296,8 @@ An embedded algorithm in the DigitSeis uses trace analyses which enables to trac
 
 The workflow of seismogram vectorisation by DigitSeis can be summarised in five major steps as follows: 1) Image preprocessing; 2) Identification of time marks and traces; 3) Image vectorising and classification; 4) Trace correction and control; 5) Timing and conversion (SAC).
 
-\subsubsection{Image loading and preprocessing}
-First, the images were loaded into the program as TIFF files, converted into the native 8-bit \ac{HSV} formal of DigitSeis where the intensity of monochrome images is either 0 (black) or 255 (white) in terms of intensity. Visually, the image contained white traces of measured seismic signals over a black background (Figure \ref{fig:06}). In the selected images with limited data and large dark background the areas of interest were cropped to reduce the space without traces and to select only a part of image to test a smaller space area of interest (Figure \ref{fig:07}). The resulted analysis was saved continuously throughout the workflow into a in the binary data MATLAB format as a .mat file.
+\subsubsection{Image \textcolor{blue}{preprocessing}}
+First, the images were loaded into the program as TIFF files \hl{and }converted into the native 8-bit \ac{HSV} formal of DigitSeis\hl{. The }intensity of \hl{the }monochrome images is either 0 (black) or 255 (white) in terms of \hl{grayscale}. Visually, the image contained white traces of \hl{the }measured seismic signals over a black background (Figure \ref{fig:06}). In the selected images with limited data and large dark background\hl{, }the areas of interest were cropped \hl{in order }to reduce the space without traces and to select only a part of image to test a smaller space area of interest (Figure \ref{fig:07}). The resulted analysis was saved continuously throughout the workflow into a in the binary data MATLAB format as a .mat file.
 
 \begin{figure}[H]
      \centering
@@ -311,15 +311,15 @@ First, the images were loaded into the program as TIFF files, converted into the
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
         		 \includegraphics[width=13.0cm]{fig_07b.jpg}
-        		 \caption{Enlarged fragment of image (a) showing the time gaps indicating minute marks and zoomed segment separating the trace line between each other (tiny white gaps breaking traces)} 
+        		 \caption{Enlarged fragment of image\hl{ }showing\hl{ }time gaps \hl{which }indicate\hl{ }minute marks and \hl{a }zoomed segment separating the trace line between each other \hl{with }tiny white gaps breaking \hl{the }traces.} 
      \end{subfigure}
      \caption{Analysing seismogram in paper-based format: traces and time gaps} \label{fig:07}
 \end{figure}
 
-\subsubsection{Identifying time gaps on seismograms}
-Interpretation of seismic reflection signals involves the identification of arrival times recorded in the time markers or gaps. The exact determination of time and coordinates of the signals is essential in seismology. 
+\subsubsection{Identifying \textcolor{blue}{the }time gaps}
+\hl{The }interpretation of seismic reflection signals involves the identification of \hl{the }arrival times recorded in the time markers or gaps.\hl{ This is important step, because the }exact determination of time and coordinates of the signals is essential in seismology. 
 
-Therefore, we evaluated the 1-second time mark dimensions which show the breaks of the line along its course. The recording contained time marks at every minute. The whole line represents, on average, 30 min intervals of ground motion signals (Figure \ref{fig:07}). On the original TIFFs of the seismograms, the time is marked according to the \ac{UTC} time and, most of the times, recorded at 30 mm/min. Marking time was performed by measuring width and offset of the gaps in the traces and recording the values in the menu bar. Time intervals on seismograms can be represented in two ways: time marks (small vertical dash lines) or time gaps (small breaks between the lines). In this study we only had time gaps. In the DigitSeis program time marks are indicated as positive numbers, while time gaps as negative numbers. Therefore, the time intervals were indicated as negative numbers, Figure \ref{fig:08}. 
+Therefore, we evaluated the 1-second time mark dimensions which show the breaks of the line along its course. The recording contained \hl{the }time marks at every minute. The whole line represents, on average, 30 min intervals of \hl{the }ground motion signals (Figure \ref{fig:07}). On the original TIFFs of the seismograms, the time is marked according to the \ac{UTC} time and\hl{ }most of the times\hl{ is }recorded at 30 mm/min. Marking time was performed by measuring width and \hl{the }offset of\hl{ }gaps in the traces and recording the values in \hl{a }menu bar. \hl{The time }intervals on \hl{the }seismograms can be represented in two ways: time marks (small vertical dash lines) or time gaps (small breaks between the lines). In this study\hl{, }we only had time gaps \hl{due to the technical specifics of the Galitzine seismometer}. In\hl{ }DigitSeis\hl{, the }time marks are indicated as positive numbers, while time gaps\hl{ -- }as negative \hl{ones}. Therefore, \hl{in our case }the time intervals were indicated as negative numbers, Figure \ref{fig:08}. 
 
 Identifying time gaps is a preparatory step before classification, as time marks are used to properly identify breaks between the signal traces. In out dataset, the seismograms had only gaps for time marks, without marks, so we only needed to identify traces as necessary objects. To receive accurate mean measurement values, we indicated time gaps from -22 to -20, so that the gaps of smaller value could be included, Figure \ref{fig:09}. After time mark width was set up, the signals were prepared for classification. The program identified traces based on the analysis of areas of contrast in a monochrome colour scale and recognised the position of traces. We considered the curvature of the traces and measured the time gaps according to the path direction. As a result, vertical time gaps were identified for which the threshold number was set such that it was enough to include the individual traces with smaller (or less distinguishable) gaps. Once we identified time gaps the seismograms were ready for classification. 
 
@@ -539,21 +539,21 @@ Afterwards, the resulted data were exported into the MATLAB format, and saved as
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_18a.jpg}
+         	\includegraphics[width=12.0cm]{fig_18a.jpg}
          	\caption{Time calculation process}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_18b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_18b.jpg}
         		 \caption{Timing setup using time display increment}
      \end{subfigure}
      \vspace{3mm} 
      
           \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_18c.jpg}
+        		 \includegraphics[width=12.0cm]{fig_18c.jpg}
         		 \caption{Time markers at 1-minute intervals on each 30-minute trace}
      \end{subfigure}
      \caption{Seismogram image with adjusted timing. Here: UCC19540311Gal\_E\_0727.mat} \label{fig:18}
