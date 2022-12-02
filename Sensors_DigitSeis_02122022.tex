@@ -412,9 +412,9 @@ These time gaps \hl{identify }minute intervals in traces\hl{ which are }necessar
      \caption{Results of the paper-based seismogram vectorisation processed by DigitSeis} \label{fig:12}
 \end{figure}
 
-\hl{The algorithm of classification identified lines and traces}, and discriminated them from noise and time gaps. The results of the classification include two types of objects: traces and noise, coloured by red or white, where red signifies noise (not used in the vectorisation) and white - traces (signals of the ground motion, i.e. the majority of objects on the seismogram), Figure \ref{fig:10}. Combining separate segments of the traces was done using the crosshairs, Figure \ref{fig:11} (b). The classification settings were adjusted using the Classify Objects function of DigitSeis, in order to make the automated processing smooth and accurate (Figure \ref{fig:11}). In this way, the procedure of image processing generated a pixel matrix for the traces by scanning the whole image.  
+\hl{The algorithm of classification identified lines and traces}, and discriminated them from noise and time gaps. The results of the classification include two types of objects: traces and noise, coloured by red or white, where red signifies noise (not used in the vectorisation) and white - traces (signals of the ground motion, i.e.\hl{, }the majority of objects on the seismogram), Figure \ref{fig:10}. Combining separate segments of the traces was done using the crosshairs, Figure \ref{fig:11} (b). The classification settings were adjusted using the Classify Objects function of DigitSeis, in order to make the automated processing smooth and accurate (Figure \ref{fig:11}). In this way, the procedure of image processing generated a pixel matrix for the traces by scanning the whole image.  
 
-Analog seismograms almost always include imperfectness on the old paper (e.g. handwritten annotations, gaps in data, damaged parts of the records), technical nuances caused by the seismometer instrument. Therefore, to ensure detailed selection of objects, a closer analysis of a selected parts of the seismogram was done using the 'Small Region Analysis' function, Figure \ref{fig:10} (b). As a result, traces, time gaps, and noise were all classified more accurately as a prerequisite for the next step of digitising. 
+\hl{The }analog seismograms almost always include imperfectness on the old paper\hl{, }e.g.\hl{, }handwritten annotations, gaps in data, damaged parts of the records\hl{. Other issues arise from the }technical nuances caused by the seismometer instrument\hl{ and the process of signal recording. }Therefore, to ensure \hl{the }detailed selection of objects, a closer analysis of \hl{the }selected parts of the seismogram was done using the 'Small Region Analysis' function, \hl{as shown in }Figure \ref{fig:10} (b). As a result, traces, time gaps\hl{ }and noise were all classified more accurately as a prerequisite for the next step of digitising. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
@@ -426,61 +426,61 @@ For vectorising lines, DigitSeis uses a mathematical algorithm of 'golden-sectio
 
 \subsection{Post-Processing: Correcting Traces}
 
-The majority of traces and time gaps were well identified automatically by DigitSeis, except for selected lines that required manual corrections in an interactive regime. Some of such traces on the images were classified wrong, Figure \ref{fig:13}. 
+The majority of traces and time gaps were well identified automatically by DigitSeis, except for selected lines that required manual corrections in an interactive regime. Some of such traces on the images were classified wrong, Figure \ref{fig:13}. Mostly they were located in the difficult segments of the image where the program could not recognise selected traces correctly using algorithms of machine vision. These difficulties were caused by the entangled path of lines that could not be discriminated automatically from noise or where the machine could be recognise the correct path of the line. This resulted in erroneous digitising and required manual corrections of the parts of images that contain gaps (yellow boxes), Figure \ref{fig:13}. 
+
+Correcting traces in a seismogram was performed using the 'Correct Trace' mode of DigitSeis. The identified traces were examined in an enlarged view (Figure \ref{fig:14}) and the lines were manually adjusted. Misclassified traces were corrected semi-automatically and the image was re-digitised. In this phase, we identified the location and the problem of the misclassified seismic traces on an image and classifies them anew into the segments. We used the magnifying tool for enlarging a small portion of the trace in a reclassification window, Figure \ref{fig:14} and \ref{fig:15}. First, we identified traces that required correction, and then corrected the line accordingly. Afterwards, the updated trace information was integrated to the whole line of trace in each case. Some segments were manually changed in the misclassified traces and the types of the objects were corrected in these cases (e.g. annotations on the edges of paper have been assigned a category of 'noise'). Visual inspection was performed upon the re-classification.
 
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_13a.png}
+         	\includegraphics[width=12.0cm]{fig_13a.png}
          	\caption{Identified wrong vector direction of line crossing individual traces}
      \end{subfigure}
      \vspace{3mm}   
      
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_13b.png}
+        		 \includegraphics[width=12.0cm]{fig_13b.png}
         		 \caption{Detected misclassifications caused erroneous digitising. The gaps on the zero-lines (small yellow boxes) show the gaps that existed in the old paper in the original image itself.}
      \end{subfigure}
      \vspace{3mm}   
      \caption{Identified traces for selective correction and re-digitising using Correct Trace mode} \label{fig:13}
 \end{figure}
 
-Mostly they were located in the difficult segments of the image where the program could not recognise selected traces correctly using algorithms of machine vision. These difficulties were caused by the entangled path of lines that could not be discriminated automatically from noise or where the machine could be recognise the correct path of the line. This resulted in erroneous digitising and required manual corrections of the parts of images that contain gaps (yellow boxes), Figure \ref{fig:13}. 
+\hl{A certain limitation is that our method using DigitSeis does not consider overlapping cases of the seismic traces with high level of signals where amplitudes of the trace lines may exceed the width of the 30-minute track in a paper space, and thereby may confuse different steps of vectorisation that should be adjusted manually. For example, the cases demonstrated in Figure} \ref{fig:14} \hl{have the two overlapping traces where the algorithm of DigitSeis could not recognise the line correctly and the line was interacted manually with vector segments corrected by hand.} 
+
+\hl{Other} misclassified segments \hl{are} presented in complex regions of seismograms with overlapped traces where the corrections required manual adjustments. Graphical representations of the encountered problems and complicated cases are illustrated. \hl{Since correction of these cases is a time-consuming process, without taking account for overlapping neighbouring traces the processing of larger dataset becomes difficult. This may confuse the interpretation of the seismic signals and result in misinterpretation. Consequently, accurate vectorisation requires automation for more distinct recognition of the skeleton of the target trace lines. In our future work, we are going to investigate the modelling of trace lines in seismograms using algorithms of Python in order to facilitate the recognition task.}
 
 \begin{figure}[H]
      \centering
         \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_14a.png}
+        		 \includegraphics[width=12.0cm]{fig_14a.png}
         		 \caption{Overlap of line traces unrecognised during digitising: one segment of trace went steeply downwards and merged with another trace}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_14b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_14b.jpg}
         		 \caption{Enlarged view of the manually corrected entangled traces}
      \end{subfigure} 
      \caption{Correcting misclassified traces with wrong direction based on colour and geometric pixel's characteristics. The pixels on the monochrome image were assigning to categories using threshold values to 1 (white) and all other pixels to 0 (black) for automated detection of lines.} \label{fig:14}
 \end{figure}
 
-Correcting traces in a seismogram was performed using the 'Correct Trace' mode of DigitSeis. The identified traces were examined in an enlarged view (Figure \ref{fig:14}) and the lines were manually adjusted. Misclassified traces were corrected semi-automatically and the image was re-digitised. In this phase, we identified the location and the problem of the misclassified seismic traces on an image and classifies them anew into the segments. 
-
-We used the magnifying tool for enlarging a small portion of the trace in a reclassification window, Figure \ref{fig:14} and \ref{fig:15}. First, we identified traces that required correction, and then corrected the line accordingly. Afterwards, the updated trace information was integrated to the whole line of trace in each case. Some segments were manually changed in the misclassified traces and the types of the objects were corrected in these cases (e.g. annotations on the edges of paper have been assigned a category of 'noise'). Visual inspection was performed upon the re-classification.
-
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_15a.jpg}
+         	\includegraphics[width=12.0cm]{fig_15a.jpg}
          	\caption{Merging the trace initially broken into the three separate parts (three small yellow boxes)}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_15b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_15b.jpg}
         		 \caption{Reclassification of the selected segment and digitising the centroid of the trace line}
      \end{subfigure}
      \caption{Correcting trace for the selected segments} \label{fig:15}
@@ -564,14 +564,14 @@ Afterwards, the resulted data were exported into the MATLAB format, and saved as
      \centering
      \begin{subfigure}[H]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_19a.jpg}
+         	\includegraphics[width=12.0cm]{fig_19a.jpg}
          	\caption{Scanning of trace lines on the digitised image (Here: UCC19540311Gal\_E\_0727.mat)}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[H]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_19b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_19b.jpg}
         		 \caption{Separation of traces and time gaps by filtering (time gap setup as '-12' in this case)}
      \end{subfigure}
      \caption{Fragments of the digitised image (Here: UCC19540311Gal\_E\_0727.mat) (11 March 1954)} \label{fig:19}
@@ -592,14 +592,14 @@ By simply looking to the color dot distribution, it is easy to check the overall
      \centering
      \begin{subfigure}[H]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_20a.png}
+         	\includegraphics[width=12.0cm]{fig_20a.png}
          	\caption{Quality control for time gaps: missed marks in unrecognised segments}
      \end{subfigure}
      \vspace{1mm}   
 
      \begin{subfigure}[H]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_20b.png}
+        		 \includegraphics[width=12.0cm]{fig_20b.png}
         		 \caption{Correctly identified time gaps controlled by Python's Matplotlib}
      \end{subfigure}
      \caption{Controlling digitising results using Python (Matplotlib library)} \label{fig:20}
@@ -662,9 +662,7 @@ This workflow \hl{classified }the image and \hl{digitised }the objects \hl{in a 
 We presented \hl{a} practical application of DigitSeis software for digitising scanned historical seismograms in a semi-automatic regime. We note that while using a good digitiser is a major task of any seismological research, there are still more algorithms that need to be adjusted for a fully automated system of classification and digitising of seismograms. Processing seismograms is an essential part of geophysical research having its specifics compared to simple images: minute time marks made by the drum, seismogram timing, recognition of line directions, smooth data conversion, etc. Our goal was to present here a practical application in signal processing by DigitSeis using dataset on historical seismograms with time gaps.
 
 \subsection{Limitations}
-\hl{One limitation of our work is that we need to label all the attributes (time gaps and traces, deleting ) in each seismogram, specify the noise on the background paper, check the segments for misclassification issues, correct the overlapped traces and control the identified traces manually. This is a time-consuming process and we need to acquire this for each processed seismogram. This limits the speed of data processing in case of big data issues and overall limits the scalability of our method for novel dataset. In this paper, we have proposed a DigitSeis solution to perform vectorising task by converting scanned images in raster format into vector format. Since the output format was compatible with Python we processed data using Matplotlib library as a separate step. }For \hl{a }fully automated data processing and rapid building of big data corpus of digitised seismograms, \hl{we propose to use }the advanced solutions of \ac{ML} techniques\hl{ in similar future works. }As \hl{an example }for this, we \hl{suggest} a \ac{ML} solution of combining DigitSeis with Python. 
-
-\hl{Another limitation is that our method using DigitSeis does not consider overlapping cases of the seismic traces with high level of signals where amplitudes of the trace lines may exceed the width of the 30-minute track in a paper space, and thereby may confuse different steps of vectorisation that should be adjusted manually. For example, the cases demonstrated in Figure} \ref{fig:14} \hl{have the two overlapping traces where the algorithm of DigitSeis could not recognise the line correctly and the line was interacted manually with vector segments corrected by hand. Other} misclassified segments \hl{are} presented in complex regions of seismograms with overlapped traces where the corrections required manual adjustments. Graphical representations of the encountered problems and complicated cases are illustrated. \hl{Since correction of these cases is a time-consuming process, without taking account for overlapping neighbouring traces the processing of larger dataset becomes difficult. This may confuse the interpretation of the seismic signals and result in misinterpretation. Consequently, accurate vectorisation requires automation for more distinct recognition of the skeleton of the target trace lines. In our future work, we are going to investigate the modelling of trace lines in seismograms using algorithms of Python in order to facilitate the recognition task.}
+\hl{A limitation of our work is that we need to label all the attributes (time gaps and traces, deleting ) in each seismogram, specify the noise on the background paper, check the segments for misclassification issues, correct the overlapped traces and control the identified traces manually. This is a time-consuming process and we need to acquire this for each processed seismogram. This limits the speed of data processing in case of big data issues and overall limits the scalability of our method for novel dataset. In this paper, we have proposed a DigitSeis solution to perform vectorising task by converting scanned images in raster format into vector format. Since the output format was compatible with Python we processed data using Matplotlib library as a separate step. }For \hl{a }fully automated data processing and rapid building of big data corpus of digitised seismograms, \hl{we propose to use }the advanced solutions of \ac{ML} techniques\hl{ in similar future works. }As \hl{an example }for this, we \hl{suggest} a \ac{ML} solution of combining DigitSeis with Python. 
 
 \hl{Using a fully automated methods of data-driven algorithms, for instance by Python, may improve the performance of vectorising model without human-specified manual adjustments of data processing, as was the case in our work. Therefore, one direction for our future work is to use the programming techniques to apply the algorithm of vectorization using learned attributes of seismograms (time marks/gaps, width of vector traces) for a big corpus of data. This would improve the speed and effectiveness of big data processing which is the case of large archives and libraries, such as ROB. Thereby, one can reuse the algorithm using attributes of seismograms to detect similar features on a new dataset without time-consuming work on identifying and labelling attributes. Thus, machine learning techniques of programming should be developed to adaptively determine the optimal parameters in the seismograms using attributes selected as model.}
 
