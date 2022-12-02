@@ -321,28 +321,28 @@ First, the images were loaded into the program as TIFF files \hl{and }converted 
 
 Therefore, we evaluated the 1-second time mark dimensions which show the breaks of the line along its course. The recording contained \hl{the }time marks at every minute. The whole line represents, on average, 30 min intervals of \hl{the }ground motion signals (Figure \ref{fig:07}). On the original TIFFs of the seismograms, the time is marked according to the \ac{UTC} time and\hl{ }most of the times\hl{ is }recorded at 30 mm/min. Marking time was performed by measuring width and \hl{the }offset of\hl{ }gaps in the traces and recording the values in \hl{a }menu bar. \hl{The time }intervals on \hl{the }seismograms can be represented in two ways: time marks (small vertical dash lines) or time gaps (small breaks between the lines). In this study\hl{, }we only had time gaps \hl{due to the technical specifics of the Galitzine seismometer}. In\hl{ }DigitSeis\hl{, the }time marks are indicated as positive numbers, while time gaps\hl{ -- }as negative \hl{ones}. Therefore, \hl{in our case }the time intervals were indicated as negative numbers, Figure \ref{fig:08}. 
 
-Identifying time gaps is a preparatory step before classification, as time marks are used to properly identify breaks between the signal traces. In out dataset, the seismograms had only gaps for time marks, without marks, so we only needed to identify traces as necessary objects. To receive accurate mean measurement values, we indicated time gaps from -22 to -20, so that the gaps of smaller value could be included, Figure \ref{fig:09}. After time mark width was set up, the signals were prepared for classification. The program identified traces based on the analysis of areas of contrast in a monochrome colour scale and recognised the position of traces. We considered the curvature of the traces and measured the time gaps according to the path direction. As a result, vertical time gaps were identified for which the threshold number was set such that it was enough to include the individual traces with smaller (or less distinguishable) gaps. Once we identified time gaps the seismograms were ready for classification. 
+Identifying \hl{the }time gaps is a preparatory step \hl{prior to }classification\hl{. It is a necessary step because }time marks are used to properly identify \hl{the }breaks between the signal traces. In \hl{our }dataset, the seismograms had only gaps \hl{as }time marks\hl{, therefore, }we only needed to identify traces as necessary objects. To receive \hl{the }accurate mean measurement values, we indicated time gaps from -22 to -20, \hl{to ensure that smaller}gaps \hl{are }included, Figure \ref{fig:09}. After \hl{the }time mark width was \hl{defined}, the signals were prepared for classification. The \hl{traces were }identified  based on the analysis of areas of \hl{the colour }contrast in a monochrome\hl{ }scale and recognised the position of traces. We considered the curvature of\hl{ }traces and measured the time gaps according to the path direction. As a result, vertical time gaps were identified for which the threshold number was set \hl{in a such way }that it was enough to include the individual traces with smaller (or less distinguishable) gaps. Once we identified \hl{the }time gaps\hl{, }the seismograms were ready for \hl{the next steps of }classification. 
 
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
          	\includegraphics[width=13.0cm]{fig_08a.jpg}
-         	\caption{Identifying time marks on seismograms by measuring time gap between records. Here: example on file UCC19540119Gal\_N\_0825.tif}
+         	\caption{Identifying \hl{the }time marks on seismograms by measuring time gap between \hl{the }records. Here: example on file UCC19540119Gal\_N\_0825.tif}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
         		 \includegraphics[width=13.0cm]{fig_08b.jpg}
-        		 \caption{Indicating time marks on seismograms as -22 and preparing image for classification}
+        		 \caption{Indicating \hl{the }time marks on seismograms as -22 and preparing image for \hl{the }classification}
      \end{subfigure}
      \caption{Classification of seismogram processed by DigitSeis.} \label{fig:08}
 \end{figure}
 
 \subsubsection{Classification}
 
-The aim of the classification algorithm is to discriminate the traces from the time marks and noises, and to perform a complete object recognition, i.e., all objects are to be classified and assigned to the correct category. The image threshold for classification was set as 82\hl{, }Figure \ref{fig:09}, representing the minimum intensity value of a pixel to be included in classified objects. In our case, 82 was appropriate number for moderately clear images and thin lines. \hl{The image threshold of minimized the number of misclassified pixels compared to other values, that is, the distributions of the grey level values in pixels is best distinguished by this values, which makes up the object of seismic lines well separated from the background of seismograph. After we compared other values of image thresholds, we noted that the level of 82 well separates the lines of seismic signals (as foreground pixels) from the scanned paper (as background pixels). Thus, the empirical selection of this value improved the results of image processing.}
+The aim of the classification algorithm is to discriminate the traces from the time marks and noises, and to perform a complete object recognition, \hl{that is}, all objects are to be classified and assigned to the correct category \hl{of classes}. The image threshold for classification was set as 82\hl{, }Figure \ref{fig:09}, representing the minimum intensity value of a pixel to be included in classified objects. In our case, 82 was appropriate number for moderately clear images and thin lines. \hl{The image threshold minimized the number of misclassified pixels compared to other values, that is, the distributions of the grey level values in pixels is best distinguished by these values, which makes up the object of seismic lines well separated from the background of the seismogram. After we compared other values of the image thresholds, we noted that the level of 82 well separates the lines of seismic signals (as foreground pixels) from the scanned paper as background pixels. Thus, the empirical selection of this value improved the results of image processing.}
 
 %\begin{wrapfigure}{r}{0.28\textwidth}
 \begin{figure}[H]
@@ -353,48 +353,66 @@ The aim of the classification algorithm is to discriminate the traces from the t
  \end{figure}
 %\end{wrapfigure}
 
-\hl{The threshold parameters for seismogram classification in DigitSeis include several values, as follows. The image threshold is set to 82, as explained above. The time mark width indicates the distance between the tiny marks representing minutes. Since they vary in various seismograms due to the paper recording of each seismograph, the width is detected manually on the screen, and the lowest value is selected, to ensure that we do not skip the possible cases. The time mark offset is an option useful for the seismograms where traces are interrupted each minute by an offset time mark. In our case, we did not have time marks; instead the minutes are indicated by gaps regularly repeating as tiny pauses in recording each minute. Object thickness represent the natural width of line recorded by drum, visible on the paper and detectable by the computer vision algorithm. In this case, we had the value of 25 pixels, Figure} \ref{fig:09}.
-
-The Classification was performed using 'Classify Objects' tool of DigitSeis and the objects on the image were classified into 2 categories: 'traces' and 'noise' (in our case we did not have time marks, but time gaps instead). In some cases, noise objects were misclassified into the 'trace' category and vice versa. Therefore, their categories were adjusted accordingly using the 'Change Classification' function. Here traces are separate segments in a seismogram interrupted by the time gaps. 
-
-These time gaps mean minute intervals in traces, necessary to calculate timing. Noise include all irrelevant objects and annotations on the seismograms, e.g. spots, handwritten texts or notations, usually written on the edges of seismograms. Using 'Classification' tool we converted the image from raster TIFF format into vector binary format and classified scanned image into a set of objects with 2 main categories: 1) traces; 2) noise Figure \ref{fig:10}. This dataset did not have time marks, but time gaps instead; otherwise we would have a third class of objects -- 'time marks'. The classification algorithm performed the partition of image into classes and assignment of pixels into each categories. 
+\hl{The threshold parameters for seismogram classification in DigitSeis includes several values. The image threshold is set to 82, as explained above. }
 
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_10a.jpg}
+         	\includegraphics[width=12.0cm]{fig_10a.jpg}
          	\caption{Results of the classified seismogram with shown identified object categories (fragment): traces (white) and noise (red, here: handwritten annotations)}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_10b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_10b.jpg}
         		 \caption{Small region analysis used for defining a smaller area of interest for closer examination of a border region of the seismogram}
      \end{subfigure}
      \caption{Results of the paper seismogram classification processed by DigitSeis} \label{fig:10}
 \end{figure}
 
-
-\hl{The algorithm of classification identified lines and traces}, and discriminated them from noise and time gaps. The results of the classification include two types of objects: traces and noise, coloured by red or white, where red signifies noise (not used in the vectorisation) and white - traces (signals of the ground motion, i.e. the majority of objects on the seismogram), Figure \ref{fig:10}. Combining separate segments of the traces was done using the crosshairs, Figure \ref{fig:11} (b). The classification settings were adjusted using the Classify Objects function of DigitSeis, in order to make the automated processing smooth and accurate (Figure \ref{fig:11}). In this way, the procedure of image processing generated a pixel matrix for the traces by scanning the whole image.  
+\hl{The time mark width indicates the distance between the tiny marks representing minutes. Since they vary in different seismograms due to the individual paper records of each seismograph, the width is detected manually on the screen. The lowest value was selected to ensure that we do not skip the possible cases. The time mark offset is an option useful for the seismograms where traces are interrupted each minute by an offset time mark. In our case, we did not have time marks; instead the minutes are indicated by gaps repeating each minute as tiny pauses in the recording. The object thickness represents a natural width of the line recorded by a drum, which is visible on the paper and detectable by a computer vision algorithm. In this case, we had a value of 25 pixels, Figure} \ref{fig:09}.
 
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_11a.jpg}
+         	\includegraphics[width=12.0cm]{fig_11a.jpg}
          	\caption{Results of the classified image with shown yellow segments of the identified trace (enlarged fragment). Here: example of file UCC19540109Gal\_E\_0812.tif}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_11b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_11b.jpg}
         		 \caption{Classified seismogram with traces saved in binary format 0-1. Here: example of file UCC19540109Gal\_E\_0812.tif (seismogram recorded on January 9, 1954.)}
      \end{subfigure}
      \caption{Results of the scanned seismogram classification processed by DigitSeis} \label{fig:11}
 \end{figure}
+
+The Classification was performed using \hl{the }'Classify Objects' tool of DigitSeis \hl{where }the objects on the image were classified into 2 categories: 'traces' and 'noise'\hl{. In }our case\hl{, }we did not have time marks, but time gaps instead\hl{. }In some cases, noise objects were misclassified into the 'trace' category and vice versa. Therefore, their categories were adjusted \hl{manually and corrected to the appropriate classes }using the 'Change Classification' function. Here \hl{the }traces\hl{ }separate \hl{the }segments in a seismogram interrupted by the time gaps. 
+
+These time gaps \hl{identify }minute intervals in traces\hl{ which are }necessary to calculate timing. \hl{The }noise \hl{includes }all \hl{the }irrelevant objects and annotations on the seismograms, e.g.\hl{, }spots, handwritten texts or \hl{annotations}, usually \hl{placed }on the edges of seismograms. Using '\hl{the }Classification' tool\hl{, }we converted the image from \hl{the }raster TIFF format into \hl{the }vector binary format and classified scanned image into a set of objects with \hl{the two }main categories: 1) traces; 2) noise\hl{, see} Figure \ref{fig:10}. This dataset did not have time marks, but time gaps instead; otherwise we would have a third class of objects -- 'time marks'. The classification algorithm performed the partition of \hl{the }image into classes and assignment of pixels into each categories\hl{, respectively. }
+
+\begin{figure}[H]
+     \centering
+     \begin{subfigure}[h]{0.7\textwidth}
+      	\centering
+         	\includegraphics[width=13.0cm]{fig_12a.jpg}
+         	\caption{Digitised traces upon completion of the automated vectorisation. Some time gaps in the upper left part of the image were too small and not clearly visible for \hl{the }automatic discrimination between the trace and \hl{the }dark background. In these cases, gaps required manual correction to identify time intervals.}
+     \end{subfigure}
+     \vspace{3mm}   
+
+     \begin{subfigure}[h]{0.7\textwidth}
+         \centering
+        		 \includegraphics[width=13.0cm]{fig_12b.jpg}
+        		 \caption{\hl{The }enlarged view of the automatically recognised digitised traces displayed by \hl{the }lines of various colours, zero-lines for each trace (cyan, dashed lines, numbered from top to bottom) and time gaps (vertical yellow dashes)}
+     \end{subfigure} 
+     \caption{Results of the paper-based seismogram vectorisation processed by DigitSeis} \label{fig:12}
+\end{figure}
+
+\hl{The algorithm of classification identified lines and traces}, and discriminated them from noise and time gaps. The results of the classification include two types of objects: traces and noise, coloured by red or white, where red signifies noise (not used in the vectorisation) and white - traces (signals of the ground motion, i.e. the majority of objects on the seismogram), Figure \ref{fig:10}. Combining separate segments of the traces was done using the crosshairs, Figure \ref{fig:11} (b). The classification settings were adjusted using the Classify Objects function of DigitSeis, in order to make the automated processing smooth and accurate (Figure \ref{fig:11}). In this way, the procedure of image processing generated a pixel matrix for the traces by scanning the whole image.  
 
 Analog seismograms almost always include imperfectness on the old paper (e.g. handwritten annotations, gaps in data, damaged parts of the records), technical nuances caused by the seismometer instrument. Therefore, to ensure detailed selection of objects, a closer analysis of a selected parts of the seismogram was done using the 'Small Region Analysis' function, Figure \ref{fig:10} (b). As a result, traces, time gaps, and noise were all classified more accurately as a prerequisite for the next step of digitising. 
 
@@ -403,23 +421,6 @@ Analog seismograms almost always include imperfectness on the old paper (e.g. ha
 
 \subsection{Vectorisation}
 In order to make the digitising workflow more effective and accurate, the images were zoomed for enlarged analysis. The example of the processed image taken on January \nth{9}, 1954 (UCC19540109Gal\_E\_0812.tif) contained 45 traces with numeration from top to bottom, each horizontal line corresponds to the 30 minutes of measurements, Figure \ref{fig:12}. Thus, the whole image shows seismic situation for 24 hours taken during January \nth{9}, 1954 (for the case of UCC19540109Gal\_E\_0812.tif).
-
-\begin{figure}[H]
-     \centering
-     \begin{subfigure}[h]{0.7\textwidth}
-      	\centering
-         	\includegraphics[width=13.0cm]{fig_12a.jpg}
-         	\caption{Digitised traces upon completion of the automated vectorisation. Some time gaps in the upper left part of the image were too small and not clearly visible for automatic discrimination between the trace and dark background. In these cases, gaps required manual correction to identify time intervals.}
-     \end{subfigure}
-     \vspace{3mm}   
-
-     \begin{subfigure}[h]{0.7\textwidth}
-         \centering
-        		 \includegraphics[width=13.0cm]{fig_12b.jpg}
-        		 \caption{Enlarged view of the automatically recognised digitised traces displayed by lines of various colours, zero-lines for each trace (cyan, dashed lines, numbered from top to bottom) and time gaps (vertical yellow dashes)}
-     \end{subfigure} 
-     \caption{Results of the paper-based seismogram vectorisation processed by DigitSeis} \label{fig:12}
-\end{figure}
 
 For vectorising lines, DigitSeis uses a mathematical algorithm of 'golden-section search' based on the nonlinear optimisation approach which finds an extremum (min/max) of a function inside a given interval \cite{Kiefer,Press}. Thus it lessens the amplitude of the first derivative of the combined trace according to the relative vertical shift between the seismic trace and time gaps \cite{BogiatzisIshii2016}. The vectorisation was obtained using the embedded algorithm of DigitSeis. Examples of vectorisation of selected seismogram by automatic approach of DigitSeis are shown in Figure \ref{fig:12}. The Figure \ref{fig:12} (a) shows the vectorisation for the whole seismogram, in which many segments were identified correctly, while others required interactive corrections (encompassed in yellow boxes). The Figure \ref{fig:12} (b) visualises the enlarged fragment of the same seismogram with automatically identified traces with curvatures and time gaps. 
 
