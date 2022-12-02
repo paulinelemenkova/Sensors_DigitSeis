@@ -218,15 +218,11 @@ B.B. Galitzine improved the accuracy of the seismometer by reducing the sensitiv
   \caption{Conceptual flowchart for the technical process. Plotting: PlantUML.}\label{fig:03}
 \end{wrapfigure}
 
-The general flowchart scheme for the process used in this study is schematically visualised in Figure \ref{fig:03}. This study is based upon an integrating approach combining several programs for data processing. 
+The general flowchart scheme for \hl{data processing }is\hl{ shown }in Figure \ref{fig:03}. This study is based\hl{ }on\hl{ }integrating \hl{the }approach \hl{which }combining several \hl{methods. The }data were collected\hl{ from the archives }of \ac{ROB}\hl{ as historical seismograms recorded by the }Galitzine seismometer in 1954.\hl{ }In 2021\hl{, }the data were scanned\hl{ }in A0 format in a very-high resolution (600 dpi) and saved as TIFFs\hl{ which }were\hl{ }imported to\hl{ }DigitSeis\hl{ and }converted\hl{ }into 8-bit native HSV format.  
 
-The data were collected using existing archived of \ac{ROB} using Galitzine seismometer in 1954. The data were recorded by the drum of the seismometer and stored in boxes in a storage space of the ROB. In 2021 the data were scanned using scanner in A0 format in a very-high resolution (600 dpi) and saved as TIFF files. The TIFF files were then imported to the DigitSeis where the program converted them into 8-bit native HSV format.  
+The next steps included\hl{ stepwise data }processing \hl{in }DigitSeis\hl{, }Figure \ref{fig:05}). \hl{The pre-processing included }image loading, measuring time gaps \hl{and }navigating selected segments\hl{. The }object classification \hl{included the }setup of image threshold, marking time parameters \hl{and exploring }small regions\hl{ }for detailed trace \hl{analysis. Major steps included }vectorisation, digitising\hl{. Finally, the }post-processing\hl{ of data consisted in }converting the output files\hl{ }into the .mat format. Most of the traces were well recognised by the\hl{ algorithms of DigitSeis during }digitising\hl{, }while selected segments required interactive corrections\hl{ which }were repeated iteratively for each seismogram. The results of DigitSeis data processing shown a relatively good recognition of lines and traces. The validation of data was performed for\hl{ the exported files}.
 
-The next steps include the processing of the DigitSeis that has several step itself (Figure \ref{fig:05}). the most important of them include pre-processing (e.g. image loading, measuring time gaps, navigating selected segments), object classification (e.g. setup of image threshold, marking time parameters, small region analysis for detailed trace exploring), vectorisation, digitising and post-processing that includes converting the output file into the .mat format. 
-
-Most of the traces were well recognised by the program in the process of digitising using embedded algorithms, while selected segments required interactive corrections. In this way the steps performed in DigitSeis were repeated iteratively for each seismogram. The results of DigitSeis data processing shown a relatively good recognition of lines and traces. The validation of data was performed for file export.
-
-The resulting digitised seismic traces have a series of traces and time gaps identified by the program automatically. We converted the file into the MAT format and processed the next steps using Matplotlib library of Python. In Python we used Matplotlib library for post-processing steps and quality control. We analysed the repeatability of the segments broken by the DigitSeis and visualised vector traces received from the DigitSeis as separate plots. We also checked the time ticks automatically recognised by the program per minute using time gaps, and segments of the lines. 
+The\hl{ }digitised seismic traces \hl{present }a series of traces \hl{with }time gaps identified\hl{ semi-}automatically. \hl{The files were converted }into .mat format and processed \hl{as }the next steps using\hl{ }Python. \hl{The }Matplotlib library\hl{ was used }for post-processing steps and quality control. We analysed the repeatability of the segments broken by\hl{ }DigitSeis and visualised \hl{the received }vector traces\hl{ }as separate plots. We\hl{ }checked the time ticks \hl{which were }automatically recognised by the program per minute using time gaps, and segments of the lines. 
 
 %\newpage
 \subsection{Data}
@@ -236,28 +232,28 @@ The dataset received from the Uccle station presents a large collection of scann
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_04a.png}
+         	\includegraphics[width=12.0cm]{fig_04a.png}
          	\caption{Empty records between the lines of seismic traces with enlarged fragment of seismogram. Here: UCC19540106Gal\_N\_0811.TIFF}
      \end{subfigure}
      
   \vspace{3mm}
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_04b.png}
+        		 \includegraphics[width=12.0cm]{fig_04b.png}
         		 \caption{Partially spotted image caused by storage, with enlarged fragment of seismogram. Here: UCC19540107Gal\_N\_0815.TIFF}
      \end{subfigure}
           
  \vspace{3mm}
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_04c.png}
+        		 \includegraphics[width=12.0cm]{fig_04c.png}
         		 \caption{Continuous noise dark background on the image with blurred traces which cause lack of contrast for automated image recognition. Here: UCC19540108Gal\_N\_0815.TIFF}
      \end{subfigure} 
      
   \vspace{3mm}
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_04d.png}
+        		 \includegraphics[width=12.0cm]{fig_04d.png}
         		 \caption{Overlapped traces of a very large event which cause a problem during vectorising with selected enlarged fragment of seismogram. Here: UCC19540112Gal\_E\_0750.TIFF}
      \end{subfigure}
      \caption{Examples of the raw data: old analog seismograms recorded by Uccle seismic station, Belgium, 1954, scanned and saved as TIFF files. Some images have visible distortions and defects.} \label{fig:04}
