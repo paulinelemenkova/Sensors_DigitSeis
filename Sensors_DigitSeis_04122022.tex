@@ -581,15 +581,14 @@ The duration for the most of the lines was 30 minutes\hl{, }and the seismograms 
 \end{figure}
 
 \subsection{Validating \textcolor{blue}{the }Results \textcolor{blue}{using }Python}
-Validating the results and checking quality control of the digitised traces have been performed using Python \cite{van1995python}. For export and graphical visualisation of the MAT files we used library Matplotlib \cite{Hunter}. For tuning the parameters of the digitising process in the next series of recording we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the file of MAT format into Python, Figure \ref{fig:20} and \ref{fig:21}. 
+\hl{To evaluate the discriminating functionality of the seismic traces by DigitSeis algorithms over the dataset, we validated }the results and \hl{performed the }quality control of the digitised traces\hl{ }using Python \cite{van1995python}. \hl{The }Matplotlib library \cite{Hunter} \hl{was applied }for export and graphical visualisation of the MAT files. For tuning the parameters of the digitising process in the next series of recording\hl{, }we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the files \hl{in }MAT format into Python, Figure \ref{fig:20} and \ref{fig:21}. 
 
 The length distribution of the segments imported is represented in Figure \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for 59 seconds of recording).
-We arbitrarily keep as valid the segment inside the range $[.8*S_{typ},1.1*S_{typ}]$. The starting position of these segments is represented as green dots in Figure \ref{fig:20} (a). 
-From the distribution of short invalid segments, as represented in Figure \ref{fig:20} (a), we can identify the small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range $[.9*H_{typ},1.1*H_{typ}]$. The respective graphs are presented for the seismogram UCC19540311Gal\_E\_0727\_280.mat taken on March 11, 1954, Figure \ref{fig:21} (c) and (d).
+We arbitrarily keep as valid the segment inside the range $[.8*S_{typ},1.1*S_{typ}]$. The starting position of these segments is represented as \hl{the }green dots in Figure \ref{fig:20} (a). 
+From the distribution of \hl{the }short invalid segments, as \hl{shown }in Figure \ref{fig:20} (a), we can identify\hl{ }small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range $[.9*H_{typ},1.1*H_{typ}]$. The respective graphs are presented for the seismogram UCC19540311Gal\_E\_0727\_280.mat taken on March 11, 1954, Figure \ref{fig:21} (c) and (d).
 
-The starting position of the hours segments is represented by the blue dots in Figure \ref{fig:20}. 
-Most of the hours marks are aligned, since the rotation speed of the main drum is \hl{two }per hour\hl{, }some marks having the same length are also present in the border and noise segments.
-By simply looking to the color dot distribution, it is easy to check the overall quality of the detected segments. 
+The starting position of the hours segments is \hl{indicated }by the blue dots in Figure \ref{fig:20}. 
+Most of the hours marks are aligned, \hl{because of }the rotation speed of the main drum is \hl{two }per hour\hl{. }Some marks \hl{have }the same length \hl{which is }also presented\hl{ }in the border and noise segments. By\hl{ }looking to the colour dot distribution, it is \hl{possible }to check the overall quality of the detected segments. 
 
 \begin{figure}[H]
      \centering
