@@ -516,30 +516,28 @@ Manual correction \hl{during the vectorisation process }was performed by tracing
 
 \subsection{Timing and Converting}
 
-After all the traces were digitised, the time was calculated using \hl{the }'Calculate Timing' function, Figure \ref{fig:18}. The time calculation properties were setup using a menu\hl{, }where the program asks for the default time and time increment\hl{. In }the demonstrated case, \hl{it is on }January 9, 1954\hl{, }Figure\hl{ }\ref{fig:18} (a). Thus, we \hl{defined }the absolute time for one record as a reference point which was then highlighted in red. \hl{The basis of setting the reference time point is according to the metadata presented in each seismogram. When originally recorded, the analog seismograms included the information regarding the date, hour and minutes of the start of the seismic recording. This original information of  time series data from the digital records of Uccle station was copied and used to set the reference time.}
+After all the traces were digitised, the time was calculated using \hl{the }'Calculate Timing' function, Figure \ref{fig:18}. The time calculation properties were setup using a menu\hl{, }where the program asks for the default time and time increment\hl{. In }the demonstrated case, \hl{it is on }January 9, 1954\hl{, }Figure\hl{ }\ref{fig:18} (a). Thus, we \hl{defined }the absolute time for one record as a reference point which was then highlighted in red. \hl{The basis of setting the reference time point is according to the metadata presented in each seismogram. }
 
-For the setup of time marks\hl{, }we identified the time gaps that correspond to the beginning of \hl{each }minute and provided the absolute time using a special menu, Figure \ref{fig:18} (b). It included the time in HH:MM format and year-month-day period that exist in each seismogram. The time and date associated with the time mark were \hl{then }entered\hl{, }and the time marks were recalculated, Figure \ref{fig:18} (c).
+\hl{When originally recorded, the analog seismograms included the information regarding the date, hour and minutes of the start of seismic recording. This original information of  time series data from the digital records of Uccle station was copied and used to set the reference time. }For the setup of time marks\hl{, }we identified the time gaps that correspond to the beginning of \hl{each }minute and provided the absolute time using a special menu, Figure \ref{fig:18} (b). It included the time in HH:MM format and year-month-day period that exist in each seismogram. The time and date associated with the time mark were \hl{then }entered\hl{, }and the time marks were recalculated, Figure \ref{fig:18} (c).
 
 \begin{figure}[H]
      \centering
      \begin{subfigure}[h]{0.7\textwidth}
       	\centering
-         	\includegraphics[width=13.0cm]{fig_17a.jpg}
+         	\includegraphics[width=12.0cm]{fig_17a.jpg}
          	\caption{Classified image recognised by DigitSeis into 'traces' and 'noise' (Here: \hl{the image }UCC19540311Gal\_E\_0727.TIFF)}
      \end{subfigure}
      \vspace{3mm}   
 
      \begin{subfigure}[h]{0.7\textwidth}
          \centering
-        		 \includegraphics[width=13.0cm]{fig_17b.jpg}
+        		 \includegraphics[width=12.0cm]{fig_17b.jpg}
         		 \caption{\hl{The }distinct coloured traces and minute time gaps are visible on \hl{a }digitised image (Here: \hl{the resulted file in a MATLAB format, }UCC19540311Gal\_E\_0727.mat)}
      \end{subfigure}
      \caption{Classified image (a) and digitised results (b). Here: UCC19540311Gal\_E\_0727 (11 March 1954)} \label{fig:17}
 \end{figure}
 
-The duration for the most of the lines was 30 minutes and the seismograms were recorded by the drum of the seismometer in one day. So we indicated the time between the gaps in seconds, and the program drawn the gaps (visible yellow vertical dashed), Figure \ref{fig:18} (c) and in the enlarged view,  Figure \ref{fig:19}. The time markers were visualised using time gaps classified on the previous step and measured automatically using a threshold.
-
-Afterwards, the resulted data were exported into the MATLAB format, and saved as the .mat file. In MATLAB environment\hl{, the }vector file was opened, checked and overlaid over the scanned TIFF image. The resulting files converted into MATLAB contained the vector lines as traces, that is\hl{, }included information that we received in DigitSeis. The converted file included the vectorised image with traces, its classification structure with segments and parts of the lines and time gap breaks. Therefore, \hl{a }special value of \hl{the }DigitSeis consists in \hl{its }compatibility with MATLAB and possibility of further reuse \hl{of }the \hl{processed files }in other tools, like Python. In this way, the vectorising workflow that we performed using DigitSeis is a continuous procedure can be smoothly integrated and exported to another software as a stepwise chain of \hl{the }separated processes.
+The duration for the most of the lines was 30 minutes\hl{, }and the seismograms were recorded by \hl{a} drum of the seismometer in one day. So\hl{, }we indicated the time between the gaps in seconds, and the program drawn the gaps (visible yellow vertical dashed), Figure \ref{fig:18} (c) and in the enlarged view,  Figure \ref{fig:19}. The time markers were visualised using \hl{the }time gaps classified \hl{in a} previous step and measured automatically using a threshold.\hl{ }Afterwards, the resulted data were exported into the MATLAB format, and saved as the .mat \hl{files}. In MATLAB environment\hl{, the }vector \hl{files were} opened, checked and overlaid over the scanned TIFF image\hl{, respectively}. The resulting files converted into MATLAB contained\hl{ }vector lines as traces, that is\hl{, }included information\hl{ }received in DigitSeis. The converted file included the vectorised image with traces, its classification structure with segments and parts of the lines and time gap breaks. Therefore, \hl{a }special value of \hl{the }DigitSeis consists in \hl{its }compatibility with MATLAB and possibility of further reuse \hl{of }the \hl{processed files }in other tools, like Python. In this way, the vectorising workflow that we performed using DigitSeis is a continuous procedure can be smoothly integrated and exported to another software as a stepwise chain of \hl{the }separated processes.
 
 \begin{figure}[H]
      \centering
@@ -582,7 +580,7 @@ Afterwards, the resulted data were exported into the MATLAB format, and saved as
      \caption{Fragments of the digitised image (Here: UCC19540311Gal\_E\_0727.mat) (11 March 1954)} \label{fig:19}
 \end{figure}
 
-\subsection{Validating Results in Python}
+\subsection{Validating \hl{the }Results \hl{using }Python}
 Validating the results and checking quality control of the digitised traces have been performed using Python \cite{van1995python}. For export and graphical visualisation of the MAT files we used library Matplotlib \cite{Hunter}. For tuning the parameters of the digitising process in the next series of recording we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the file of MAT format into Python, Figure \ref{fig:20} and \ref{fig:21}. 
 
 The length distribution of the segments imported is represented in Figure \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for 59 seconds of recording).
