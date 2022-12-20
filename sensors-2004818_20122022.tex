@@ -360,7 +360,7 @@ Identifying {the }time gaps is a preparatory step {prior to }classification{. It
 %\begin{wrapfigure}{r}{0.28\textwidth}
 \begin{figure}[H]
     \includegraphics[width=0.28\textwidth]{fig_09.jpg}
-  \caption{\hl{Threshold} %MDPI: Please change hyphen into minus if it's possible.
+  \caption{Threshold %MDPI: Please change hyphen into minus if it's possible. <-- Authors: This is a printscreen of the program, it's not possible to change. 
  parameters for seismogram classification in DigitSeis.}\label{fig:09}
  \end{figure}
 %\end{wrapfigure}
@@ -629,10 +629,10 @@ The duration for the most of the lines was 30 min{, }and the seismograms were re
 {To evaluate the discriminating functionality of the seismic traces by DigitSeis algorithms over the dataset, we validated }the results and {performed the }quality control of the digitised traces{ }using Python \cite{van1995python}. {The }Matplotlib library \cite{Hunter} {was applied }for export and graphical visualisation of the MAT files. For tuning the parameters of the digitising process in the next series of recording{, }we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the files {in }MAT format into Python, Figures \ref{fig:20} and \ref{fig:21}. 
 
 The length distribution of the segments imported is represented in Figure \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for 59 s of recording).
-We arbitrarily keep as valid the segment inside the \hl{range} %MDPI: We added 0 in front of .8.
- \highlighting{$[0.8*S_{typ},1.1*S_{typ}]$}%MDPI: if the * need change to multiplication sign ×, please confirm
+We arbitrarily keep as valid the segment inside the range %MDPI: We added 0 in front of .8. <-- Authors: yes, correct.
+ $[0.8*S_{typ},1.1*S_{typ}]$%MDPI: if the * need change to multiplication sign ×, please confirm <-- Authors: yes, correct.
 . The starting position of these segments is represented as {the }green dots in Figure \ref{fig:20}a. 
-From the distribution of {the }short invalid segments, as {shown }in Figure \ref{fig:20}a, we can identify{ }small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range \hl{$[0.9*H_{typ},1.1*H_{typ}]$}%MDPI: if the * need change to multiplication sign ×, please confirm
+From the distribution of {the }short invalid segments, as {shown }in Figure \ref{fig:20}a, we can identify{ }small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range $[0.9*H_{typ},1.1*H_{typ}]$ %MDPI: if the * need change to multiplication sign ×, please confirm <-- Authors: yes, correct.
 . The respective graphs are presented for the seismogram UCC19540311Gal\_E\_0727\_280.mat taken on 11 March 1954, Figure \ref{fig:21}c,d.
 
 The starting position of the hours segments is {indicated }by the blue dots in Figure \ref{fig:20}. 
