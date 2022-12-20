@@ -1,0 +1,1644 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[sensors,article,accept,moreauthors,pdftex]{Definitions/mdpi} 
+
+%--------------------
+% Class Options:
+%--------------------
+
+%---------
+% article
+%---------
+% The default type of manuscript is "article", but can be replaced by: 
+% abstract, addendum, article, book, bookreview, briefreport, casereport, comment, commentary, communication, conferenceproceedings, correction, conferencereport, entry, expressionofconcern, extendedabstract, datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, studyprotocol, systematicreview, supfile, technicalnote, viewpoint, guidelines, registeredreport, tutorial
+% supfile = supplementary materials
+
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g., the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+
+%---------
+% pdftex
+%---------
+% The option pdftex is for use with pdfLaTeX. If eps figures are used, remove the option pdftex and use LaTeX and dvi2pdf.
+
+%=================================================================
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+%\doinum{}
+\pubyear{2023}
+\copyrightyear{2022}
+\externaleditor{Academic Editor: Marcin Woźniak} 
+\datereceived{17 October 2022} 
+\daterevised{4 December 2022}
+\dateaccepted{15 December 2022} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+
+%====================== my packages: start ===============================
+%\bibliographystyle{numeric}
+\usepackage{lipsum} 
+%\bibstyle{numeric}
+\usepackage[super]{nth}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{caption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{\alph{subfigure}}
+\DeclareCaptionLabelFormat{subcaptionlabel}{\normalfont(\textbf{#2}\normalfont)}
+\captionsetup[subfigure]{labelformat=subcaptionlabel}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+%\usepackage{acro} %list of abbreviations
+% setup{first-style=long-short,list/display = used}
+%\input{Abbrev.tex} %define abbreviations in this file.
+
+%====================== my packages:
+%%% FORMATTING STUFF
+% JUST FOR SUBMITTING:
+\usepackage{xcolor}
+\newcommand{\review}[1]{\textcolor{black}{#1}}
+\newcommand{\todo}[1]{\textcolor{purple}{#1}}
+\newcommand{\CITE}[1]{\textcolor{red}{(CITE: #1)}}
+
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, paracol, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+%=================================================================
+%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+
+
+
+
+
+%=================================================================
+% Full title of the paper (Capitalized)
+
+
+\Title{\highlighting{Computer} %MDPI: !!!Dear author, please reply all %MDPI: comment, Thanks!!!
+ Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
+
+
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0002-6461-1551} % Add \orcidB{} behind the author's name
+\newcommand{\orcidauthorC}{0000-0003-3477-2001}
+\newcommand{\orcidauthorD}{0000-0002-4988-6477}
+
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina Lemenkova} %Please carefully check the accuracy of names and affiliations. 
+ $^{1,}$*\orcidA{}, Rapha\"el De Plaen $^{2}$\orcidC{}, Thomas Lecocq $^{2}$\orcidD{} and Olivier Debeir $^{1}\orcidB{}$}
+
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Poina Lemenkova, Rapha\"el De Plaen, Thomas Lecocq and Olivier Debeir}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.; \hl{De Plaen,} %MDPI: Please confirm the surname.
+ R.; Lecocq, T.; Debeir, O.}
+
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École Polytechnique de Bruxelles {(Brussels Faculty of Engineering),} Université Libre de Bruxelles (ULB), Building L, {Campus}  de Solbosch, Avenue Franklin Roosevelt 50, \hl{1000} %MDPI: please confirm if the postcode is correct. They must have the same format for the same country and city.
+ Brussels, Belgium; {olivier.debeir@ulb.be}
+\\
+$^{2}$ \quad Royal Observatory of Belgium, Seismology \& Gravimetry (OD2), \hl{Av.} %MDPI: Please confirm if this should be changed into Avenue.
+ Circulaire 3, \hl{BE-1180} %MDPI: Please confirm if this is the postcode, we moved it before the municipality and please keep the same format of the post code for same country 
+\hl{Uccle,} %MDPI: Please confirm if the city is correct.
+ Belgium; raphael.deplaen@gmail.com (R.D.P.); \hl{t}homas.\hl{l}ecocq@seismology.be (T.L.)}%MDPI: We changed to lowercase.
+
+% Contact information of the corresponding author
+\corres{Correspondence: polina.lemenkova@ulb.be; Tel.: +32-471-86-04-59}
+
+% Current address and/or shared authorship
+% \firstnote{Current address: Affiliation 3} 
+%\secondnote{These authors contributed equally to this work.}
+% The commands \thirdnote{} till \eighthnote{} are available for further notes
+
+%\simplesumm{} % Simple summary
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{Archived seismograms recorded in the 20th century present \textcolor{black}{a} valuable source of information for monitoring earthquake activity. However, old data\textcolor{black}{, which} are only available as scanned paper-based images \textcolor{black}{should} be digitised and converted from raster to vector format \textcolor{black}{prior to reuse for geophysical modelling}. Seismograms have special characteristics \textcolor{black}{and specific features }recorded by \textcolor{black}{a} seismometer and encrypted in the images: \textcolor{black}{signal trace lines}, minute time gaps, timing and wave amplitudes. This information should be recognised and interpreted \textcolor{black}{automatically when processing archives of seismograms containing large collections of data. The} objective was to automatically digitise historical seismograms \textcolor{black}{obtained from the archives of the Royal Observatory of \mbox{Belgium (ROB)}. \linebreak The images were originally }recorded by \textcolor{black}{the} Galitzine seismometer in 1954 in Uccle seismic station, Belgium. A dataset included 145 TIFF images \textcolor{black}{which required automatic approach of data processing}. Software for digitising seismograms are limited and many have disadvantages. We \textcolor{black}{applied the} DigitSeis \textcolor{black}{for machine-based vectorisation and reported here} a full workflow\textcolor{black}{of data processing. \linebreak This} included pattern recognition, classification, digitising, corrections and converting TIFFs to \textcolor{black}{the} digital \textcolor{black}{vector format}. The generated contours of signals were presented as time series and converted into digital format (mat files) which indicated information on ground motion signals contained in analog seismograms. \textcolor{black}{We performed the quality control of the digitised traces in Python to evaluate the discriminating functionality of seismic signals by DigitSeis.} We shown a robust approach of DigitSeis as a powerful toolset for processing analog seismic signals. The graphical visualisation of signal traces and analysis of the performed vectorisation results shown that the algorithms of data processing performed accurately and can be recommended in similar applications of seismic signal processing in future related works \textcolor{black}{in geophysical research}.}  
+
+% Keywords
+\keyword{seismology; Galitzine seismometer; horizontal component; analogue seismogram; \linebreak digitising; earthquake recording; ground motions; historical seismograms; seismic waves} 
+
+\begin{document}
+%\begin{paracol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\subsection{Background}
+The seismicity of the Earth represents a physical phenomenon resulting from the tectonic processes of energy accumulation and release \cite{GutenbergRichter}. This fundamental concept of the Earth's physics is reflected in the movements on the surface that have {a }different intensity of the vibrations{ }caused by the fluctuations of energy \cite{Shearer2019}. In geodynamics, the seismicity is the result of {the }self-organisation of the Earth {which responds }to the lithosphere \mbox{movements \cite{UdiasBuforn2017}}. Measuring seismic signals using seismometers enables to evaluate ground motions of the Earth{ }associated with the earthquakes of various magnitude or ambient seismic noise \cite{nakata_gualtieri_fichtner_2019}. Evaluating seismic ambient noise is effective in different contexts{, including }imaging and monitoring the Earth’s interior, seismic mapping {at a }global {or} regional scale{, }environmental studies, {investigations on }elastic deformations {at shallow depths in the crust, } to mention a few.
+
+{The } {EO} data processing {in seismology }has undergone a long process of technical evolution \cite{DeweyByerly1979,Agnew}. The instruments used for seismic data recording went through a constant development of technologies and state-of-the-art methods. The systematic, precise and operative observation of the seismicity of the Earth began in late {19}th century along with a progress in technology, development of new seismographs and { }advances in geophysical methods \cite{SchweitzerLee2003}. From the 1880s{ to the 1960s, seismographs were used for }recording ground motion continuously and systematically \cite{SchweitzerLee2003}{. The data were stored in an }analogue paper-based format using{ }narrow-band low-range instruments{ }\cite{Batlloetal2008,Wangetal2014}{ }or as magnetic tapes \cite{Anetal2015}. 
+
+Starting in the 1960s, seismology benefited from the{ }onset of the computer era that led to a transition to digital data which{ }increased in quantity worldwide {along }with instrumental development \cite{Engdahl2002}. {A global }initiative of seismological network  {WWSSN} was created in 1960s to generate a collection of the high-quality big seismic datasets \citep{OliverMurphy,Ammon2010}. \linebreak This initiative was possible due to the uniformly accepted technical equipment and standardised workflow for data calibration in each {seismic }station. Currently, seismograms are recorded and stored digitally in high-performance data centres using advanced algorithms of signal \mbox{processing \cite{Heiner}}. However, the{ }historical datasets from the pre-{digital period remain }a valuable database containing unique information on seismicity of the Earth that {is useful }for practical scientific purposes \cite{Kanamorietal2010,Bungum,Kanamorietal2019,Lomnitz2004,Ambraseys1983}. 
+
+{Processing these} datasets {is important for} practical applications{ }in the fields of {seismology, geology, }tectonics and{ }physics of the Earth. {The }wide use of {information retrieved from the }seismograms{ }\cite{Ammon2021} includes such{ }domains as geophysics \cite{Kulhanek}, ocean climate \linebreak modelling \cite{Lecocqetal2020}, subsurface exploration, global and planetary tectonics \citep{Crampin,Jackson2002,Leroyetal2010}, risk assessment in civil engineering \citep{Phillips,Pileckietal2017, Kurzeja},{ }earthquake{risk analysis with associated }features (dynamic rupture, seismic tomography and wave forms) \cite{Ahorner,Steinmann,Amorese,Lomnitz,Yuliatmoko},{ and }volcanology \cite{Pezzo}. 
+
+Recently, with the advances in studies of the ambient wavefield, or ``noise''-based techniques, it has become possible to use the data recorded between the earthquakes to conduct monitoring \cite{Ratdomopurbo,Mordret,LemenkovaDebeir02}{. Moreover, the advanced methods of data processing facilitate signal and image analysis in geoscience and geophysics in various contexts} \cite{brenguier2014mapping,Lemenkova202012,Braszusetal2021,LemenkovaDebeir01,Lemenkova202016,Lietal2000}. \linebreak {Aside from the terrestrial regions, }oceans are {another important }global source of seismic \linebreak energy \cite{Ardhuinetal2011,AucanArdhuin2013,PeureuxArdhuin2016}. They mostly generate surface waves that travel large distances and can {affect remotely located areas}. The microseisms{ }are the dominant component of the ground motions recorded at the {Earth's }surface. In turn, the {analysis }of microseisms {allows deeper} insights into the evolution of oceanic climate \cite{Singh2021,Toyokunietal2015} {and }the dynamics of the atmosphere--ocean--earth couplings \cite{Bromirski1999,Williams,Ardhuinetal2011}. 
+
+\subsection{Motivation}
+Old analog seismograms present a key source of information regarding the seismicity of the Earth in the pre-digital age.{ }There is also a time{-}sensitive component of digitising {seismograms} before they are degraded and lost over time. The importance of the historical datasets for geophysical research{ raise the need to ensure their digital \linebreak conservation }\cite{Vogtetal1985, TevesCosta1999,Bono2007,Okal}. Using archived information{, }it is also possible to analyse past seismicity {in }historical{ contexts } \cite{Alexandre1990a,Alexandre1985,Alexandre1990b}, which {is important }for geophysical reconstructions and climate modelling. {Datasets on }seismic velocity as time series{ }can be used for monitoring volcanoes. Moreover, retrospective analysis of the old seismograms enables to model earthquake cycles{ }as a continuous process and to {gain deeper }insights into the physics of the {Earth}. Finally, {the }interpretation of {the }old seismograms provides {an important }information for the long-term prognosis{. For instance, datasets on earthquakes, including locations and magnitude, are essential for }predictive modelling \cite{Kanamori1988}.
+
+Such analyses are largely based on the retrieval of information from {the }digital seismograms \cite{Claerbout1992}. However, the use of such information relies heavily on our access to large {historical }datasets of seismograms. {While paper-based seismograms archived in observatories contain valuable scientific information, they are not suitable to reuse in data modelling. In contrast, seismograms in vector format present }uniformed {and }standardised {data collections in digital format that can be} accurately processed{. Processing such datasets enables} to explain the physical nature of the ground motion signals {from the Earth's interior}. 
+The {updates} of such datasets depends on {the }accurate and standardised recording systems using commonly accepted and approved instruments (seismometers and seismographs) with products that remain consistent through {the }decades of operation \cite{UdiasBuforn2017}. 
+
+\subsection{\textcolor{black}{Related Work}}
+The first attempts to digitise the analogue recordings of seismic events {and convert the data }into numeric format started in 1960s. An \hl{ad hoc} %MDPI: We removed italic. please confirm
+algorithm of thinning the lines on scanned seismograms and converting the image into a 0--1 digital matrix was developed by \cite{Jarosch1975}. Another study used a device initially {designed }for weather maps and adjusted for automatic converting of seismic signals into a digital form{ }and plotting them using a cathode-ray tube display \cite{AdamsAllen1961}. The progress of digitising signals accelerated in \linebreak 1980s \citep{AspinallLatchman,CrouseMatuschka1983} and 1990s \citep{Scherbaum1996a,NorlundGriffiths1993,McGee1995,Harjesetal1993,Scherbaum1996b,Scherbaum1996c} along with the increase of {the }computer-based algorithms and {developed }geophysical software. The digitising approaches have become more and more automated since 2000s, along with a rapid development of the programming languages and IT  tools \cite{Bietal2016,Ishiietal2015,Schenke,Wangetal2014}. 
+ 
+Recently, the use of the automated digitisers of seismograms{ }instead of {the }manual vectorisers has received much attention. {They enable vectorising the recordings of the acceleration of the strong motion ground. The advanced algorithms include the }automated recognition of noise \cite{CrouseMatuschka1983}, handling smooth and wigged traces{ }for tracing waves{ }\cite{Bietal2016}, synchronisation of the time scale for the three motion components, handling scratches, distortions or line crossings on the image, {and }adjusting rotated position \cite{Trifunacetal1999}. 
+
+Digitising old seismograms is a not straightforward task. Often the problems are caused by the recording methods in old mechanical seismographs. For instance, high velocity of stylus that does not touch the paper, clipping of amplitudes, low-contrast dark background on smoked paper, records damaged over time due to bad storage conditions of paper \cite{Baskoutasetal2000}, to mention {some of them}. At the same time, the digitising process should be as automated as possible, to avoid human-induced errors. As a response to {these needs, various programs for }automatic, quick and accurate digitising and modelling of{ seismograms }were developed. The advances{ }in pattern recognition are supported by rapid growth of  programming languages \cite{Esmaili,analytica2030006,Lemenkova201991,Lemenkova2019100,Lemenkov202103}, and specifically, Python \cite{Cox,Stoneback, Lemenkova201989}, improvements of algorithms of  {ML}{ }for image segmentation and clustering \cite{Jenkins,signals1010005,DebeirDecaestecker,signals2030037,Debeir2008}, and signal processing~\cite{Foucart,Debeiretal2019}. 
+
+{Pattern recognition is a key basis for }digitising seismograms{ using in many existing software. }For example, the Teseo \cite{Pintoreetal2005} traces raster files using cubic Bézier curves{ handling }monochrome images by {a combination of }manual and automatic methods and neural networks. A software using C\# uses an algorithm of colour scene recognition by Color Scene Filed Method \cite{Wangetal2016}. A{ }MATLAB{-based program }used algorithm of inversion problem for a matrix of model parameters and observed seismic data \cite{XuXu}. Another example of seismic software, the SeisDig{, developed }by Berkeley Seismological Laboratory{, }presents an interactive MATLAB{-}based tool {which performs }trace inspection, checks{ }time conservation, recognises{ }events and inputs{ }metadata header \cite{BromirskiChuang2003}. An approach to seismic recording is presented in DigiSeis \cite{Khanetal2012} aimed at digitizing signals using a built-in PC sound card for signal processing. It visualises the two-channel seismic data in time and frequency, and{ performs }time series analysis. Extracting wave data from paper seismograms was attempted by \cite{Liuetal2001} with a seismogram digitization and DB management system using Delphi3 {approach }based on Pascal{.}
+
+\subsection{\textcolor{black}{Contribution}}
+{As a response to the needs for accurate vectorising of old archived seismograms, the} goal of our study was to perform a{ }digitisation of seismic traces contained in historical seismograms. To {this end, we applied} the DigitSeis software \cite{BogiatzisIshii2016} for{ }semi-automated vectorising of seismograms. The aim was to convert an existing large historical {collection }of seismograms{ } {archived in Royal Observatory of Belgium (ROB) } from {raster }format into a {vector format }using advanced technical functionality of machine processing {in an }automatic{ and accurate way. The dataset included} over 140 scanned raster images in TIFF format {which were converted} into the digital MATLAB output with generated .mat format files.
+
+{The objective was to update }the historical dataset of {the }old seismograms recorded at Uccle station {in }1954 by {the }Galitzine seismometer. {We scanned the large volume of archived seismogram }data {and vectorised the files using} DigitSeis. Our study contributes to the {maintaining methods of vectorising }archived{ }seismograms {for information retrieval and analysis}. We also {identified }the limits {and possibilities }of the {vectorisation }tools to {propose a framework of using machine methods }for {geophysics and seismology}. 
+
+{The proposed framework benefits from simple, efficient pixelwise processing of analogue paper-based seismograms, which is easily amenable to various data formats. Moreover, the use of DigitSeis does not require the pre-processing of time gaps and marks, initialization strategies, neither has smoothness constraints with regard to image resolution. Other advantages include the adaptability to structure of recorded papers and easy recognition of seismic traces, including fine details. Consequently, our approach is not biased by instability for the dataset containing seismograms recorded by the same instrument (Galitzine), and we do not have difficulty handling materials with varying records, e.g., records containing noise or high-frequency waves. Extensive experiments on vectorised seismograms shown that our implementation using  robust algorithms of DigitSeis produces stable, accurate, and efficient vectorisation of analogue seismograms. }
+
+%\newpage
+\section{Materials and Methods}
+
+\subsection{Study Area}
+The study was performed in the Université Libre de Bruxelles, École Polytechnique de Bruxelles, Laboratory of Image Synthesis and Analysis (LISA), Belgium. We used archives obtained as a courtesy of  {ROB}, Department of Seismology \& Gravimetry,  {UCC}, Figure \ref{fig:01}. {The data processing }is {performed }within the framework of the SeismoStorm project.
+
+\begin{figure}[H]
+     \centering
+     %\begin{subfigure}[b]{0.45\textwidth}
+     \begin{subfigure}{.47\linewidth}
+       	  	\hspace{0.1cm}\includegraphics[width=6.7cm]{fig_01a.jpg}
+         \caption{\centering Location of Uccle seismic station, ROB.}
+         \label{fig:01a}
+     \end{subfigure} \hfill %\hspace{1mm}
+  %  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}{.47\linewidth}
+         	\includegraphics[width=6.2cm]{fig_01b.jpg}
+         \caption{\centering Seismicity in Belgium.}
+         \label{fig:01b}
+     \end{subfigure}
+     \vspace{6pt}
+        \caption{\hl{Study} %MDPI: Please add explanatory information about the start, squares in circle in the middle of every subfigure.
+ area: topographic map of Belgium (\textbf{a}) and seismicity in Belgium visualised using  {IRIS} catalogue (\textbf{b}). Software:  \hl{{GMT}. } %MDPI: Please state the software version number, creator, and the location (city, country) from where the software was sourced.
+Cartography source: authors.}
+        \label{fig:01}
+\end{figure}
+
+Established in 1899 by Eugène Lagrange, Uccle was the only seismic station in Belgium for the most of the {20}th century. Afterwards seismic monitoring gradually expanded to a larger seismic network system of Belgium \cite{Camelbeeck1985}{. Nowadays, the Royal Observatory of Belgium (ROB) located in }Uccle{ remains an }important centre {of Belgian seismic network. It collects seismic data from 28 measuring stations of Belgium and Luxembourg, and maintains the archiving of the seismogram database}. 
+
+\subsection{Instrument}
+The{ }dataset obtained from the Galitzine seismometer {was }processed using {the }DigitSeis vectoriser. The original seismograms have been received from  {UCC} using the Galitzine seismometer, Figure \ref{fig:2}. It is the {1}st electromagnetic instrument developed by B.B. Galitzine in 1910 (Figure \ref{fig:2}) \cite{Somville1922a,Somville1922b}, designed to record a single component (horizontal or vertical) for earthquake recording \cite{Wgg}. This type of seismographs is constructed using a following principle: a coil of wire is fixed to the pendulum which oscillates between the poles driven by the earthquake forces. The movement of coil between a strong magnet {generates }an electric induction current. The current is being transferred to a sensitive galvanometer to direct a beam of light onto {the }photographic paper  {which visualizes the strength of the signals }\cite{Neumann}. 
+
+\begin{figure}[H]
+         		\includegraphics[width=8.0cm]{fig_02.jpg}
+     \caption{Instrument used for data capture in 1954: Horizontal Galitzine seismometer located in {UCC}. Image source: courtesy of  {ROB}. Photo source: R. S. M. De Plaen.} \label{fig:2}
+\end{figure}
+
+The structure of the Galitzine seismometer is presented in Figure \ref{fig:2}{. }The pendulum (at the front), consists of a mass suspended by the two wires. It includes several parts: copper plate{ }fixed on the rod next to the coil;{ }electromagnetic seismometer with a coil attached to the arm of the pendulum {which oscillates }in a magnetic field between the poles of a magnet (at the back) and {generates }an electric current by induction; Foucault current for damping; horizontal component (7 kg);{ }tracing device with an optical recording system {which includes }a photographic paper and a galvanometer mirror with a mobile frame; and the speed settings {with a }period of 12 s. 
+
+B.B. Galitzine improved the accuracy of the seismometer by reducing the sensitivity of the system through diverting a part of the current. Thus,{ the }Galitzine seismometer {includes }the {two special features}: (1) Damping the resistance to the galvanometer{; } \linebreak (2) Damping the seismometer pendulum through the cumulated effect of a magnetic damping device and the external resistance to the pendulum coil. Due to such effectiveness, {this }principle is {widely }used for {seismic }measurements by{ }the Galitzine-type \linebreak{ seismometers} \cite{ChakrabartyTandon}.
+
+\subsection{Workflow}
+
+The general flowchart scheme for {data processing is shown }in Figure \ref{fig:03}. This study is based{ }on{ }integrating {the }approach {which combines} several {methods. The }data were collected{ from the archives }of  {ROB} { as historical seismograms recorded by the }Galitzine seismometer in 1954.{ }In 2021{, }the data were scanned{ }in A0 format in a very-high resolution (600 dpi) and saved as TIFFs{ which }were{ }imported to{ }DigitSeis{ and }converted{ }into 8-bit native HSV format.  
+
+\begin{figure}[H]
+    \includegraphics[width=5.0cm]{fig_03.png}
+  \caption{Conceptual flowchart for the technical process. Plotting: PlantUML.}\label{fig:03}
+\end{figure}
+
+The next steps included{ stepwise data }processing {in }DigitSeis{, }\hl{Figure} %MDPI: Figure 5 is cited before figure 4, please revise the order.
+ \ref{fig:05}). {The pre-processing included }image loading, measuring time gaps {and }navigating selected segments{. The }object classification {included the }setup of image threshold, marking time parameters {and exploring }small regions{ }for detailed trace {analysis. Major steps included }vectorisation, digitising{. Finally, the }post-processing{ of data consisted in }converting the output files{ }into the .mat format. Most of the traces were well recognised by the{ algorithms of DigitSeis during }digitising{, }while selected segments required interactive corrections{ which }were repeated iteratively for each seismogram. The results of DigitSeis data processing shown a relatively good recognition of lines and traces. The validation of data was performed for{ the exported files}.
+
+The{ }digitised seismic traces {present }a series of traces {with }time gaps identified{ semi-}automatically. {The files were converted }into .mat format and processed {as }the next steps using{ }Python. {The }Matplotlib library{ was used }for post-processing steps and quality control. We analysed the repeatability of the segments broken by{ }DigitSeis and visualised {the received }vector traces{ }as separate plots. We{ }checked the time ticks {which were }automatically recognised by the program per minute using time gaps, and segments of the lines. 
+
+%\newpage
+\subsection{Data}
+The dataset received from the Uccle station presents a large collection of scanned paper-based seismograms {with }selected examples{ }presented in Figure \ref{fig:04}). 
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_04a.png}
+         	\caption{\centering}
+     \end{subfigure}
+     
+  \vspace{3mm}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_04b.png}
+        		 \caption{\centering}
+     \end{subfigure}
+          
+ \vspace{3mm}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_04c.png}
+        		 \caption{\centering}
+     \end{subfigure} 
+     \caption{\textit{Cont.}}
+\label{fig:04}
+\end{figure}
+
+ \begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{3}
+     \begin{subfigure}[h]{0.7\textwidth}
+         \centering
+        		 \includegraphics[width=12.0cm]{fig_04d.png}
+        		 \caption{\centering}
+     \end{subfigure}
+     \vspace{6pt}
+     \caption{Examples of the raw data: old analog seismograms recorded by Uccle seismic station, Belgium, 1954, scanned and saved as TIFF files. Some images have visible distortions and defects. \hl{(\textbf{a})} %MDPI: We moved the information for figure to caption.
+ Empty records between the lines of seismic traces with enlarged fragment of seismogram. Here: UCC19540106Gal\_N\_0811.TIFF. (\textbf{b}) Partially spotted image caused by storage{ }with enlarged fragment of seismogram. Here: UCC19540107Gal\_N\_0815.TIFF. (\textbf{c}) Continuous noise dark background on the image with blurred traces which {causes }lack of contrast for {the }automated image recognition. Here: UCC19540108Gal\_N\_0815.TIFF. (\textbf{d}) Overlapped traces of a very large event which cause a problem during vectorising with selected enlarged fragment of seismogram. Here: UCC19540112Gal\_E\_0750.TIFF.} \label{fig:04}
+\end{figure}
+
+The{ }images are stored as TIFF files which present a matrix of 2D arrays of pixels{. Each} pixel is represented by a {corresponding }number of grayscale \cite{Poynton}. The images {were }stored at a resolution of 300 dpi, ca. 350--400 MB size each, in 256 B/W monochrome scales. The standard format of all the images ensured the integrity and compatibility of the whole dataset used for {data }analysis. The resolution of 300 dpi was considered enough for {the }ambient seismic noise analysis, even though some files were originally saved at 1200 dpi. The records from the Galitzine seismometer are monochrome{ while }those of Wiecherts are stored in color.
+
+The dataset included a collection of 145 images covering the period from 1 January 1954 to 12 March 1954. Some of the images are well preserved{, while others} have distortions and defects visible on the aged paper, Figure \ref{fig:04}. The scanned images of old seismograms have different features and characteristics, which increase technical difficulties of processing such data: line breaks, distortions, defects, blurred lines, spots, etc. For instance, some data had defects due to the record imperfectness or{ various cases related to }storage{. }Oftentimes{, }the traces are slanted{ as shown, e.g., in }\hl{Figures} %MDPI: Figures 6, 10 and 11 are mentione after figure 4, please revise the order.
+ \ref{fig:06}, \ref{fig:10} and \ref{fig:11}){, }while{ }others appear more horizontal{, see }\hl{Figure} %MDPI: Figure citation should be in order, Figure 7 should be mentioned after Figure 6. Please revise the citations and make sure the figures are mentioned in numerical order..
+ \ref{fig:07}{. This is basically }caused by the physical features of spiral recording by a rotating drum {of }the seismometer. Technical tasks concerned the quality of the recordings on such data with each individual seismogram and challenges to {the semi-} automatic{ recognition of }traces on the old scanned paper. 
+
+\subsection{Software and Workflow}
+{The software used }in this study {included }DigitSeis, a MATLAB based software for processing analog scanned seismograms \cite{BogiatzisIshii2016}{. We followed }a structured workflow {for data processing}, Figure \ref{fig:05}.
+
+\begin{figure}[H]
+        		 \includegraphics[width=13.0cm]{fig_05.jpg}
+        		 \caption{Pipeline schematic diagram for workflow process {for vectorising seismograms}.}
+     \label{fig:05}
+\end{figure}
+
+The \hl{DigitSeis software} %MDPI: Please state the software version number, creator, and the location (city, country) from where the software was sourced.
+is developed as {an }instrument for digitising {scanned }seismograms{. }It{ }extracts {the data }from the{ }seismograms {and processes them }as an image matrix. {The }DigitSeis converts scanned raster images of analog seismograms from {the }original TIFF format into the convenient digital format using {algorithms of }signal processing. The approach of {the }DigitSeis is based on the principles of semi-automated algorithms of signal processing as time series. It applies minor human supervision, mostly for {the }adjustment of {the }functionality in selected process {steps} and {for }monitoring technical workflow \linebreak (Figure \ref{fig:06}). 
+
+The workflow of seismogram vectorisation by DigitSeis can be summarised in five major steps as follows: (1) Image preprocessing; (2) Identification of time marks and traces; (3) Image vectorising and classification; (4) Trace correction and control; (5) Timing and conversion (SAC).
+
+An{ }algorithm {embedded in }DigitSeis uses trace analyses which enables to track the lines and {to }record their values using time gaps. We applied this method to identify traces on the scanned TIFF files of seismograms and {processed }them by {a semi-}automatic detection of lines and distortions{. The latter include, for instance, }broken lines, spots, repetitive gaps on the series of lines{. }The digitising was adjusted {with aim }to distinguish the {skeleton }of lines, similar to the '0-1' matrix, using methods of colour recognition on the image. However, the directions of vector lines present another task that can only be solved using {the }advanced analysis of the geometric trend of the trace by {the automated }tools. The thickness of the traces and {the }time gaps{ }were considered for each 30-min line on {each }seismogram{.} 
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=13.0cm]{fig_06a.jpg}
+         	\caption{Original seismogram (UCC19540109Gal\_E\_0812.tif)}
+     \end{subfigure} 
+     \vspace{6pt}  
+\caption{\textit{Cont.}}
+\label{fig:06}
+\end{figure}
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=13.0cm]{fig_06b.jpg}
+        		 \caption{Seismogram processed by DigitSeis}
+     \end{subfigure}
+     \vspace{6pt}
+     \caption{\hl{Seismogram} %MDPI: 1. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000". 2. The contents of this figure 6b  are not legible. In order to convert a clear PDF document, whilst retaining its high quality, we kindly request the provision of figures and schemes at a sufficiently high resolution (min. 1000 pixels width/height, or a resolution of 300 dpi or higher).
+ recorded from Uccle station on 9 January 1954.} \label{fig:06}
+\end{figure}
+
+
+\subsubsection{Image \textcolor{black}{Preprocessing}}
+First, the images were loaded into the program as TIFF files {and }converted into the native 8-bit  {HSV} formal of DigitSeis{. The }intensity of {the }monochrome images is either 0 (black) or 255 (white) in terms of {grayscale}. Visually, the image contained white traces of {the }measured seismic signals over a black background (Figure \ref{fig:06}). In the selected images with limited data and large dark background{, }the areas of interest were cropped {in order }to reduce the space without traces and to select only a part of image to test a smaller space area of interest (Figure \ref{fig:07}). The resulted analysis was saved continuously throughout the workflow into a in the binary data MATLAB format as a .mat file.
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=11cm]{fig_07a.png}
+         	\caption{}
+     \end{subfigure}
+     
+  \vspace{3mm}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=9.0cm]{fig_07b.jpg}
+        		 \caption{} 
+     \end{subfigure}
+     \caption{Analysing seismogram in paper-based format: traces and time gaps. \hl{(\textbf{a})} %MDPI: Moved into caption.
+ Original scanned seismogram (UCC19540116Gal\_E\_0820.tif). (\textbf{b}) \hl{Enlarged} %MDPI: if the different color lines and circle need explanation, please confirm
+ fragment of image{ }showing{ }time gaps {which }indicate{ }minute marks and {a }zoomed segment separating the trace line between each other {with }tiny white gaps breaking {the }traces.} \label{fig:07}
+\end{figure}
+
+\subsubsection{Identifying \textcolor{black}{the }Time Gaps}
+{The }interpretation of seismic reflection signals involves the identification of {the }arrival times recorded in the time markers or gaps.{ This is important step, because the }exact determination of time and coordinates of the signals is essential in seismology. 
+
+Therefore, we evaluated the 1-s time mark dimensions which show the breaks of the line along its course. The recording contained {the }time marks at every minute. \linebreak The whole line represents, on average, 30 min intervals of {the }ground motion signals (Figure \ref{fig:07}). On the original TIFFs of the seismograms, the time is marked according to the  {UTC} time and{ }most of the times{ is }recorded at 30 mm/min. Marking time was performed by measuring width and {the }offset of{ }gaps in the traces and recording the values in {a }menu bar. {The time }intervals on {the }seismograms can be represented in two ways: time marks (small vertical dashed lines) or time gaps (small breaks between the lines). In this study{, }we only had time gaps {due to the technical specifics of the Galitzine seismometer}. In{ }DigitSeis{, the }time marks are indicated as positive numbers, while time gaps---as negative {ones}. Therefore, {in our case }the time intervals were indicated as negative numbers, Figure~\ref{fig:08}. 
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_08a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_08b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \vspace{3pt}
+     \caption{\hl{Classification} %MDPI: We moved the figure after its first citation.
+     of seismogram processed by DigitSeis. \hl{(\textbf{a})} %MDPI: The contents  of this figure are not legible. In order to convert a clear PDF document, whilst retaining its high quality, we kindly request the provision of figures and schemes at a sufficiently high resolution (min. 1000 pixels width/height, or a resolution of 300 dpi or higher).
+ Identifying {the }time marks on seismograms by measuring time gap between {the }records. Here: example on file UCC19540119Gal\_N\_0825.tif. (\textbf{b}) Indicating {the }time marks on seismograms as $-22$ and preparing image for {the }classification.} \label{fig:08}
+\end{figure}
+
+Identifying {the }time gaps is a preparatory step {prior to }classification{. It is a necessary step because }time marks are used to properly identify {the }breaks between the signal traces. In {our }dataset, the seismograms had only gaps {as }time marks{, therefore, }we only needed to identify traces as necessary objects. To receive {the }accurate mean measurement values, we indicated time gaps from $-22$ to $-20$, {to ensure that smaller}gaps {are }included, Figure \ref{fig:09}. After {the }time mark width was {defined}, the signals were prepared for classification. The {traces were }identified  based on the analysis of areas of {the colour }contrast in a monochrome{ }scale and recognised the position of traces. We considered the curvature of{ }traces and measured the time gaps according to the path direction. As a result, vertical time gaps were identified for which the threshold number was set {in a such way }that it was enough to include the individual traces with smaller (or less distinguishable) gaps. Once we identified {the }time gaps{, }the seismograms were ready for {the next steps of }classification. 
+
+%\begin{wrapfigure}{r}{0.28\textwidth}
+\begin{figure}[H]
+    \includegraphics[width=0.28\textwidth]{fig_09.jpg}
+  \caption{\hl{Threshold} %MDPI: Please change hyphen into minus if it's possible.
+ parameters for seismogram classification in DigitSeis.}\label{fig:09}
+ \end{figure}
+%\end{wrapfigure}
+
+\subsubsection{Classification}
+
+The aim of the classification algorithm is to discriminate the traces from the time marks and noises, and to perform a complete object recognition, {that is}, all objects are to be classified and assigned to the correct category {of classes}. The image threshold for classification was set as 82{, }Figure \ref{fig:09}, representing the minimum intensity value of a pixel to be included in classified objects. In our case, 82 was appropriate number for moderately clear images and thin lines. {The image threshold minimized the number of misclassified pixels compared to other values, that is, the distributions of the grey level values in pixels is best distinguished by these values, which makes up the object of seismic lines well separated from the background of the seismogram. After we compared other values of the image thresholds, we noted that the level of 82 well separates the lines of seismic signals (as foreground pixels) from the scanned paper as background pixels. Thus, the empirical selection of this value improved the results of image processing.}
+
+{The threshold parameters for seismogram classification in DigitSeis includes several values. The image threshold is set to 82, as explained above. }
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=11.0cm]{fig_10a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \caption{\textit{Cont.}}
+\label{fig:10}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=11.0cm]{fig_10b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \vspace{3pt}
+     \caption{\hl{Results} %MDPI: 1. For numbers with more than 4 digits, comma is required, please change 10000 into 10,000.} %MDPI: Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000". 2. the red font not clear, please replace a shaper 
+ of the paper seismogram classification processed by DigitSeis. (\textbf{a}) Results of the classified seismogram with shown identified object categories (fragment): traces (white) and noise (red, here: handwritten annotations). (\textbf{b}) Small region analysis used for defining a smaller area of interest for closer examination of a border region of the seismogram. } \label{fig:10}
+\end{figure}
+
+{The time mark width indicates the distance between the tiny marks representing minutes. Since they vary in different seismograms due to the individual paper records of each seismograph, the width is detected manually on the screen. The lowest value was selected to ensure that we do not skip the possible cases. The time mark offset is an option useful for the seismograms where traces are interrupted each minute by an offset time mark. In our case, we did not have time marks; instead the minutes are indicated by gaps repeating each minute as tiny pauses in the recording. The object thickness represents a natural width of the line recorded by a drum, which is visible on the paper and detectable by a computer vision algorithm. In this case, we had a value of 25 pixels, Figure} \ref{fig:09}.
+
+
+The Classification was performed using {the }'Classify Objects' tool of DigitSeis {where }the objects on the image were classified into 2 categories: 'traces' and 'noise'{. In }our case{, }we did not have time marks, but time gaps instead{. }In some cases, noise objects were misclassified into the 'trace' category and vice versa. Therefore, their categories were adjusted {manually and corrected to the appropriate classes }using the 'Change Classification' function. Here {the }traces{ }separate {the }segments in a seismogram interrupted by the time gaps. 
+
+These time gaps {identify }minute intervals in traces{ which are }necessary to calculate timing. {The }noise {includes }all {the }irrelevant objects and annotations on the seismograms, e.g.{, }spots, handwritten texts or {annotations}, usually {placed }on the edges of seismograms. Using '{the }Classification' tool{, }we converted the image from {the }raster TIFF format into {the }vector binary format and classified scanned image into a set of objects with {the two }main categories: (1) traces; (2) noise{, see} Figure \ref{fig:10}. This dataset did not have time marks, but time gaps instead; otherwise we would have a third class of objects---'time marks'. The classification algorithm performed the partition of {the }image into classes and assignment of pixels into each categories{, respectively. }
+
+{The algorithm of classification identified lines and traces}, and discriminated them from noise and time gaps. The results of the classification include two types of objects: traces and noise, coloured by red or white, where red signifies noise (not used in the vectorisation) and white---traces (signals of the ground motion, i.e.{, }the majority of objects on the seismogram), Figure \ref{fig:10}. Combining separate segments of the traces was performed using the crosshairs, \linebreak Figure \ref{fig:11}b. The classification settings were adjusted using the Classify Objects function of DigitSeis, in order to make the automated processing smooth and accurate (Figure \ref{fig:11}). In this way, the procedure of image processing generated a pixel matrix for the traces by scanning the whole image.  
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_11a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_11b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \vspace{3pt}
+     \caption{\hl{Results} %MDPI: 1. The bottom of subfigure a is incomplete and subfigure b is unclear. please replace a shaper picture.
+   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
+      %MDPI: 3. if yellow color line need explanation, please confirm
+ of the scanned seismogram classification processed by DigitSeis. \hl{(\textbf{a})} Results of the classified image with shown yellow segments of the identified trace (enlarged fragment). Here: example of file UCC19540109Gal\_E\_0812.tif. \hl{(\textbf{b})} Classified seismogram with traces saved in binary format 0--1. Here: example of file UCC19540109Gal\_E\_0812.tif (seismogram recorded on 9 January 1954).} \label{fig:11}
+\end{figure}
+
+{The }analog seismograms almost always include imperfectness on the old paper{, }e.g.{, }handwritten annotations, gaps in data, damaged parts of the records{. Other issues arise from the }technical nuances caused by the seismometer instrument{ and the process of signal recording. }Therefore, to ensure {the }detailed selection of objects, a closer analysis of {the }selected parts of the seismogram was performed using the 'Small Region Analysis' function, {as shown in }Figure \ref{fig:10}b. As a result, traces, time gaps{ }and noise were all classified more accurately as a prerequisite for the next step of digitising. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+
+\subsection{Vectorisation}
+
+For {vectorisation of} lines, DigitSeis uses a mathematical algorithm of {the }'golden-section search' {which is }based on the nonlinear optimisation approach{. The principle consists in finding }an extremum (min/max) of a function inside a given interval \cite{Kiefer,Press}. Thus{, }it lessens the amplitude of the first derivative of the combined trace according to the relative vertical shift between the seismic trace and {the }time gaps \cite{BogiatzisIshii2016}. The vectorisation was obtained using the embedded algorithm of DigitSeis{ with selected }examples{ of digitised }seismograms{ }shown in Figure \ref{fig:12}.{ }Figure \ref{fig:12}a shows the vectorisation for the whole seismogram, {where }many segments were identified correctly, while others required {additional }interactive {manual }corrections{ as }encompassed in yellow boxes{. }\linebreak Figure \ref{fig:12}b visualises the enlarged fragment of the same seismogram with automatically identified traces with curvatures and time gaps. 
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=13.0cm]{fig_12a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=13.0cm]{fig_12b.jpg}
+        		 \caption{}
+     \end{subfigure} 
+     \vspace{3pt}
+     \caption{\hl{Results}  %MDPI: 1.  many numbers in The left and right  of subfigure ``a'' is incomplete .  please replace a shaper picture.
+   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
+ of the paper-based seismogram vectorisation processed by DigitSeis. \hl{(\textbf{a}) }Digitised traces upon completion of the automated vectorisation. Some time gaps in the upper left part of the image were too small and not clearly visible for {the }automatic discrimination between the trace and {the }dark background. In these cases, gaps required manual correction to identify time intervals. \linebreak \hl{(\textbf{b})} {The }enlarged view of the automatically recognised digitised traces displayed by {the }lines of various colours, zero-lines for each trace (cyan, dashed lines, numbered from top to bottom) and time gaps (vertical yellow dashes).} \label{fig:12}
+\end{figure}
+
+{To }make the digitising workflow more effective and accurate, the images were zoomed for {the }enlarged analysis. The example of the processed image taken on 9 January 1954 (UCC19540109Gal\_E\_0812.tif) contained 45 traces with numeration from top to bottom, each horizontal line corresponds to the 30 min of measurements, Figure \ref{fig:12}. Thus, the whole image shows seismic situation for 24 h taken during 9 January 1954 (for the case of UCC19540109Gal\_E\_0812.tif).
+
+{The complete processing of each seismogram required ca. 30--40 min for each image. However, the time varies individually with the most time-consuming manual tasks including the individual adjustments. These are required for each paper when dealing with noise issues, e.g., detection of noise signals and deleting them from the image. \linebreak Manual corrections tools required additionally approximately, 10--15 min for each case, which also varied individually depending on the complexity of the scene. Another issue is a check of the width of time gap which was adjusted for each seismograms manually. Based on our experience, manual processing required time and the complete procedure took about 40 min for a seismogram. As a result of the semi-automated data processing, the seismograms were vectorized accurately and converted to the .mat format. To minimize this time and to improve the process, more machine learning components could be added for the next versions of the program, as a recommendation of the improvement of software. This could include, for instance, a better detection and exclusion of noise signals such as automatic recognition of the annotated handwritten notes which are often present on the old paper-based scanned seismograms.}
+
+\subsection{Post-Processing: Correcting Traces}
+
+The majority of traces and time gaps were well identified {using the }DigitSeis {in a semi-automatic mode}, except for {the }selected lines that required manual corrections in an interactive regime. Some of such traces on the images were classified wrong.\linebreak{ Figure} \ref{fig:13} {illustrates how the discriminability of trace lines against the background selected by the golden-section search is performed using the method proposed in DigitSeis.}
+
+{In most of the cases,} they were located in the difficult segments of the image where the program could not recognise selected traces correctly using algorithms of machine vision. These difficulties were caused by the entangled path of{ the }lines that could not be discriminated automatically {and separated }from noise {and resulted in obvious misclassification cases that were corrected manually. Figure } \ref{fig:13} {shows the cases }where the machine could {not }recognise the correct path of the line. This resulted in erroneous digitising and required manual corrections of the parts of images that contain gaps{, shows as }yellow boxes{ in }Figure \ref{fig:13}. 
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_13a.png}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+     \caption{\textit{Cont.}}
+\label{fig:13}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_13b.png}
+        		 \caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+     \caption{\hl{Identified} %MDPI: 1. Please provide more clear version of figure. 2. if the different colored shape need explanation, please confirm,
+ traces for selective correction and re-digitising using Correct Trace mode. \linebreak \hl{(\textbf{a})} Identified wrong vector direction of line crossing individual traces. \hl{(\textbf{b})} Detected misclassifications caused erroneous digitising. The gaps on the zero-lines (small yellow boxes) show the gaps that existed in the old paper in the original image itself.} \label{fig:13}
+\end{figure}
+
+Correcting {the }traces in {each }seismogram was performed using the 'Correct Trace' mode of DigitSeis. The identified traces were examined in an enlarged view (Figure \ref{fig:14}) and the lines were {then }manually adjusted. {The }misclassified traces were corrected semi-automatically and the image was re-digitised. In{ such cases }we identified the location and the problem of the {erroneous }seismic traces on an image and classifies them anew in{ }the segments. We used the magnifying tool for enlarging a small portion of the trace in a reclassification window, Figures \ref{fig:14} and \ref{fig:15}. First, we identified traces that required correction, and then corrected the line accordingly. Afterwards, the updated trace information was integrated to the whole line of trace in each case. Some {of such }segments were manually changed in the misclassified traces and the types of the objects were corrected in these cases{, }e.g.{, }annotations on the edges of paper have been assigned a category of 'noise'{. }\linebreak Visual inspection was performed upon the re-classification.
+
+\begin{figure}[H]
+\setcounter{subfigure}{0}
+        \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_14a.png}
+        		 \caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+\caption{\textit{Cont.}}
+\label{fig:14}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_14b.jpg}
+        		 \caption{}
+     \end{subfigure} 
+     \caption{\hl{Correcting}  %MDPI: 1. Please provide a more clear version of subfigure a. 2. if the different colored shape need explanation, please confirm,
+ misclassified traces with wrong direction based on colour and geometric pixel's characteristics. The pixels on the monochrome image were assigning to categories using threshold values to 1 (white) and all other pixels to 0 (black) for automated detection of lines. {(\textbf{a})} Overlap of line traces unrecognised during digitising: one segment of trace went steeply downwards and merged with another trace. {(\textbf{b})} Enlarged view of the manually corrected entangled traces.} \label{fig:14}
+\end{figure}
+
+{A certain limitation is that our method using DigitSeis does not consider overlapping cases of the seismic traces with high level of signals where amplitudes of the trace lines may exceed the width of the 30-min track in a paper space, and thereby may confuse different steps of vectorisation that should be adjusted manually. For example, the cases demonstrated in Figure} \ref{fig:14} {have the two overlapping traces where the algorithm of DigitSeis could not recognise the line correctly and the line was interacted manually with vector segments corrected by hand.} 
+
+{Other} misclassified segments {are} presented in complex regions of seismograms with overlapped traces where the corrections required manual adjustments. Graphical representations of the encountered problems and complicated cases are illustrated. {Since correction of these cases is a time-consuming process, without taking account for overlapping neighbouring traces the processing of larger dataset becomes difficult. This may confuse the interpretation of the seismic signals and result in misinterpretation. Consequently, accurate vectorisation requires automation for more distinct recognition of the skeleton of the target trace lines. In our future work, we are going to investigate the modelling of trace lines in seismograms using algorithms of Python in order to facilitate the recognition task.}
+
+\begin{figure}[H]
+\setcounter{subfigure}{0}
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=11.0cm]{fig_15a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+\caption{\textit{Cont.}}
+\label{fig:15}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=11.0cm]{fig_15b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \caption{\hl{Correcting} %MDPI: The top of subfigure a seem incomplete, please revise.
+ trace for the selected segments. \hl{(\textbf{a})} Merging the trace initially broken into the three separate parts (three small yellow boxes). \hl{(\textbf{b})} Reclassification of the selected segment and digitising the centroid of the trace line.} \label{fig:15}
+\end{figure}
+
+The vectorised traces were then highlighted by random colours and corresponded to the traces in the image, Figure \ref{fig:16}. The vectorised curves of traces were optimised by the approximations with {the }minimum distortion of the line by {spline functions}. The results of the processing of the classified image Figure \ref{fig:17}a are presented as {a }digitised vector image with {the }distinct coloured traces and minute time gaps randomly coloured on the digitised image, Figure \ref{fig:17}b. Correcting the classification of traces was a necessary step before {vectorisation}. 
+
+In general, the automatic tracing of lines by DigitSeis performed well for the segments with low amplitude{ of seismic signals }that do not cross each other. For the cases where{ }traces overlap and interest due to the seismic-phase arrivals, large amplitudes cross {the }neighbouring traces. In this cases we corrected the truncated waveforms manually{, }as explained above. We used special tools allowing to pick up the trace, correct its vertical extent, and separate it from {the }neighbouring lines by manually removing the parts of the segment that were erroneously classified to the given trace. Using zooming{, }we isolated {the }segments of {the }seismic lines and { repeated the }classification {process}, followed by {the }time identification{ }and {vectorisation.}
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=11.0cm]{fig_16a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+\caption{\textit{Cont.}}
+\label{fig:16}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=11.0cm]{fig_16b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \caption{Corrected digitised traces upon completion of the {semi-}automated vectorisation. \linebreak \hl{(\textbf{a})} Corrected digitised traces upon {the }completion of the {semi-}automated vectorisation {process}. \hl{(\textbf{b})} Visible SDT lines (bold) after {the semi-}automated vectorisation.} \label{fig:16}
+\end{figure}
+
+\begin{figure}[H]
+\setcounter{subfigure}{0}
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_17a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_17b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \caption{\hl{Classified} %MDPI: 1. many numbers in The left and right  of subfigure ``b'' is incomplete .  please replace a shaper picture.
+   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
+ image (\textbf{a}) and digitised results (\textbf{b}). Here: UCC19540311Gal\_E\_0727 \linebreak (11 March 1954). \hl{(\textbf{a}) }Classified image recognised by DigitSeis into 'traces' and 'noise' (Here: {the image }UCC19540311Gal\_E\_0727.TIFF). \hl{(\textbf{b})} {The }distinct coloured traces and minute time gaps are visible on {a }digitised image (Here: {the resulted file in a MATLAB format, }UCC19540311Gal\_E\_0727.mat).} \label{fig:17}
+\end{figure}
+
+Manual correction {during the vectorisation process }was performed by tracing down a line in a selected segments where merged regions were separated manually and lines directions were corrected along the necessary fragments of trace. Selected polygons were assigned manually by vectorising using modality in the 'Correct Trace' function, Figure \ref{fig:15}.
+
+\subsection{Timing and Converting}
+
+After all the traces were digitised, the time was calculated using {the }'Calculate Timing' function, Figure \ref{fig:18}. The time calculation properties were setup using a menu{, }where the program asks for the default time and time increment{. In }the demonstrated case, {it is on }\linebreak 9 January 1954{, }Figure{ }\ref{fig:18}a. Thus, we {defined }the absolute time for one record as a reference point which was then highlighted in red. {The basis of setting the reference time point is according to the metadata presented in each seismogram. }
+
+{When originally recorded, the analog seismograms included the information regarding the date, hour and minutes of the start of seismic recording. This original information of  time series data from the digital records of Uccle station was copied and used to set the reference time. }For the setup of time marks{, }we identified the time gaps that correspond to the beginning of {each }minute and provided the absolute time using a special menu, \linebreak Figure \ref{fig:18}b. It included the time in HH:MM format and year-month-day period that exist in each seismogram. The time and date associated with the time mark were {then }entered{, }and the time marks were recalculated, Figure \ref{fig:18}c.
+
+
+The duration for the most of the lines was 30 min{, }and the seismograms were recorded by {a} drum of the seismometer in one day. So{, }we indicated the time between the gaps in seconds, and the program drew the gaps (visible yellow vertical dashed), Figure \ref{fig:18}c and in the enlarged view,  Figure \ref{fig:19}. The time markers were visualised using {the }time gaps classified {in a} previous step and measured automatically using a threshold.{ }Afterwards, the resulting data were exported into the MATLAB format, and saved as the .mat {files}. In MATLAB environment{, the }vector {files were} opened, checked and overlaid over the scanned TIFF image{, respectively}. The resulting files converted into MATLAB contained{ }vector lines as traces, that is{, }included information{ }received in DigitSeis. The converted file included the vectorised image with traces, its classification structure with segments and parts of the lines and time gap breaks. Therefore, {a }special value of {the }DigitSeis consists in {its }compatibility with MATLAB and possibility of further reuse {of }the {processed files }in other tools, such as Python. In this way, the vectorising workflow that we performed using DigitSeis is a continuous procedure can be smoothly integrated and exported to another software as a stepwise chain of {the }separated processes.
+
+\begin{figure}[H]
+     \begin{subfigure}[h]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_18a.jpg}
+         	\caption{Time calculation process}
+     \end{subfigure}
+     \vspace{3mm}   
+\caption{\textit{Cont.}}
+\label{fig:18}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+     \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_18b.jpg}
+        		 \caption{Timing setup using time display increment}
+     \end{subfigure}
+     \vspace{3mm} 
+     
+          \begin{subfigure}[h]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_18c.jpg}
+        		 \caption{Time markers at 1-min intervals on each 30-minute trace}
+     \end{subfigure}
+     \vspace{3mm}
+     \caption{\hl{Seismogram} %MDPI: 1.  many numbers in The left and right  of subfigure ``a,b,c'' is incomplete .  please replace a shaper picture.
+   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
+ image with adjusted timing. Here: UCC19540311Gal\_E\_0727.mat.} \label{fig:18}
+\end{figure}
+
+\begin{figure}[H]
+\setcounter{subfigure}{0}
+     \begin{subfigure}[H]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_19a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{3mm}   
+\caption{\textit{Cont.}}
+\label{fig:19}
+\end{figure}
+
+\begin{figure}[H]\ContinuedFloat
+\setcounter{subfigure}{1}
+     \begin{subfigure}[H]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_19b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \caption{Fragments of the digitised image (Here: UCC19540311Gal\_E\_0727.mat) (11 March 1954). {(\textbf{a})} Scanning of trace lines on the digitised image (Here: UCC19540311Gal\_E\_0727.mat). {(\textbf{b})} Separation of traces and time gaps by filtering (time gap setup as '$-12$' in this case).} \label{fig:19}
+\end{figure}
+
+\subsection{Validating \textcolor{black}{the }Results \textcolor{black}{Using }Python}
+{To evaluate the discriminating functionality of the seismic traces by DigitSeis algorithms over the dataset, we validated }the results and {performed the }quality control of the digitised traces{ }using Python \cite{van1995python}. {The }Matplotlib library \cite{Hunter} {was applied }for export and graphical visualisation of the MAT files. For tuning the parameters of the digitising process in the next series of recording{, }we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the files {in }MAT format into Python, Figures \ref{fig:20} and \ref{fig:21}. 
+
+The length distribution of the segments imported is represented in Figure \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for 59 s of recording).
+We arbitrarily keep as valid the segment inside the \hl{range} %MDPI: We added 0 in front of .8.
+ \highlighting{$[0.8*S_{typ},1.1*S_{typ}]$}%MDPI: if the * need change to multiplication sign ×, please confirm
+. The starting position of these segments is represented as {the }green dots in Figure \ref{fig:20}a. 
+From the distribution of {the }short invalid segments, as {shown }in Figure \ref{fig:20}a, we can identify{ }small segments corresponding to the typical hours marks length $H_{typ}$ (around 210 pixels here). The valid hours marks are considered in the range \hl{$[0.9*H_{typ},1.1*H_{typ}]$}%MDPI: if the * need change to multiplication sign ×, please confirm
+. The respective graphs are presented for the seismogram UCC19540311Gal\_E\_0727\_280.mat taken on 11 March 1954, Figure \ref{fig:21}c,d.
+
+The starting position of the hours segments is {indicated }by the blue dots in Figure \ref{fig:20}. 
+Most of the hours marks are aligned, {because of }the rotation speed of the main drum is {two }per hour{. }Some marks {have }the same length {which is }also presented{ }in the border and noise segments. By{ }looking to the colour dot distribution, it is {possible }to check the overall quality of the detected segments. 
+
+\begin{figure}[H]
+     \begin{subfigure}[H]{0.7\textwidth}
+         	\includegraphics[width=12.0cm]{fig_20a.png}
+         	\caption{}
+     \end{subfigure}
+     \vspace{1mm}   
+
+     \begin{subfigure}[H]{0.7\textwidth}
+        		 \includegraphics[width=12.0cm]{fig_20b.png}
+        		 \caption{}
+     \end{subfigure}
+     \caption{\hl{Controlling} %MDPI: 1. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
+     %MDPI:2. please add explanation for  different color dot
+ digitising results using Python (Matplotlib library). {(\textbf{a})} Quality control for time gaps: missed marks in unrecognised segments. {(\textbf{b})} Correctly identified time gaps controlled by Python's Matplotlib.} \label{fig:20}
+\end{figure}
+
+The misclassified pixels were induced by the distortions of paper which caused the erroneous recognition of pixels in the edge of paper (red dots). Such pixels are classified as noise in the segments of trace in a way that it erroneously depicts the edges of seismic trace, as shown in Figure \ref{fig:20}. The average length of segments {was }divided automatically by DigitSeis, {and then evaluated }and visualised by Matplotlib, Figure \ref{fig:21}. 
+
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering
+\begin{subfigure}{.38\textwidth}
+\centering
+         	\includegraphics[width=7.0cm]{fig_21a.png}
+         \caption{}
+\end{subfigure}
+\hspace{4cm}  
+% include second image
+\begin{subfigure}{.38\textwidth}
+\centering
+        		 \includegraphics[width=7.0cm]{fig_21b.png}
+        	\caption{}
+\end{subfigure}
+
+% second row subplot
+\bigskip
+% include first image
+\begin{subfigure}{.38\textwidth}
+\centering
+         	\includegraphics[width=7.0cm]{fig_21c.png}
+         \caption{}
+\end{subfigure}
+\hspace{4cm} 
+% include second image
+     \begin{subfigure}{.38\textwidth}
+     \centering
+        		 \includegraphics[width=7.0cm]{fig_21d.png}
+        		 \caption{}
+     \end{subfigure}
+     \end{adjustwidth}
+     \caption{Validating the results of segments tracing in Python, Matplotlib for selected seismogram. (\textbf{a},\textbf{c}): Frequency of segment length: size of various segments in a trace. (\textbf{b},\textbf{d}): Analysis of statistics on segment length per hours of recording. (\textbf{a},\textbf{b}): UCC19540109Gal\_E\_0812.mat \linebreak (\textbf{c},\textbf{d}): UCC19540311Gal\_E\_0727\_280.mat.} \label{fig:21}
+\end{figure}
+
+{Seismic }traces and short time gaps {were classified }based on their geometrical characteristics and threshold{. Therefore, }the quality of scanned paper may affect the automatic recognition and interpretation. {For instance}, some segments were merged into one continuous line, while others were broken apart. Figure \ref{fig:21} {illustrates }the analysis of the performance of DigitSeis in vectorising {the }segments of a trace for the two examples (UCC19540109Gal\_E\_0812.mat and UCC19540311Gal\_E\_0727\_280.mat): the average length of the {identified segments of seismic lines }as 'trace' and the frequency of the segments per hour{, respectively}.  
+
+Seismic lines were separated{ into the }segments{, }according to the traced lines \linebreak (a 30-min trace on each seismograms) {using algorithms of }DigitSeis. The program searched for the correct path of the line and zero-lines using {the defined }parameters{ of the skeleton of line. }Separating {the } traces and noise from the time gaps and {the }background on the paper was performed automatically. Therefore, screening and examining each pixel of the raster image was performed through the defined classifier thresholds{ which }resulted in variations of {selected }segments of the traces. 
+
+{The }parameters for image classification included image threshold {at }82\%{ and the }time mark width for gaps as $-12$ (in some cases up to $-22$, depending on the quality of scanned paper). The setup parameters included threshold and intervals of {the }time gaps corresponding to the minute marks made by the drum of the seismometer. Some gaps were identified better{, }while others{ }were blurred, Figure \ref{fig:20}. As a results, {the }discrimination of the traces {varied }based on {the }admissible properties using {image }thresholds, as assessed by Python, Figure \ref{fig:21}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+
+\subsection{Summary}
+{We have }introduced a classification driven approach of DigitSeis for processing analog seismograms {from the collection of ROB}. Using the functionality of this program{, }we presented a workflow{ }on dataset{ processing with seismograms containing time gaps}. {Object features}, automatically detected on seismograms{, were extracted from raster images using algorithms of image classification by DigitSeis. The }derived{ }vector file contained{ }classified objects {such as }segments of line traces, noise and time gaps{. }The algorithms of DigitSeis processed well relatively large files (each scanned seismogram has a size of ca. 350--400 MB) and converted these data into .mat files. 
+
+The process of classifying and digitising paper-based seismograms is based on {recognising the }features of the scanned objects {such as }lines and{ handwritten }marks{ }classified as noise{. }The major principle of DigitSeis {consists in }classifying {the }training lines (traces of seismograms) based on {the decision according to the }threshold test. For instance, we set up experimentally the time gaps from $-22$ to $-12$ to indicate the small distance breaking the minute marks, which was used{ }to identifies all those gaps {throughout }the image. Based on the setup parameters of threshold, the{ }objects on seismograms {were identified stepwise on }the whole image.
+
+This workflow {classified }the image and {digitised }the objects {in a semi-automated way. The results were converted into }the .mat format{. }However, certain segments of the lines required manual tracing the paths and corrections, as demonstrated previously. The most complicated cases {of the }overlapped traces{ }were {corrected} separately {using }visual characteristics of these segments{ }to discriminate the traces from noise signals. {Such areas were }zoomed {as the }selected enlarged areas on the seismogram and{ }corrections {were performed }manually using a crosshair. Specifically, we identified broken segments, crossed directions of the lines and overlay in traces. {using the described workflow we vectorised the seismograms from the archives of the ROB and converted them from raster into vector format.}
+
+We presented {a} practical application of DigitSeis software for digitising scanned historical seismograms in a semi-automatic regime. We note that while using a good digitiser is a major task of any seismological research, there are still more algorithms that need to be adjusted for a fully automated system of classification and digitising of seismograms. Processing seismograms is an essential part of geophysical research having its specifics compared to simple images: minute time marks made by the drum, seismogram timing, recognition of line directions, smooth data conversion, etc. Our goal was to present here a practical application in signal processing by DigitSeis using dataset on historical seismograms with time gaps.
+
+\subsection{Limitations}
+{A limitation of our work is that we need to label all the attributes (time gaps and traces, deleting) in each seismogram, specify the noise on the background paper, check the segments for misclassification issues, correct the overlapped traces and control the identified traces manually. This is a time-consuming process and we need to acquire this for each processed seismogram. This limits the speed of data processing in case of big data issues and overall limits the scalability of our method for novel dataset. In this paper, we have proposed a DigitSeis solution to perform the vectorising task by converting scanned images in raster format into vector format. Since the output format was compatible with Python we processed data using Matplotlib library as a separate step. }For {a }fully automated data processing and rapid building of big data corpus of digitised seismograms, {we propose to use }the advanced solutions of  {ML} techniques{ in similar future works. }As {an example }for this, we {suggest} a  {ML} solution of combining DigitSeis with Python. 
+
+{Using a fully automated methods of data-driven algorithms, for instance by Python, may improve the performance of vectorising model without human-specified manual adjustments of data processing, as was the case in our work. Therefore, one direction for our future work is to use the programming techniques to apply the algorithm of vectorization using learned attributes of seismograms (time marks/gaps, width of vector traces) for a big corpus of data. This would improve the speed and effectiveness of big data processing which is the case of large archives and libraries, such as ROB. Thereby, one can reuse the algorithm using attributes of seismograms to detect similar features on a new dataset without time-consuming work on identifying and labelling attributes. Thus, machine learning techniques of programming should be developed to adaptively determine the optimal parameters in the seismograms using attributes selected as model.}
+
+\subsection{Future Directions}
+{In the future work, we intend }to {increase our database with} scanned images{ from other periods, due to the importance of the archived seismograms. Past }seismicity of the Earth, climate modelling, exploring the atmosphere-ocean-solid earth interactions, {are some of the examples of} many {cases and applications in geosciences where scanned historical seismograms can be used. }Archives of {seismological observatories containing records from }the pre-satellite period {are }a crucial source of information for such tasks. To fully utilise the potential of historical seismograms, the abilities and advantages of modern digitising systems should be used. In our research we demonstrated the functionality of DigitSeis {applied }for {the vectorisation of }old seismograms {collected }from the historical dataset of  {ROB}. Currently the {archive }includes data for 1954{. In the next steps of our project, we will include other periods and coverage of seismograms to enlarge the database.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+
+Earthquakes are {one of }the most {hazardous geological processes which }significantly affect{ the }environment, human{ }lives and property. The analysis of ground motions of the Earth is {an essential }background for prognosis of earthquakes{. However, a thorough analysis of seismic data }requires the use of the advanced {methods }for effective {and robust }processing{ and accurate interpretation. This is possible using semi-automatic }approaches of signal recognition and interpretation{, as we demonstrated in this paper}. Analog historical seismograms are valuable source of information for retrospective modelling of the Earth's seismicity{ which should be converted into a digital format, to be reused in modelling. Once digitised, a} corpus of {the vectorised }seismograms can be effectively used{ }for earthquake {engineering, retrospective data }modelling {and prognosis or similar geophysical tasks}. {For instance, }integration and comparison of old and current seismic situation{ enables the computational }analysis of the seismicity of the Earth.  
+
+{Computational} geophysics {benefits from the large archives of }seismogram datasets {which contain a }valuable source of information that can be reused due to automated digitising. The subsequent generation of the digitised corpus on seismograms{ enables }to restore seismic information contained in historical records from  {UCC} {with the aim of capturing and analysing} characteristics of traces and parameters of ground motions. If scanned seismograms are digitised rapidly and accurately, they can be released in an accessible manner for further analysis. {To this end, }a copious amounts of historical seismic data must be processed, classified, digitised and annotated. To meet{ such }challenges {of modern seismology, the }effective {methods of }processing analog seismograms are{ required. }Some of the existing approaches in vectorising seismograms are presented in the proprietary software and can only be achieved through {the }restricted access. These methods have their advantages and shortcomings, and the use of these software is not at the level required for rapid and accurate processing of analog seismograms. Reasons for this are a lack of fully developed{ }algorithms, finely adjusted to digitise specifically seismic data{. Another reasons is that }the{ }digitising software for {seismic }signals processing may not be {available in open access}. 
+
+{In response to these needs, this paper demonstrated }the successful {application } of DigitSeis for semi-automatic vectorisation of the archived scanned seismograms. \linebreak We described the workflow and pointed at {the major }advantages and drawbacks. The approach of DigitSeis implemented{ processing }seismic traces and detecting time gaps based on the threshold parameters{ of lines}. {The algorithms }considered specific format and characteristics of seismic data{ such as }amplitude of traces, time gaps{ and }30-minute record intervals{ in data recording. }Using algorithms of DigitSeis we converted raster scanned files from ROB archives into digital vector format for further reuse. As a central added value of this paper, we demonstrated that {this  state-of-the-art} software is a {very useful tool} for digitising signal seismic traces{. The algorithms of DigitSeis were used for processing a }corpus of data{ collected from the }historical records {of } {UCC} station recorded by the Galitzine seismometer { in}  {ROB},  {UCC}, Belgium. Currently the dataset {includes scanned historical images from }1954, however, the data collection with be expanded{ to }cover {other }periods.{ The workflow of DigitSeis was used for semi-automated training of parameters of seismograms and the computer vision algorithms were applied to detect features of seismic traces. The algorithms of }DigitSeis {were evaluated on vectorisation task with a case of }scanned monochrome seismograms of Galitzine seismometer.{ The }signals of seismic traces {were vectorised and }recognised using defined thresholds and parameters of time gaps, and{ }converted {to }vector{ format as }.mat {files}. 
+
+{Experimental results showed that DigitSeis presents a useful tool for }vectorisation of analog scanned seismograms. {The proposed framework is applicable to a variety of similar tasks in trace recognition for seismic datasets. For instance, the evaluated }workflow for digitising seismograms can be exported to larger datasets and cover seismic archives since 1910s up to now to {extend} building a corpus of digitised seismograms. {However, our }experience{ }also illustrated that {the limits of this software which makes the fully automatic analysis impossible}. For example,{ }special cases (noises or stains, crossing lines),{ required a thorough }manual assistance{ because the }functionality and operations in vectorising were limited and required interactive corrections of {the }recognised traces. {Therefore, the }tools of DigitSeis still require improvements for {the }processing of big data as streams. {Nevertheless, the }Integration of workflow with  {ML} is possible {if the} generated file {are converted into }the .mat format for post-processing in MATLAB {or Python. }Data integration {enables }overlay of vectorised traces over the scanned images for data control. The advantages of DigitSeis in digitising seismograms enable recurrent and consistent information capture on seismic signal levels, repeatability of the recorded peaks, time gaps, period of data capture, intensity of signals and strength of Earth's ground motion. All this information can be used for seismicity analysis and relevant geophysical studies. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{Conceptualization, O.D.; methodology, O.D. and P.L.; software, P.L.; validation, O.D., T.L. and R.D.P.; formal analysis, O.D., T.L., R.D.P. and P.L.; investigation, O.D., T.L., R.D.P. and P.L.; resources, T.L. and R.D.P.; data curation, T.L. and R.D.P.; writing---original draft preparation, P.L.; writing---review and editing, O.D. and P.L.; visualization, P.L.; supervision, O.D. and T.L.; project administration, O.D. and T.L.; funding acquisition, O.D. and T.L. All authors have read and agreed to the published version of the manuscript.}
+
+\funding{\hl{This} %MDPI: Please check the accuracy of funding data and any other information carefully.
+ project was supported by The Federal Public Planning Service Science Policy or Belgian Science Policy Office, Federal Science Policy - BELSPO (B2/202/P2/SEISMOSTORM). The publication was funded by the Editorial Office of Sensors, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
+
+\institutionalreview{\hl{ ...  } %MDPI: In this section, you should add the Institutional Review Board Statement and approval number, if relevant to your study. You might choose to exclude this statement if the study did not require ethical approval. Please note that the Editorial Office might ask you for further information. Please add “The study was conducted in accordance with the Declaration of Helsinki, and approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving humans. OR “The animal study protocol was approved by the Institutional Review Board (or Ethics Committee) of NAME OF INSTITUTE (protocol code XXX and date of approval).” for studies involving animals. OR “Ethical review and approval were waived for this study due to REASON (please provide a detailed justification).” OR “Not applicable” for studies not involving humans or animals.
+}
+
+\informedconsent{\hl{ ...  } %MDPI: Any research article describing a study involving humans should contain this statement. Please add ``Informed consent was obtained from all subjects involved in the study.'' OR ``Patient consent was waived due to REASON (please provide a detailed justification).'' OR ``Not applicable'' for studies not involving humans. You might also choose to exclude this statement if the study did not involve humans. Written informed consent for publication must be obtained from participating patients who can be identified (including by the patients themselves). Please state ``Written informed consent has been obtained from the patient(s) to publish this paper'' if applicable.
+}
+
+\dataavailability{Data supporting reported results are the courtesy of Royal Observatory of Belgium, Department of Seismology and Gravimetry (OD2), used in this study as available archived datasets of seismograms. Data are available in the Cytomine workspace.}
+
+\acknowledgments{The authors thank the anonymous reviewers for their comments and suggestions on the initial version of the manuscript.}
+
+\conflictsofinterest{The authors declare no conflict of interest neither any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\abbreviations{Abbreviations}{
+
+\noindent 
+\begin{tabular}{@{}ll}
+\hl{GPS} %MDPI: We removed bold and added the information confirm Abbrev.tex.
+ & Global Positioning System\\
+AI & Artificial Intelligence\\
+WWSSN & World-Wide Standardized Seismograph Network\\
+EO& Earth Observation\\
+IRIS& Incorporated Research Institutions for Seismology\\
+GMT& Generic Mapping Tools\\
+UCC& Uccle seismic station\\
+ML& Machine Learning\\
+DL& Deep Learning\\
+FFT& Fast Fourier Transform\\
+DFT& Discrete Fourier Transform\\
+IFT& Inverse Fourier Transform\\
+HSV& Hue, Saturation, Value\\
+ROB& Royal Observatory of Belgium\\
+UTC& Coordinated Universal Time
+\end{tabular}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+\reftitle{References}
+
+%=====================================
+% References
+%=====================================
+
+\begin{thebibliography}{999}
+
+\bibitem[Gutenberg and Richter(1954)]{GutenbergRichter}
+Gutenberg, B.; Richter, C.F.
+\newblock {\em Seismicity of the Earth and Associated Phenomena}; Princeton
+  University Press: Princeton, NJ, USA,  1954;
+\newblock\hl{ reprinted, Stechert-Haffner, 1965.} %MDPI: Please confirm if this information is necessary. Please integrate the extra information into the reference if the information should be kept. Please add publisher's location, for example (for Stechert-Haffner)
+
+
+\bibitem[Shearer(2019)]{Shearer2019}
+Shearer, P.
+\newblock {\em Introduction to Seismology}, 3rd ed.; Cambridge University Press:
+  Cambridge, UK,  2019.
+\linebreak {https://doi.org/10.1017/9781316877111}.
+
+\bibitem[Ud\'{i}as and Buforn(2017)]{UdiasBuforn2017}
+Ud\'{i}as, A.; Buforn, E.
+\newblock {\em Principles of Seismology}, 2nd ed.; Cambridge University Press: \hl{Cambridge, UK,} %MDPI: Newly added information.
+ 2017. \linebreak{https://doi.org/10.1017/9781316481615}.
+
+\bibitem[Nakata \em{et~al.}(2019)Nakata, Gualtieri, and
+  Fichtner]{nakata_gualtieri_fichtner_2019}
+Nakata, N.; Gualtieri, L.; Fichtner, A. Introduction.
+\newblock In {\em Seismic Ambient Noise}; Cambridge University Press: \hl{Cambridge, UK, } 2019; pp. xx--xxviii. {https://doi.org/10.1017/9781108264808.002}. %MDPI: Newly added information.
+
+\bibitem[Dewey and Byerly(1979)]{DeweyByerly1979}
+Dewey, J.; Byerly, P.
+\newblock {The history of seismometry to 1900}.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 1979},
+  {\em 11},~64--70.
+\newblock \hl{Earthquake Information Bulletin (USGS).} %MDPI: Can this information be removed?
+
+
+\bibitem[Agnew(2002)]{Agnew}
+Agnew, D.C.
+\newblock History of seismology. In {\em International Handbook of Earthquake
+  and Engineering Seismology}; Lee, W.H.K., Kanamori, H., Jennins, P.C.,
+  Kisslinger, C., Eds.; Academic Press: San Diego, CA, USA,  2002; Volume 81A,
+  pp. 3--12; \hl{Part A} %MDPI: Please confirm if it is unnecessary and can be removed.
+.
+
+\bibitem[Schweitzer and Lee(2003)]{SchweitzerLee2003}
+Schweitzer, J.; Lee, W.
+\newblock 88---Old Seismic Bulletins to 1920: A Collective Heritage from Early
+  Seismologists. In {\em International Handbook of Earthquake and Engineering
+  Seismology, Part B. International Geophysics}; Lee, W.H., Kanamori, H., Jennings, P.C., Kisslinger, C.,
+  Eds.; Academic Press: \hl{San Diego, CA, USA,}  2003; Volume~81, pp.
+  1665--1723. {https://doi.org/10.1016/S0074-6142(03)80300-5}. %MDPI: Newly added information.
+
+\bibitem[Batlló \em{et~al.}(2008)Batlló, Stich, and R.]{Batlloetal2008}
+Batlló, J.; Stich, D.; Macià, R.
+\newblock Quantitative Analysis of Early Seismograph Recordings. In {\em
+  Historical Seismology. Modern Approaches in Solid Earth Sciences}; Fréchet,
+  J., Meghraoui, M., Stucchi, M., Eds.; Springer: Dordrecht, The Netherlands,
+  2008; Volume~2. {https://doi.org/10.1007/978-1-4020-8222-1\_19}.
+
+\bibitem[Wang \em{et~al.}(2014)Wang, Jiang, Feng, Yu, Lin, Feng, and
+  Liu]{Wangetal2014}
+Wang, M.; Jiang, Q.; Feng, J.; Yu, X.; Lin, N.; Feng, S.; Liu, C.
+\newblock {A New Waveform Mosaic Algorithm in the Vectorization of Paper
+  Seismograms}.
+\newblock {\em Sens. Transduc.} {\bf 2014}, {\em 182},~203--206.
+
+\bibitem[An \em{et~al.}(2015)An, Ovtchinnikov, Kaazik, Adushkin, Sokolova,
+  Aleschenko, Mikhailova, Kim, Richards, Patton, {Scott Phillips}, Randall, and
+  Baker]{Anetal2015}
+An, V.A.; Ovtchinnikov, V.M.; Kaazik, P.B.; Adushkin, V.V.; Sokolova, I.N.;
+  Aleschenko, I.B.; Mikhailova, N.N.; Kim, W.Y.; Richards, P.G.; Patton, H.J.; et al.
+\newblock A digital seismogram archive of nuclear explosion signals, recorded
+  at the Borovoye Geophysical Observatory, Kazakhstan, from 1966 to 1996.
+\newblock {\em GeoResJ} {\bf 2015}, {\em 6},~141--163.
+\newblock \hl{Rescuing Legacy Data for Future Science.} %MDPI: Is this information necessary?
+{https://doi.org/10.1016/j.grj.2015.02.014}.
+
+\bibitem[Engdahl and Villaseñor(2002)]{Engdahl2002}
+Engdahl, E.R.; Villaseñor, A.
+\newblock Global seismicity: 1900--1999. In {\em International Handbook of
+  Earthquake and Engineering Seismology}; Lee, W.H.K., Jennings, P.,
+  Kisslinger, C., Kanamori, H., Eds.; Academic Press: Amsterdam, The Netherlands; Boston, MA, USA,
+  2002; \hl{Volume Part A,} %MDPI: Please confirm volume number.
+pp. 665--690.
+
+\bibitem[Oliver and Murphy(1971)]{OliverMurphy}
+Oliver, J.; Murphy, L.
+\newblock {WWNSS: Seismology's Global Network of Observing Stations}. {\em Science} {\bf 1971}, {\em 174},~254--261.
+{https://doi.org/10.1126/science.174.4006.254}.
+
+\bibitem[Ammon \em{et~al.}(2010)Ammon, Lay, and Simpson]{Ammon2010}
+Ammon, C.J.; Lay, T.; Simpson, D.W.
+\newblock {Great Earthquakes and Global Seismic Network}.
+\newblock {\em Seismol. Res. Lett.} {\bf 2010}, {\em 81},~965--971.
+\newblock
+{https://doi.org/10.1785/gssrl.81.6.965}.
+
+\bibitem[Heiner(2016)]{Heiner}
+Heiner, I.
+\newblock {\em Computational Seismology: A Practical Introduction}; Oxford
+  University Press: Oxford, UK,  2016.
+
+\bibitem[Kanamori \em{et~al.}(2010)Kanamori, Rivera, and Lee]{Kanamorietal2010}
+Kanamori, H.; Rivera, L.; Lee, W.H.K.
+\newblock {Historical seismograms for unravelling a mysterious earthquake: The
+  1907 Sumatra Earthquake}.
+\newblock {\em Geophys. J. Int.} {\bf 2010}, {\em
+  183},~358--374.
+\newblock
+{https://doi.org/10.1111/j.1365-246X.2010.04731.x}.
+
+\bibitem[Bungum \em{et~al.}(2009)Bungum, Pettenati, Schweitzer, Sirovich, and
+  Faleide]{Bungum}
+Bungum, H.; Pettenati, F.; Schweitzer, J.; Sirovich, L.; Faleide, J.I.
+\newblock {The 23 October 1904 MS 5.4 Oslofjord earthquake: Reanalysis based on
+  macroseismic and instrumental data}.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 2009},
+  {\em 99},~2836--2854.
+\newblock
+ {https://doi.org/10.1785/0120080357}.
+
+\bibitem[Kanamori \em{et~al.}(2019)Kanamori, Rivera, Ye, Lay, Murotani, and
+  Tsumura]{Kanamorietal2019}
+Kanamori, H.; Rivera, L.; Ye, L.; Lay, T.; Murotani, S.; Tsumura, K.
+\newblock {New constraints on the 1922 Atacama, Chile, earthquake from
+  Historical seismograms}.
+\newblock {\em Geophys. J. Int.} {\bf 2019}, {\em
+  219},~645--661.
+\newblock
+ {https://doi.org/10.1093/gji/ggz302}.
+
+\bibitem[Lomnitz(2004)]{Lomnitz2004}
+Lomnitz, C.
+\newblock {Major Earthquakes of Chile: A Historical Survey, 1535--1960}.
+\newblock {\em Seismol. Res. Lett.} {\bf 2004}, {\em 75},~368--378.
+\newblock
+ {https://doi.org/10.1785/gssrl.75.3.368}.
+
+\bibitem[Ambraseys(1983)]{Ambraseys1983}
+Ambraseys, N.N.
+\newblock {Notes on historical seismicity}.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 1983},
+  {\em 73},~1917–1920.
+\linebreak
+{https://doi.org/10.1785/BSSA07306A1917}.
+
+\bibitem[Ammon \em{et~al.}(2021)Ammon, Velasco, Lay, and Wallace]{Ammon2021}
+Ammon, C.J.; Velasco, A.A.; Lay, T.; Wallace, T.C., Seismogram interpretation
+  and processing.
+\newblock In {\em Foundations of Modern Global Seismology}, 2nd ed.; Elsevier:  \hl{Amsterdam, The Netherlands,} %newly added information, please confirm
+2021; Chapter~5, pp. 141--167.
+\newblock
+{https://doi.org/10.1016/B978-0-12-815679-7.00012-4}.
+
+\bibitem[Kulhánek(1990)]{Kulhanek}
+Kulhánek, O. Anatomy of seismograms.
+\newblock In {\em Developments in Solid Earth Geophysics}; Elsevier: Amsterdam,
+  The Netherlands,  1990; Volume~18, pp. 1--188.
+
+\bibitem[Lecocq \em{et~al.}(2020)Lecocq, Ardhuin, Collin, and
+  Camelbeeck]{Lecocqetal2020}
+Lecocq, T.; Ardhuin, F.; Collin, F.; Camelbeeck, T.
+\newblock {On the Extraction of Microseismic Ground Motion from Analog
+  Seismograms for the Validation of Ocean‐Climate Models}.
+\newblock {\em Seismol. Res. Lett.} {\bf 2020}, {\em
+  91},~1518--1530.
+\newblock
+{https://doi.org/10.1785/0220190276}.
+
+\bibitem[Crampin and Peacock(2008)]{Crampin}
+Crampin, S.; Peacock, S.
+\newblock {A review of the current understanding of seismic shear-wave
+  splitting in the Earth’s crust and common fallacies in interpretation}.
+\newblock {\em Wave Motion} {\bf 2008}, {\em 45},~675--722.
+\newblock
+ {https://doi.org/10.1016/j.wavemoti.2008.01.003}.
+
+\bibitem[Jackson(2002)]{Jackson2002}
+Jackson, J.A.
+\newblock {31---Using Earthquakes for Continental Tectonic Geology}.
+\newblock {\em Int. Geophys.} {\bf 2002}, {\em 81},~491--503.
+\newblock \hl{cp1--cp2.} %MDPI: Is this information necessary?
+{https://doi.org/10.1016/S0074-6142(02)80234-0}.
+
+\bibitem[Leroy \em{et~al.}(2010)Leroy, Lucazeau, d'Acremont, Watremez, Autin,
+  Rouzo, Bellahsen, Tiberi, Ebinger, Beslier, Perrot, Razin, Rolandone, Sloan,
+  Stuart, Al~Lazki, Al-Toubi, Bache, Bonneville, Goutorbe, Huchon, Unternehr,
+  and Khanbari]{Leroyetal2010}
+Leroy, S.; Lucazeau, F.; d'Acremont, E.; Watremez, L.; Autin, J.; Rouzo, S.;
+  Bellahsen, N.; Tiberi, C.; Ebinger, C.; Beslier, M.O.; et al.
+\newblock Contrasted styles of rifting in the eastern Gulf of Aden: A combined
+  wide-angle, multichannel seismic, and heat flow survey.
+\newblock {\em Geochem. Geophys. Geosyst.} {\bf 2010}, \highlighting{{\em 11}.} %MDPI: Please add page number.
+{https://doi.org/10.1029/2009GC002963}.
+
+\bibitem[Phillips(1985)]{Phillips}
+Phillips, D.W.
+\newblock Macroseismic Effects of the Liège Earthquake with Particular
+  Reference to Industrial Installations. In {\em Seismic Activity in Western
+  Europe}; NATO ASI Series (Series C: Mathematical and Physical Sciences);
+  Melchior, P.J., Ed.; Springer: Dordrecht, The Netherlands,  1985; Volume 144, pp.
+  369--384.
+\newblock
+{https://doi.org/10.1007/978-94-009-5273-7\_30}.
+
+\bibitem[Pilecki \em{et~al.}(2017)Pilecki, Isakow, Czarny, Pilecka, Harba, and
+  Barnaśa]{Pileckietal2017}
+Pilecki, Z.; Isakow, Z.; Czarny, R.; Pilecka, E.; Harba, P.; Barnaśa, M.
+\newblock {Capabilities of seismic and georadar 2D/3D imaging of shallow
+  subsurface of transport route using the Seismobile system}.
+\newblock {\em J. Appl. Geophys.} {\bf 2017}, {\em 143},~31--41.
+
+\bibitem[Kurzeja(2017)]{Kurzeja}
+Kurzeja, J.
+\newblock {Seismometric monitoring in the area of the Piekary Śląskie
+  junction of the A1 motorway in terms of recording the vibrations resulting
+  from mining tremors}.
+\newblock {\em J. Sustain. Min.} {\bf 2017}, {\em 16},~14--23.
+\newblock
+  {https://doi.org/10.1016/j.jsm.2017.06.002}.
+
+\bibitem[Ahorner \em{et~al.}(1985)Ahorner, Camelbeeck, De~Becker, Flick,
+  Ritsema, Houtgast, and Vogt]{Ahorner}
+Ahorner, L.; Camelbeeck, T.; De~Becker, M.; Flick, J.; Ritsema, R.; Houtgast,
+  G.; Vogt, J.
+\newblock Macroseismic Map of the Liège Earthquake of November 8, 1983. In
+  {\em Seismic Activity in Western Europe}; NATO ASI Series (Seriec C:
+  Mathematical and Physical Sciences); Melchior, P.J., Ed.; Springer:
+  Dordrecht, The Netherlands,  1985; Volume 144, pp. 297--299.
+\newblock
+{https://doi.org/10.1007/978-94-009-5273-7\_23}.
+
+\bibitem[Steinmann \em{et~al.}(2021)Steinmann, Seydoux, Beaucé, and
+  Campillo]{Steinmann}
+Steinmann, R.; Seydoux, L.; Beaucé, E.; Campillo, M.
+\newblock Hierarchical exploration of continuous seismograms with unsupervised
+  learning.
+\newblock {\em Earth Space Sci. Open Arch.} {\bf 2021}, \hl{\emph{127}, e2021JB022455.} %MDPI: Information revised.
+\newblock
+{https://doi.org/10.1002/essoar.10507113.2}.
+
+\bibitem[Amorèse \em{et~al.}(2020)Amorèse, Benjumea, and Cara]{Amorese}
+Amorèse, D.; Benjumea, J.; Cara, M.
+\newblock {Source parameters of the 1926 and 1927 Jersey earthquakes from
+  historical, instrumental, and macroseismic data}.
+\newblock {\em Phys. Earth Planet. Inter.} {\bf 2020}, {\em
+  300},~1--28.
+\newblock
+{https://doi.org/10.1016/j.pepi.2019.106420}.
+
+\bibitem[Lomnitz(1994)]{Lomnitz}
+Lomnitz, C.
+\newblock {\em Fundamentals of Earthquake Prediction}; Wiley:  \hl{Hoboken, NJ, USA,} %newly added information, please confirm
+  1994.
+
+\bibitem[Yuliatmoko \em{et~al.}(2021)Yuliatmoko, Kurniawan, Vita, Rohadi,
+  Riama, Gunawan, and Karnawati]{Yuliatmoko}
+Yuliatmoko, R.S.; Kurniawan, T.; Vita, A.N.; Rohadi, S.; Riama, N.F.; Gunawan,
+  I.; Karnawati, D.K.
+\newblock Estimation site effect from the seismogram.
+\newblock {\em AIP Conf. Proc.} {\bf 2021}, {\em 2320},~040023.
+\newblock
+ {https://doi.org/10.1063/5.0037541}.
+
+\bibitem[Pezzo(2008)]{Pezzo}
+Pezzo, E.D.
+\newblock {Chapter 13 Seismic Wave Scattering in Volcanoes}.
+\newblock {\em Adv. Geophys.} {\bf 2008}, {\em 50},~353--371.
+\newblock
+{https://doi.org/10.1016/S0065-2687(08)00013-7}.
+
+\bibitem[Ratdomopurbo and Poupinet(1995)]{Ratdomopurbo}
+Ratdomopurbo, A.; Poupinet, G.
+\newblock Monitoring a temporal change of seismic velocity in a volcano:
+  Application to the 1992 eruption of Mt. Merapi (Indonesia).
+\newblock {\em Geophys. Res. Lett.} {\bf 1995}, {\em 22},~775--778.
+\newblock
+{https://doi.org/10.1029/95GL00302}.
+
+\bibitem[Mordret \em{et~al.}(2016)Mordret, Mikesell, Harig, Lipovsky, and
+  Prieto]{Mordret}
+Mordret, A.; Mikesell, T.D.; Harig, C.; Lipovsky, B.P.; Prieto, G.A.
+\newblock Monitoring southwest \hl{Greenland's } %MDPI: The word was revised.
+ice sheet melt with ambient
+  seismic noise.
+\newblock {\em Sci. Adv.} {\bf 2016}, {\em 2},~e1501538.
+\newblock
+{https://doi.org/10.1126/sciadv.1501538}.
+
+\bibitem[Lemenkova and Debeir(2022)]{LemenkovaDebeir02}
+Lemenkova, P.; Debeir, O.
+\newblock {Seismotectonics of Shallow-Focus Earthquakes in Venezuela with Links
+  to Gravity Anomalies and Geologic Heterogeneity Mapped by a GMT Scripting
+  Language}.
+\newblock {\em Sustainability} {\bf 2022}, {\em 14},~15966.
+\newblock
+{https://doi.org/10.3390/su142315966}.
+
+\bibitem[Brenguier \em{et~al.}(2014)Brenguier, Campillo, Takeda, Aoki, Shapiro,
+  Briand, Emoto, and Miyake]{brenguier2014mapping}
+Brenguier, F.; Campillo, M.; Takeda, T.; Aoki, Y.; Shapiro, N.; Briand, X.;
+  Emoto, K.; Miyake, H.
+\newblock Mapping pressurized volcanic fluids from induced crustal seismic
+  velocity drops.
+\newblock {\em Science} {\bf 2014}, {\em 345},~80--82.
+
+\bibitem[Lemenkova(2020)]{Lemenkova202012}
+Lemenkova, P.
+\newblock {GEBCO Gridded Bathymetric Datasets for Mapping Japan Trench
+  Geomorphology by Means of GMT Scripting Toolset}.
+\newblock {\em Geod. Cartogr.} {\bf 2020}, {\em 46},~98--112.
+\newblock
+ {https://doi.org/10.3846/gac.2020.11524}.
+
+\bibitem[Braszus \em{et~al.}(2021)Braszus, Goes, Allen, Rietbrock, Collier,
+  Harmon, Henstock, Hicks, Rychert, Maunder, van Hunen, Bie, Blundy, Cooper,
+  Davy, Kendall, Macpherson, Wilkinson, and Wilson]{Braszusetal2021}
+Braszus, B.; Goes, S.; Allen, R.; Rietbrock, A.; Collier, J.; Harmon, N.;
+  Henstock, T.; Hicks, S.; Rychert, C.A.; Maunder, B.; et al.
+\newblock {Subduction history of the Caribbean from upper-mantle seismic
+  imaging and plate reconstruction}.
+\newblock {\em Nat. Commun.} {\bf 2021}, {\em 12}, \hl{4211.}
+\newblock
+{https://doi.org/10.1038/s41467-021-24413-0}.
+
+\bibitem[Lemenkova and Debeir(2022)]{LemenkovaDebeir01}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+  and SRTM DEM Data on Côte d’Ivoire, West Africa}.
+\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+\newblock
+{https://doi.org/10.3390/jimaging8120317}.
+
+\bibitem[Lemenkova(2020)]{Lemenkova202016}
+Lemenkova, P.
+\newblock {NOAA Marine Geophysical Data and a GEBCO Grid for the Topographical
+  Analysis of Japanese Archipelago by Means of GRASS GIS and GDAL Library}.
+\newblock {\em GEomatics Environ. Eng.} {\bf 2020}, {\em
+  14},~25--45.
+\newblock
+{https://doi.org/10.7494/geom.2020.14.4.25}.
+
+\bibitem[Li \em{et~al.}(2000)Li, Kind, Priestley, Sobolev, Tilmann, Yuan, and
+  Weber]{Lietal2000}
+Li, X.; Kind, R.; Priestley, K.; Sobolev, S.V.; Tilmann, F.; Yuan, X.; Weber,
+  M.
+\newblock {Mapping the Hawaiian plume conduit with converted seismic waves}.
+\newblock {\em Nature} {\bf 2000}, {\em 405}, \hl{938--941.}
+\newblock
+{https://doi.org/10.1038/35016054}.
+
+\bibitem[Ardhuin \em{et~al.}(2011)Ardhuin, Stutzmann, Schimmel, and
+  Mangeney]{Ardhuinetal2011}
+Ardhuin, F.; Stutzmann, E.; Schimmel, M.; Mangeney, A.
+\newblock Ocean wave sources of seismic noise.
+\newblock {\em J. Geophys. Res. Ocean.} {\bf 2011}, \highlighting{{\em 116}.} %MDPI: Please add page number.
+
+\newblock
+{https://doi.org/10.1029/2011JC006952}.
+
+\bibitem[Aucan and Ardhuin(2013)]{AucanArdhuin2013}
+Aucan, J.; Ardhuin, F.
+\newblock Infragravity waves in the deep ocean: An upward revision.
+\newblock {\em Geophys. Res. Lett.} {\bf 2013}, {\em 40},~3435--3439.
+\newblock
+ {https://doi.org/10.1002/grl.50321}.
+
+\bibitem[Peureux and Ardhuin(2016)]{PeureuxArdhuin2016}
+Peureux, C.; Ardhuin, F.
+\newblock Ocean bottom pressure records from the Cascadia array and short
+  surface gravity waves.
+\newblock {\em J. Geophys. Res. Oceans} {\bf 2016}, {\em
+  121},~2862--2873.
+\newblock
+{https://doi.org/10.1002/2015JC011580}.
+
+\bibitem[Singh \em{et~al.}(2021)Singh, Rajendran, and Kumar]{Singh2021}
+Singh, T.; Rajendran, C.P.; Kumar, S.
+\newblock {Dynamic terranes: Surface deformation, seismicity, and climate
+  change}.
+\newblock {\em Quat. Int.} {\bf 2021}, {\em 585},~1--2.
+
+\bibitem[Toyokuni \em{et~al.}(2015)Toyokuni, Takenaka, Kanao, Tsuboi, and
+  Tono]{Toyokunietal2015}
+Toyokuni, G.; Takenaka, H.; Kanao, M.; Tsuboi, S.; Tono, Y.
+\newblock {Numerical modeling of seismic waves for estimating the influence of
+  the Greenland ice sheet on observed seismograms}.
+\newblock {\em Polar Sci.} {\bf 2015}, {\em 9},~80--93.
+\newblock
+{https://doi.org/10.1016/j.polar.2014.12.001}.
+
+\bibitem[Bromirski \em{et~al.}(1999)Bromirski, Flick, and
+  Graham]{Bromirski1999}
+Bromirski, P.D.; Flick, R.E.; Graham, N.
+\newblock Ocean wave height determined from inland seismometer data:
+  Implications for investigating wave climate changes in the NE Pacific.
+\newblock {\em J. Geophys. Res. Oceans} {\bf 1999}, {\em
+  104},~20753--20766.
+\newblock
+{https://doi.org/10.1029/1999JC900156}.
+
+\bibitem[Williams \em{et~al.}(2019)Williams, Fernández-Ruiz, Magalhaes,
+  Vanthillo, Zhan, González-Herráez, and Martins]{Williams}
+Williams, E.F.; Fernández-Ruiz, M.R.; Magalhaes, R.; Vanthillo, R.; Zhan, Z.;
+  González-Herráez, M.; Martins, H.F.
+\newblock {Distributed sensing of microseisms and teleseisms with submarine
+  dark fibers}.
+\newblock {\em Nat. Commun.} {\bf 2019}, {\em 10}, \hl{5778.}
+\newblock
+{https://doi.org/10.1038/s41467-019-13262-7}.
+
+\bibitem[Vogt \em{et~al.}(1985)Vogt, Cadiot, and Lambert]{Vogtetal1985}
+Vogt, J.; Cadiot, B.; Lambert, J., Problèmes de sismicité historique:
+  Exemples de faux séismes, de séismes méconnus et de séismes
+  réinterprétés dans l'ensemble Allemagne/Belgique/Nord-Ouest de la
+  France/Sud de Grande-Bretagne.
+\newblock In {\em Seismic Activity in Western Europe with Particular
+  Consideration to the Liège Earthquake of 8 November 1983}; NATO ASI Series, Series C: Mathematical and Physical
+  Sciences; Springer:  \hl{Berlin/Heidelberg, Germany,} %newly added information, please confirm
+  1985;
+  Volume 144, pp. 205--214.
+\newblock
+{https://doi.org/10.1007/978-94-009-5273-7\_16}.
+
+\bibitem[Teves-Costa \em{et~al.}(1999)Teves-Costa, Borges, Rio, Ribeiro, and
+  Marreiros]{TevesCosta1999}
+Teves-Costa, P.; Borges, J.F.; Rio, I.; Ribeiro, R.; Marreiros, C.
+\newblock {Source parameters of old earthquakes: Semi-automatic digitization of
+  analog records and seismic moment assessment}.
+\newblock {\em Nat. Hazards} {\bf 1999}, {\em 19},~205--220.
+
+\bibitem[Bono(2007)]{Bono2007}
+Bono, A.
+\newblock {Historical seismometry database project: A comprehensive relational
+  database for historical seismic records}.
+\newblock {\em Comput. Geosci.} {\bf 2007}, {\em 33},~94--103.
+
+\bibitem[Okal(2015)]{Okal}
+Okal, E.A.
+\newblock {Historical seismograms: Preserving an endangered species}.
+\newblock {\em GeoResJ} {\bf 2015}, {\em 6},~53--64.
+\linebreak
+{https://doi.org/10.1016/j.grj.2015.01.007}.
+
+\bibitem[Alexandre(1990)]{Alexandre1990a}
+Alexandre, P.
+\newblock {La séismicité historique du Hainaut, de la Flandre et de l'Artois
+  de 700 à 1800}.
+\newblock {\em Tecton. Actuelle Récente Belg. Ann. 
+  Soc. Géol. Belg.} {\bf 1990}, {\em 112},~329--344.
+
+\bibitem[Alexandre(1985)]{Alexandre1985}
+Alexandre, P., Catalogue des Séismes Survenus au Moyen Age en Belgique et dans
+  les Regions Voisines.
+\newblock In {\em Seismic Activity in Western Europe}; NATO ASI Series (Seriec C: Mathematical
+  and Physical Sciences); Springer: Dordrecht,
+  The Netherlands,  1985; Volume 144, pp. 189--203.
+\newblock
+ {https://doi.org/10.1007/978-94-009-5273-7\_15}.
+
+\bibitem[Alexandre(1990)]{Alexandre1990b}
+Alexandre, P.
+\newblock {\em Les Séismes en Europe Occidentale de 394 à 1259. Nouveau Catalogue
+  Critique}; Série Géophysique, Bruxelles; Hors-série;
+\newblock Observatoire Royal de Belgique: \hl{Uccle, Belgium, } %MDPI: Newly added information.
+1990; pp. 1--267.
+
+\bibitem[Kanamori(1988)]{Kanamori1988}
+Kanamori, H.
+\newblock Importance of Historical Seismograms for Geophysical Research. In
+  {\em Historical Seismograms and Earthquakes of the World}; Lee, W.H.K.,
+  Meyers, H., Shimazaki, K., Eds.; Academic Press: San Diego, CA, USA,  1988; pp.
+  16--33.
+
+\bibitem[Claerbout(1992)]{Claerbout1992}
+Claerbout, J.F.
+\newblock {\em Earth Soundings Analysis: Processing Versus Inversion};
+  Blackwell Scientific: Boston, MA, USA,  1992.
+
+\bibitem[Jarosch(1975)]{Jarosch1975}
+Jarosch, H.
+\newblock {Automatic Digitization of Seismograms}.
+\newblock {\em Geophys. J. Int.} {\bf 1975}, {\em
+  42},~565--577.
+\newblock
+{https://doi.org/10.1111/j.1365-246X.1975.tb05879.x}.
+
+\bibitem[Adams and Allen(1961)]{AdamsAllen1961}
+Adams, W.M.; Allen, D.C.
+\newblock {Reading seismograms with digital computers}.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 1961},
+  {\em 51},~61--67.
+\newblock
+{https://doi.org/10.1785/BSSA0510010061}.
+
+\bibitem[Aspinall and Latchman(1983)]{AspinallLatchman}
+Aspinall, W.P.; Latchman, J.L.
+\newblock {A Microprocessor-Based System for Digitizing Seismic Events from
+  Magnetic-Tape Recordings}.
+\newblock {\em Comput. Geosci.} {\bf 1983}, {\em 9},~113--122.
+
+\bibitem[Crouse and Matuschka(1983)]{CrouseMatuschka1983}
+Crouse, C.B.; Matuschka, T.
+\newblock Digitization noise and accelerograph pen offset associated with
+  Japanese accelerograms.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 1983},
+  {\em 73},~1187--1196.
+
+\bibitem[Scherbaum(1996)]{Scherbaum1996a}
+Scherbaum, F.
+\newblock Inverse and simulation filtering of digital seismograms. In {\em Of
+  Poles and Zeros. Fundamentals of Digital Seismology. Modern Approaches in
+  Geophysics};  Springer: Dordrecht, The Netherlands,  1996; Volume~15,
+  pp. 132--160.
+\newblock
+{https://doi.org/10.1007/978-94-010-9572-3\_9}.
+
+\bibitem[Norlund and Griffiths(1993)]{NorlundGriffiths1993}
+Norlund, U.; Griffiths, C.M.
+\newblock {Automatic Construction of Two- and Three-Dimensional
+  Chronostratigraphic Sections from Digitized Seismic Data}.
+\newblock {\em Comput. Geosci.} {\bf 1993}, {\em 19},~1185--1205.
+
+\bibitem[McGee(1995)]{McGee1995}
+McGee, T.M.
+\newblock {High-resolution marine reflection profiling for engineering and
+  environmental purposes. Part B: Digitizing analogue seismic signals}.
+\newblock {\em J. Appl. Geophys.} {\bf 1995}, {\em 33},~287--296.
+
+\bibitem[Harjes \em{et~al.}(1993)Harjes, Jost, Schweitzer, and
+  Gestermann]{Harjesetal1993}
+Harjes, H.P.; Jost, M.L.; Schweitzer, J.; Gestermann, N.
+\newblock {Automatic Seismogram Analysis at GERESS}.
+\newblock {\em Comput. Geosci.} {\bf 1993}, {\em 19},~157--166.
+
+\bibitem[Scherbaum(1996{\natexlab{a}})]{Scherbaum1996b}
+Scherbaum, F.
+\newblock Analog-to-digital conversion. In {\em Of Poles and Zeros.
+  Fundamentals of Digital Seismology. Modern Approaches in Geophysics};
+  Springer: Dordrecht, The Netherlands,  1996; Volume~15, pp. 71--89.
+\newblock
+{https://doi.org/10.1007/978-94-010-9572-3\_6}.
+
+\bibitem[Scherbaum(1996{\natexlab{b}})]{Scherbaum1996c}
+Scherbaum, F.
+\newblock The measurement of wavelet parameters from digital seismograms. In
+  {\em Of Poles and Zeros. Fundamentals of Digital Seismology. Modern
+  Approaches in Geophysics}; Scherbaum, F., Ed.; Springer: Dordrecht,
+  The Netherlands,  1996; Volume~15, \linebreak pp. 161--198.
+\newblock
+{https://doi.org/10.1007/978-94-010-9572-3\_10}.
+
+\bibitem[Bi \em{et~al.}(2016)Bi, Feng, G., and Han]{Bietal2016}
+Bi, Y.; Feng, S.; G., Z.; Han, B.
+\newblock Digitalizing Seismograms Using a Neighborhood Backtracking Method. 
+ In \emph{Proceedings of the International Conference on Knowledge Science, Engineering and
+  Management (KSEM 2016), \hl{Passau, Germany, 5--7 October 2016}}; Lehner, F.;
+  Fteimi, N., Eds.; Lecture Notes in Computer Science; Springer: Cham, Switzerland,  2016; Volume 9983, pp.
+  391--401.
+\newblock
+{https://doi.org/10.1007/978-3-319-47650-6\_31}.
+
+\bibitem[Ishii \em{et~al.}(2015)Ishii, Ishii, Bernier, and
+  Bulat]{Ishiietal2015}
+Ishii, M.; Ishii, H.; Bernier, B.; Bulat, E.
+\newblock {Efforts to Recover and Digitize Analog Seismograms from
+  Harvard‐Adam Dziewoński Observatory}.
+\newblock {\em Seismol. Res. Lett.} {\bf 2015}, {\em 86},~255--261.
+\newblock
+{https://doi.org/10.1785/0220140165}.
+
+\bibitem[Schenke and Lemenkova(2008)]{Schenke}
+Schenke, H.W.; Lemenkova, P.
+\newblock {Zur Frage der Meeresboden-Kartographie: Die Nutzung von AutoTrace
+  Digitizer f\"{u}r die Vektorisierung der Bathymetrischen Daten in der
+  Petschora-See}.
+\newblock {\em Hydrogr. Nachrichten} {\bf 2008}, {\em 81},~16--21.
+\linebreak
+{https://doi.org/10.6084/m9.figshare.7435538}.
+
+\bibitem[Trifunac \em{et~al.}(1999)Trifunac, Lee, and
+  Todorovska]{Trifunacetal1999}
+Trifunac, M.D.; Lee, V.W.; Todorovska, M.I.
+\newblock {Common problems in automatic digitization of strong motion
+  accelerograms}.
+\newblock {\em Soil Dyn. Earthq. Eng.} {\bf 1999}, {\em
+  18},~519--530.
+
+\bibitem[Baskoutas \em{et~al.}(2000)Baskoutas, Kalogeras, Kourouzidis, and
+  Panopoulou]{Baskoutasetal2000}
+Baskoutas, I.G.; Kalogeras, I.S.; Kourouzidis, M.; Panopoulou, G.
+\newblock {A modern technique for the retrieval and processing of historical
+  seismograms in Greece}.
+\newblock {\em Nat. Hazards} {\bf 2000}, {\em 21},~55--64.
+\newblock
+{https://doi.org/10.1023/A:1008101329718}.
+
+\bibitem[Esmaili(2021)]{Esmaili}
+Esmaili, R., Practical Python Syntax.
+\newblock In {\em Earth Observation Using Python}; American Geophysical Union
+  (AGU): \hl{Washington, DC, USA, } 2021; Chapter~4, pp. 45--66.
+\newblock
+{https://doi.org/https://doi.org/10.1002/9781119606925.ch4}.
+
+\bibitem[Nuzillard(2021)]{analytica2030006}
+Nuzillard, J.M.
+\newblock Taxonomy-Focused Natural Product Databases for Carbon-13 NMR-Based
+  Dereplication.
+\newblock {\em Analytica} {\bf 2021}, {\em 2},~50--56.
+\newblock
+{https://doi.org/10.3390/analytica2030006}.
+
+\bibitem[Lemenkova(2019{\natexlab{a}})]{Lemenkova201991}
+Lemenkova, P.
+\newblock {Statistical Analysis of the Mariana Trench Geomorphology Using R
+  Programming Language}.
+\newblock {\em Geod. Cartogr.} {\bf 2019}, {\em 45},~57--84.
+\newblock
+ {https://doi.org/10.3846/gac.2019.3785}.
+
+\bibitem[Lemenkova(2019{\natexlab{b}})]{Lemenkova2019100}
+Lemenkova, P.
+\newblock {AWK and GNU Octave Programming Languages Integrated with Generic
+  Mapping Tools for Geomorphological Analysis}.
+\newblock {\em GeoSci. Eng.} {\bf 2019}, {\em 65},~1--22.
+\newblock
+ {https://doi.org/10.35180/gse-2019-0020}.
+
+\bibitem[Lemenkov and Lemenkova(2021)]{Lemenkov202103}
+Lemenkov, V.; Lemenkova, P.
+\newblock {Using TeX Markup Language for 3D and 2D Geological Plotting}.
+\newblock {\em Found. Comput. Decis. Sci.} {\bf 2021}, {\em
+  46},~43--69.
+\newblock
+{https://doi.org/10.2478/fcds-2021-0004}.
+
+\bibitem[Cox \em{et~al.}(2018)Cox, Brown, Billingham, and Holme]{Cox}
+Cox, G.A.; Brown, W.J.; Billingham, L.; Holme, R.
+\newblock MagPySV: A Python Package for Processing and Denoising Geomagnetic
+  Observatory Data.
+\newblock {\em Geochem. Geophys. Geosyst.} {\bf 2018}, {\em
+  19},~3347--3363.
+\newblock
+ {https://doi.org/10.1029/2018GC007714}.
+
+\bibitem[Stoneback \em{et~al.}(2018)Stoneback, Burrell, Klenzing, and
+  Depew]{Stoneback}
+Stoneback, R.A.; Burrell, A.G.; Klenzing, J.; Depew, M.D.
+\newblock PYSAT: Python Satellite Data Analysis Toolkit.
+\newblock {\em J. Geophys. Res. Space Phys.} {\bf 2018}, {\em
+  123},~5271--5283.
+\newblock
+\href{https://doi.org/https://doi.org/10.1029/2018JA025297}.
+
+\bibitem[Lemenkova(2019)]{Lemenkova201989}
+Lemenkova, P.
+\newblock {Testing Linear Regressions by StatsModel Library of Python for
+  Oceanological Data Interpretation}.
+\newblock {\em Aquat. Sci. Eng.} {\bf 2019}, {\em 34},~51--60.
+\newblock
+ {https://doi.org/10.26650/ASE2019547010}.
+
+\bibitem[Jenkins~II \em{et~al.}(2021)Jenkins~II, Gerstoft, Bianco, and
+  Bromirski]{Jenkins}
+Jenkins, W.F., II; Gerstoft, P.; Bianco, M.J.; Bromirski, P.D.
+\newblock Unsupervised Deep Clustering of Seismic Data: Monitoring the Ross Ice
+  Shelf, Antarctica.
+\newblock {\em J. Geophys. Res. Solid Earth} {\bf 2021}, {\em
+  126},~e2021JB021716.
+\newblock
+{https://doi.org/10.1029/2021JB021716}.
+
+\bibitem[Sang and Xu(2020)]{signals1010005}
+Sang, T.H.; Xu, Y.C.
+\newblock Clipping Noise Compensation with Neural Networks in OFDM Systems.
+\newblock {\em Signals} {\bf 2020}, {\em 1},~100--109.
+\newblock
+  {https://doi.org/10.3390/signals1010005}.
+
+\bibitem[Debeir and Decaestecker(2019)]{DebeirDecaestecker}
+Debeir, O.; Decaestecker, C.
+\newblock Data augmentation for training deep regression for in vitro cell
+  detection.
+\newblock  In Proceedings of the 2019 Fifth International Conference on Advances in Biomedical
+  Engineering (ICABME), \hl{Tripoli, Lebanon, 17--19 October 2019;} pp. 1--3.
+\newblock
+  {https://doi.org/10.1109/ICABME47164.2019.8940275}.
+
+\bibitem[Parmar and Morris(2021)]{signals2030037}
+Parmar, P.; Morris, B.
+\newblock HalluciNet-ing Spatiotemporal Representations Using a 2D-CNN.
+\newblock {\em Signals} {\bf 2021}, {\em 2},~604--618.
+\newblock
+ {https://doi.org/10.3390/signals2030037}.
+
+\bibitem[Debeir \em{et~al.}(2008)Debeir, Adanja, Warzee, Van~Ham, and
+  Decaestecker]{Debeir2008}
+Debeir, O.; Adanja, I.; Warzee, N.; Van~Ham, P.; Decaestecker, C.
+\newblock Phase contrast image segmentation by weak watershed transform
+  assembly.
+\newblock  In Proceedings of the 2008 5th IEEE International Symposium on Biomedical Imaging: From
+  Nano to Macro,  \hl{Paris, France, 14--17 May 2008;} pp. 724--727.
+\newblock
+ {https://doi.org/10.1109/ISBI.2008.4541098}.
+
+\bibitem[Foucart \em{et~al.}(2019)Foucart, Debeir, and Decaestecker]{Foucart}
+Foucart, A.; Debeir, O.; Decaestecker, C.
+\newblock SNOW: Semi-Supervised, Noisy And/Or Weak Data For Deep Learning in
+  Digital Pathology.
+\newblock  In Proceedings of the 2019 IEEE 16th International Symposium on Biomedical Imaging (ISBI
+  2019),  \hl{Venice, Italy, 8--11 April 2019;} pp. 1869--1872.
+\newblock
+{https://doi.org/10.1109/ISBI.2019.8759545}.
+
+\bibitem[Debeir \em{et~al.}(2019)Debeir, Almasri, and
+  Decaestecker]{Debeiretal2019}
+Debeir, O.; Almasri, F.; Decaestecker, C.
+\newblock Deep-shift phase contrast cell detection and tracking.
+\newblock Poster,  2019.
+\newblock In Proceedings of the ISBI 2019, IEEE International
+  Symposium on Biomedical Imaging, Venise, Italy, 8--11 April 2019.
+
+\bibitem[Pintore \em{et~al.}(2005)Pintore, Quintiliani, and
+  Franceschi]{Pintoreetal2005}
+Pintore, S.; Quintiliani, M.; Franceschi, D.
+\newblock {Teseo: A vectoriser of historical seismograms}.
+\newblock {\em Comput. Geosci.} {\bf 2005}, {\em 31},~1277--1285.
+\newblock
+ {https://doi.org/10.1016/j.cageo.2005.04.001}.
+
+\bibitem[Wang \em{et~al.}(2016)Wang, Jiang, Liu, and Huang]{Wangetal2016}
+Wang, M.; Jiang, Q.; Liu, Q.; Huang, M.
+\newblock {A new program on digitizing analog seismograms}.
+\newblock {\em Comput. Geosci.} {\bf 2016}, {\em 93},~70–76.
+\newblock
+  {https://doi.org/10.1016/j.cageo.2016.05.004}.
+
+\bibitem[Xu and Xu(2014)]{XuXu}
+Xu, Y.; Xu, T.
+\newblock {An interactive program on digitizing historical seismograms}.
+\newblock {\em Comput. Geosci.} {\bf 2014}, {\em 63},~88--95.
+\linebreak
+{https://doi.org/10.1016/j.cageo.2013.11.001}.
+
+\bibitem[Bromirski and Chuang(2003)]{BromirskiChuang2003}
+Bromirski, P.D.; Chuang, S.
+\newblock {\em SeisDig User’s Manual}; Scripps Institution of Oceanography:
+  San Diego, CA, USA,  2003.
+
+\bibitem[Khan \em{et~al.}(2012)Khan, Akhter, and Ahmad]{Khanetal2012}
+Khan, K.A.; Akhter, G.; Ahmad, Z.
+\newblock {DigiSeis---A software component for digitizing seismic signals using
+  the PC sound card}.
+\newblock {\em Comput. Geosci.} {\bf 2012}, {\em 43},~217--220.
+\newblock
+ {https://doi.org/10.1016/j.cageo.2012.02.024}.
+
+\bibitem[Liu \em{et~al.}(2001)Liu, Wang, Zhang, Yu, Zhang, and
+  Pan]{Liuetal2001}
+Liu, Z.; Wang, W.; Zhang, R.; Yu, N.; Zhang, T.; Pan, J.
+\newblock {A seismogram digitization and database management system}.
+\newblock {\em Acta Seismol. Sin.} {\bf 2001}, {\em 14},~333--341.
+
+\bibitem[Bogiatzis and Ishii(2016)]{BogiatzisIshii2016}
+Bogiatzis, P.; Ishii, M.
+\newblock {DigitSeis: A new digitization software for analog seismograms}.
+\newblock {\em Seismol. Res. Lett.} {\bf 2016}, {\em 87},~726--736.
+\newblock
+ {https://doi.org/10.1785/0220150246}.
+
+\bibitem[Camelbeeck(1985)]{Camelbeeck1985}
+Camelbeeck, T.
+\newblock Some Notes Concerning the Seismicity in Belgium---Magnitude Scale---Detection Capability of the Belgian Seismological Stations. In {\em
+  Seismic Activity in Western Europe}; NATO ASI Series (Seriec C: Mathematical
+  and Physical Sciences); Melchior, P.J., Ed.; Springer: Dordrecht,
+ The Netherlands,  1985; Volume 144, pp. 99--108.
+\newblock
+{https://doi.org/10.1007/978-94-009-5273-7\_8}.
+
+\bibitem[Somville(1922{\natexlab{a}})]{Somville1922a}
+\hl{Somville, O.} %MDPI: please confirm if Refs. 98 and 99 are  same.  if yes,  please replace or delete the duplicated reference. If one of them is deleted, please update the reference list as well as reference order in the whole text. Please make sure the first citation of all references are mentioned in numerical order.
+\newblock {\em Constantes des Sismographes Galitzine}; Annales de l’Observatoire Royal de Belgique: \hl{Uccle, Belgium,} 1922; Volume 1.
+
+\bibitem[Somville(1922{\natexlab{b}})]{Somville1922b}
+\hl{Somville, O.}
+\newblock {\emph{Sur la Methode d’Enregistrement Galvanometrique Appliquee aux
+  Sismographes Galitzine}};  Annales de l’Observatoire Royal de Belgique: \hl{Uccle, Belgium,} 1922; Volume 1.
+
+\bibitem[W.(1910)]{Wgg}
+W., G.G.
+\newblock {The Galitzin Seismograph}.
+\newblock {\em Nature} {\bf 1910}, {\em 84},~218--219.
+\newblock
+{https://doi.org/10.1038/084218b}.
+
+\bibitem[Neumann(1956)]{Neumann}
+Neumann, F.
+\newblock {Sensitivity controls on Galitzin-type seismographs}.
+\newblock {\em Eos Trans. AGU} {\bf 1956}, {\em 37},~483--490.
+\linebreak
+{https://doi.org/10.1029/TR037i004p00483}.
+
+\bibitem[Chakrabarty and Tandon(1961)]{ChakrabartyTandon}
+Chakrabarty, S.K.; Tandon, A.N.
+\newblock {Calibration of electromagnetic seismographs satisfying galitzin
+  conditions}.
+\newblock {\em Bull. Seismol. Soc. Am.} {\bf 1961},
+  {\em 51},~111--125.
+\newblock
+{https://doi.org/10.1785/BSSA0510010111}.
+
+\bibitem[Poynton(1992)]{Poynton}
+Poynton, C.A.
+\newblock {Overview of TIFF 5.0}.
+\newblock  In \emph{Image Processing and Interchange: Implementation and Systems}; Arps,
+  R.B., Pratt, W.K., Eds.; International Society for Optics and Photonics, SPIE:  Bellingham, WA, USA, 1992; Volume 1659, pp. 152--158.
+\newblock
+{https://doi.org/10.1117/12.58403}.
+
+\bibitem[Kiefer(1953)]{Kiefer}
+Kiefer, J.
+\newblock {Sequential minimax search for a maximum}.
+\newblock In {\em Proceedings of the American Mathematical Society}; \hl{American Mathematical Society: Providence, RI, USA, }1953; Volume 4; pp. 502--506.
+\newblock \hl{JSTOR 2032161, MR 0055639,} %MDPI: Can this information be deleted?
+
+ {https://doi.org/10.2307/2032161}.
+
+\bibitem[Press \em{et~al.}(2007)Press, Teukolsky, Vetterling, and
+  Flannery]{Press}
+Press, W.H.; Teukolsky, S.A.; Vetterling, W.T.; Flannery, B.P.
+\newblock {\em Section 10.2. Golden Section Search in One Dimension}, 3rd ed.;
+  Numerical Recipes: The Art of Scientific Computing; Cambridge University
+  Press: New York, NY, USA,  2007.
+
+\bibitem[Van~Rossum and Drake~Jr(1995)]{van1995python}
+Van~Rossum, G.; Drake, F.L., Jr.
+\newblock {\em Python Reference Manual}; Centrum voor Wiskunde en Informatica:
+  Amsterdam, The Netherlands, 1995.
+
+\bibitem[Hunter(2007)]{Hunter}
+Hunter, J.D.
+\newblock Matplotlib: A 2D graphics environment.
+\newblock {\em Comput. Sci. Eng.} {\bf 2007}, {\em
+  9},~90--95.
+\newblock
+{https://doi.org/10.1109/MCSE.2007.55}.
+
+\end{thebibliography}
+
+\PublishersNote{}
+\end{adjustwidth}
+\end{document}
+
