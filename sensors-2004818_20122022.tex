@@ -53,7 +53,7 @@
 \usepackage{float}
 \usepackage{wrapfig}
 \usepackage{amsmath}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \graphicspath{{figures/}} % path to folder with figures
 \usepackage{caption}
 \usepackage[labelformat=simple]{subcaption}
@@ -87,18 +87,11 @@
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
 
 
-
-
-
-
 %=================================================================
 % Full title of the paper (Capitalized)
 
-
-\Title{\highlighting{Computer} %MDPI: !!!Dear author, please reply all %MDPI: comment, Thanks!!!
+\Title{Computer %MDPI: !!!Dear author, please reply all %MDPI: comment, Thanks!!! <-- Authors: yes, replied.
  Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
-
-
 
 % MDPI internal command: Title for citation in the left column
 \TitleCitation{Computer Vision Algorithms of DigitSeis for Building a Vectorised Dataset of Historical Seismograms from the Archive of Royal Observatory of Belgium}
@@ -109,29 +102,26 @@
 \newcommand{\orcidauthorC}{0000-0003-3477-2001}
 \newcommand{\orcidauthorD}{0000-0002-4988-6477}
 
-
 % Authors, for the paper (add full first names)
-\Author{\hl{Polina Lemenkova} %Please carefully check the accuracy of names and affiliations. 
+\Author{Polina Lemenkova %Please carefully check the accuracy of names and affiliations. <-- Authors: yes, names and affiliations are accurate.
  $^{1,}$*\orcidA{}, Rapha\"el De Plaen $^{2}$\orcidC{}, Thomas Lecocq $^{2}$\orcidD{} and Olivier Debeir $^{1}\orcidB{}$}
-
 
 % MDPI internal command: Authors, for metadata in PDF
 \AuthorNames{Poina Lemenkova, Rapha\"el De Plaen, Thomas Lecocq and Olivier Debeir}
 
 % MDPI internal command: Authors, for citation in the left column
-\AuthorCitation{Lemenkova, P.; \hl{De Plaen,} %MDPI: Please confirm the surname.
+\AuthorCitation{Lemenkova, P.; De Plaen, %MDPI: Please confirm the surname. <-- Authors: yes, correct.
  R.; Lecocq, T.; Debeir, O.}
-
 
 % Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
 \address{%
-$^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École Polytechnique de Bruxelles {(Brussels Faculty of Engineering),} Université Libre de Bruxelles (ULB), Building L, {Campus}  de Solbosch, Avenue Franklin Roosevelt 50, \hl{1000} %MDPI: please confirm if the postcode is correct. They must have the same format for the same country and city.
+$^{1}$ \quad Laboratory of Image Synthesis and Analysis (LISA), École Polytechnique de Bruxelles {(Brussels Faculty of Engineering),} Université Libre de Bruxelles (ULB), Building L, {Campus}  de Solbosch, Avenue Franklin Roosevelt 50, BE-1050 %MDPI: please confirm if the postcode is correct. They must have the same format for the same country and city. <-- Authors: corrected.
  Brussels, Belgium; {olivier.debeir@ulb.be}
 \\
-$^{2}$ \quad Royal Observatory of Belgium, Seismology \& Gravimetry (OD2), \hl{Av.} %MDPI: Please confirm if this should be changed into Avenue.
- Circulaire 3, \hl{BE-1180} %MDPI: Please confirm if this is the postcode, we moved it before the municipality and please keep the same format of the post code for same country 
-\hl{Uccle,} %MDPI: Please confirm if the city is correct.
- Belgium; raphael.deplaen@gmail.com (R.D.P.); \hl{t}homas.\hl{l}ecocq@seismology.be (T.L.)}%MDPI: We changed to lowercase.
+$^{2}$ \quad Royal Observatory of Belgium, Seismology \& Gravimetry (OD2), Avenue %MDPI: Please confirm if this should be changed into Avenue. <-- Authors: yes, can be changed to 'Avenue'.
+ Circulaire 3, BE-1180 %MDPI: Please confirm if this is the postcode, we moved it before the municipality and please keep the same format of the post code for same country. <-- Authors: yes, this is the postcode. We agree it to be placed before the municipality
+Uccle, %MDPI: Please confirm if the city is correct. <-- Authors: yes, correct.
+ Belgium; raphael.deplaen@gmail.com (R.D.P.); thomas.lecocq@seismology.be (T.L.)}%MDPI: We changed to lowercase. <-- Authors: agree.
 
 % Contact information of the corresponding author
 \corres{Correspondence: polina.lemenkova@ulb.be; Tel.: +32-471-86-04-59}
@@ -173,7 +163,7 @@ Such analyses are largely based on the retrieval of information from {the }digit
 The {updates} of such datasets depends on {the }accurate and standardised recording systems using commonly accepted and approved instruments (seismometers and seismographs) with products that remain consistent through {the }decades of operation \cite{UdiasBuforn2017}. 
 
 \subsection{\textcolor{black}{Related Work}}
-The first attempts to digitise the analogue recordings of seismic events {and convert the data }into numeric format started in 1960s. An \hl{ad hoc} %MDPI: We removed italic. please confirm
+The first attempts to digitise the analogue recordings of seismic events {and convert the data }into numeric format started in 1960s. An ad hoc %MDPI: We removed italic. please confirm <-- Authors: yes, we confirm.
 algorithm of thinning the lines on scanned seismograms and converting the image into a 0--1 digital matrix was developed by \cite{Jarosch1975}. Another study used a device initially {designed }for weather maps and adjusted for automatic converting of seismic signals into a digital form{ }and plotting them using a cathode-ray tube display \cite{AdamsAllen1961}. The progress of digitising signals accelerated in \linebreak 1980s \citep{AspinallLatchman,CrouseMatuschka1983} and 1990s \citep{Scherbaum1996a,NorlundGriffiths1993,McGee1995,Harjesetal1993,Scherbaum1996b,Scherbaum1996c} along with the increase of {the }computer-based algorithms and {developed }geophysical software. The digitising approaches have become more and more automated since 2000s, along with a rapid development of the programming languages and IT  tools \cite{Bietal2016,Ishiietal2015,Schenke,Wangetal2014}. 
  
 Recently, the use of the automated digitisers of seismograms{ }instead of {the }manual vectorisers has received much attention. {They enable vectorising the recordings of the acceleration of the strong motion ground. The advanced algorithms include the }automated recognition of noise \cite{CrouseMatuschka1983}, handling smooth and wigged traces{ }for tracing waves{ }\cite{Bietal2016}, synchronisation of the time scale for the three motion components, handling scratches, distortions or line crossings on the image, {and }adjusting rotated position \cite{Trifunacetal1999}. 
