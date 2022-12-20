@@ -484,8 +484,8 @@ Correcting {the }traces in {each }seismogram was performed using the 'Correct Tr
         		 \includegraphics[width=12.0cm]{fig_14b.jpg}
         		 \caption{}
      \end{subfigure} 
-     \caption{\hl{Correcting}  %MDPI: 1. Please provide a more clear version of subfigure a. 2. if the different colored shape need explanation, please confirm,
- misclassified traces with wrong direction based on colour and geometric pixel's characteristics. The pixels on the monochrome image were assigning to categories using threshold values to 1 (white) and all other pixels to 0 (black) for automated detection of lines. {(\textbf{a})} Overlap of line traces unrecognised during digitising: one segment of trace went steeply downwards and merged with another trace. {(\textbf{b})} Enlarged view of the manually corrected entangled traces.} \label{fig:14}
+     \caption{Correcting %MDPI: 1. Please provide a more clear version of subfigure a. <-- Authors: Figure 14a is replaced with a file with higher resolution. 2. if the different colored shape need explanation, please confirm, <-- Authors: Explanation added: "The differently colored lines are used to distinguish the segment of trace lines."
+ misclassified traces with wrong direction based on colour and geometric pixel's characteristics. The pixels on the monochrome image were assigning to categories using threshold values to 1 (white) and all other pixels to 0 (black) for automated detection of lines. The differently colored lines are used to distinguish the segment of trace lines. {(\textbf{a})} Overlap of line traces unrecognised during digitising: one segment of trace went steeply downwards and merged with another trace. {(\textbf{b})} Enlarged view of the manually corrected entangled traces.} \label{fig:14}
 \end{figure}
 
 {A certain limitation is that our method using DigitSeis does not consider overlapping cases of the seismic traces with high level of signals where amplitudes of the trace lines may exceed the width of the 30-min track in a paper space, and thereby may confuse different steps of vectorisation that should be adjusted manually. For example, the cases demonstrated in Figure} \ref{fig:14} {have the two overlapping traces where the algorithm of DigitSeis could not recognise the line correctly and the line was interacted manually with vector segments corrected by hand.} 
@@ -509,8 +509,8 @@ Correcting {the }traces in {each }seismogram was performed using the 'Correct Tr
         		 \includegraphics[width=11.0cm]{fig_15b.jpg}
         		 \caption{}
      \end{subfigure}
-     \caption{\hl{Correcting} %MDPI: The top of subfigure a seem incomplete, please revise. <-- Authors: Figure 15a is replotted with added X-axis on top of the figure.
- trace for the selected segments. \hl{(\textbf{a})} Merging the trace initially broken into the three separate parts (three small yellow boxes). \hl{(\textbf{b})} Reclassification of the selected segment and digitising the centroid of the trace line.} \label{fig:15}
+     \caption{\hl{Correcting} %MDPI: The top of subfigure a seem incomplete, please revise. <-- Authors: Figure 15a is replotted.
+ trace for the selected segments. (\textbf{a}) Merging the trace initially broken into the three separate parts (three small yellow boxes). (\textbf{b}) Reclassification of the selected segment and digitising the centroid of the trace line.} \label{fig:15}
 \end{figure}
 
 The vectorised traces were then highlighted by random colours and corresponded to the traces in the image, Figure \ref{fig:16}. The vectorised curves of traces were optimised by the approximations with {the }minimum distortion of the line by {spline functions}. The results of the processing of the classified image Figure \ref{fig:17}a are presented as {a }digitised vector image with {the }distinct coloured traces and minute time gaps randomly coloured on the digitised image, Figure \ref{fig:17}b. Correcting the classification of traces was a necessary step before {vectorisation}. 
