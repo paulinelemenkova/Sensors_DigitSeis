@@ -509,7 +509,7 @@ Correcting {the }traces in {each }seismogram was performed using the 'Correct Tr
         		 \includegraphics[width=11.0cm]{fig_15b.jpg}
         		 \caption{}
      \end{subfigure}
-     \caption{\hl{Correcting} %MDPI: The top of subfigure a seem incomplete, please revise. <-- Authors: Figure 15a is replotted.
+     \caption{Correcting %MDPI: The top of subfigure a seem incomplete, please revise. <-- Authors: Figure 15a is replotted.
  trace for the selected segments. (\textbf{a}) Merging the trace initially broken into the three separate parts (three small yellow boxes). (\textbf{b}) Reclassification of the selected segment and digitising the centroid of the trace line.} \label{fig:15}
 \end{figure}
 
@@ -534,7 +534,7 @@ In general, the automatic tracing of lines by DigitSeis performed well for the s
         		 \includegraphics[width=11.0cm]{fig_16b.jpg}
         		 \caption{}
      \end{subfigure}
-     \caption{Corrected digitised traces upon completion of the {semi-}automated vectorisation. \linebreak \hl{(\textbf{a})} Corrected digitised traces upon {the }completion of the {semi-}automated vectorisation {process}. \hl{(\textbf{b})} Visible SDT lines (bold) after {the semi-}automated vectorisation.} \label{fig:16}
+     \caption{Corrected digitised traces upon completion of the {semi-}automated vectorisation. \linebreak (\textbf{a}) Corrected digitised traces upon {the }completion of the {semi-}automated vectorisation {process}. (\textbf{b}) Visible SDT lines (bold) after {the semi-}automated vectorisation.} \label{fig:16}
 \end{figure}
 
 \begin{figure}[H]
@@ -549,9 +549,9 @@ In general, the automatic tracing of lines by DigitSeis performed well for the s
         		 \includegraphics[width=12.0cm]{fig_17b.jpg}
         		 \caption{}
      \end{subfigure}
-     \caption{\hl{Classified} %MDPI: 1. many numbers in The left and right  of subfigure ``b'' is incomplete .  please replace a shaper picture.
-   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000"
- image (\textbf{a}) and digitised results (\textbf{b}). Here: UCC19540311Gal\_E\_0727 \linebreak (11 March 1954). \hl{(\textbf{a}) }Classified image recognised by DigitSeis into 'traces' and 'noise' (Here: {the image }UCC19540311Gal\_E\_0727.TIFF). \hl{(\textbf{b})} {The }distinct coloured traces and minute time gaps are visible on {a }digitised image (Here: {the resulted file in a MATLAB format, }UCC19540311Gal\_E\_0727.mat).} \label{fig:17}
+     \caption{Classified %MDPI: 1. many numbers in The left and right  of subfigure ``b'' is incomplete .  please replace a shaper picture. <-- Authors: Figure 17b is replaced with file of with sharper resolution and corrected annotations.
+   %MDPI: 2. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000" <-- Authors: Figures 17a and 17b are corrected with used commas to separate thousands for numbers with five or more digits.
+ image (\textbf{a}) and digitised results (\textbf{b}). Here: UCC19540311Gal\_E\_0727 \linebreak (11 March 1954). (\textbf{a}) Classified image recognised by DigitSeis into 'traces' and 'noise' (Here: {the image }UCC19540311Gal\_E\_0727.TIFF). (\textbf{b}) {The }distinct coloured traces and minute time gaps are visible on {a }digitised image (Here: {the resulted file in a MATLAB format, }UCC19540311Gal\_E\_0727.mat).} \label{fig:17}
 \end{figure}
 
 Manual correction {during the vectorisation process }was performed by tracing down a line in a selected segments where merged regions were separated manually and lines directions were corrected along the necessary fragments of trace. Selected polygons were assigned manually by vectorising using modality in the 'Correct Trace' function, Figure \ref{fig:15}.
@@ -562,16 +562,13 @@ After all the traces were digitised, the time was calculated using {the }'Calcul
 
 {When originally recorded, the analog seismograms included the information regarding the date, hour and minutes of the start of seismic recording. This original information of  time series data from the digital records of Uccle station was copied and used to set the reference time. }For the setup of time marks{, }we identified the time gaps that correspond to the beginning of {each }minute and provided the absolute time using a special menu, \linebreak Figure \ref{fig:18}b. It included the time in HH:MM format and year-month-day period that exist in each seismogram. The time and date associated with the time mark were {then }entered{, }and the time marks were recalculated, Figure \ref{fig:18}c.
 
-
-The duration for the most of the lines was 30 min{, }and the seismograms were recorded by {a} drum of the seismometer in one day. So{, }we indicated the time between the gaps in seconds, and the program drew the gaps (visible yellow vertical dashed), Figure \ref{fig:18}c and in the enlarged view,  Figure \ref{fig:19}. The time markers were visualised using {the }time gaps classified {in a} previous step and measured automatically using a threshold.{ }Afterwards, the resulting data were exported into the MATLAB format, and saved as the .mat {files}. In MATLAB environment{, the }vector {files were} opened, checked and overlaid over the scanned TIFF image{, respectively}. The resulting files converted into MATLAB contained{ }vector lines as traces, that is{, }included information{ }received in DigitSeis. The converted file included the vectorised image with traces, its classification structure with segments and parts of the lines and time gap breaks. Therefore, {a }special value of {the }DigitSeis consists in {its }compatibility with MATLAB and possibility of further reuse {of }the {processed files }in other tools, such as Python. In this way, the vectorising workflow that we performed using DigitSeis is a continuous procedure can be smoothly integrated and exported to another software as a stepwise chain of {the }separated processes.
-
 \begin{figure}[H]
      \begin{subfigure}[h]{0.7\textwidth}
          	\includegraphics[width=12.0cm]{fig_18a.jpg}
          	\caption{Time calculation process}
      \end{subfigure}
      \vspace{3mm}   
-\caption{\textit{Cont.}}
+%\caption{\textit{Cont.}}
 \label{fig:18}
 \end{figure}
 
@@ -593,6 +590,8 @@ The duration for the most of the lines was 30 min{, }and the seismograms were re
  image with adjusted timing. Here: UCC19540311Gal\_E\_0727.mat.} \label{fig:18}
 \end{figure}
 
+The duration for the most of the lines was 30 min{, }and the seismograms were recorded by {a} drum of the seismometer in one day. So{, }we indicated the time between the gaps in seconds, and the program drew the gaps (visible yellow vertical dashed), Figure \ref{fig:18}c and in the enlarged view,  Figure \ref{fig:19}. The time markers were visualised using {the }time gaps classified {in a} previous step and measured automatically using a threshold.{ }Afterwards, the resulting data were exported into the MATLAB format, and saved as the .mat {files}. In MATLAB environment{, the }vector {files were} opened, checked and overlaid over the scanned TIFF image{, respectively}. The resulting files converted into MATLAB contained{ }vector lines as traces, that is{, }included information{ }received in DigitSeis. The converted file included the vectorised image with traces, its classification structure with segments and parts of the lines and time gap breaks. Therefore, {a }special value of {the }DigitSeis consists in {its }compatibility with MATLAB and possibility of further reuse {of }the {processed files }in other tools, such as Python. In this way, the vectorising workflow that we performed using DigitSeis is a continuous procedure can be smoothly integrated and exported to another software as a stepwise chain of {the }separated processes.
+
 \begin{figure}[H]
 \setcounter{subfigure}{0}
      \begin{subfigure}[H]{0.7\textwidth}
@@ -600,7 +599,7 @@ The duration for the most of the lines was 30 min{, }and the seismograms were re
          	\caption{}
      \end{subfigure}
      \vspace{3mm}   
-\caption{\textit{Cont.}}
+%\caption{\textit{Cont.}}
 \label{fig:19}
 \end{figure}
 
@@ -616,6 +615,22 @@ The duration for the most of the lines was 30 min{, }and the seismograms were re
 \subsection{Validating \textcolor{black}{the }Results \textcolor{black}{Using }Python}
 {To evaluate the discriminating functionality of the seismic traces by DigitSeis algorithms over the dataset, we validated }the results and {performed the }quality control of the digitised traces{ }using Python \cite{van1995python}. {The }Matplotlib library \cite{Hunter} {was applied }for export and graphical visualisation of the MAT files. For tuning the parameters of the digitising process in the next series of recording{, }we performed the post-processing of the result using graphical visualisation and the analysis of the performed vectorisation by exporting the files {in }MAT format into Python, Figures \ref{fig:20} and \ref{fig:21}. 
 
+\begin{figure}[H]
+     \begin{subfigure}[H]{0.7\textwidth}
+         	\includegraphics[width=11.0cm]{fig_20a.jpg}
+         	\caption{}
+     \end{subfigure}
+     \vspace{1mm}   
+
+     \begin{subfigure}[H]{0.7\textwidth}
+        		 \includegraphics[width=11.0cm]{fig_20b.jpg}
+        		 \caption{}
+     \end{subfigure}
+     \caption{Controlling %MDPI: 1. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000" <-- Authors: Figures 20a and 20b are replotted with used commas to separate thousands for numbers with five or more digits. Added explanation for different color dots: Different color dots are used to separate minute marks (green), hour marks (blue) and margin values and outliers (red).
+     %MDPI:2. please add explanation for different color dot
+ digitising results using Python (Matplotlib library). {(\textbf{a})} Quality control for time gaps: missed marks in unrecognised segments. {(\textbf{b})} Correctly identified time gaps controlled by Python's Matplotlib. Different color dots are used to separate minute marks (green), hour marks (blue) and margin values and outliers (red).} \label{fig:20}
+\end{figure}
+
 The length distribution of the segments imported is represented in Figure \ref{fig:21}, the peak correspond to the typical frequent segment length $S_{typ}$ (approximately 1415 pixels in our setup for 59 s of recording).
 We arbitrarily keep as valid the segment inside the range %MDPI: We added 0 in front of .8. <-- Authors: yes, correct.
  $[0.8*S_{typ},1.1*S_{typ}]$%MDPI: if the * need change to multiplication sign ×, please confirm <-- Authors: yes, correct.
@@ -626,35 +641,19 @@ From the distribution of {the }short invalid segments, as {shown }in Figure \ref
 The starting position of the hours segments is {indicated }by the blue dots in Figure \ref{fig:20}. 
 Most of the hours marks are aligned, {because of }the rotation speed of the main drum is {two }per hour{. }Some marks {have }the same length {which is }also presented{ }in the border and noise segments. By{ }looking to the colour dot distribution, it is {possible }to check the overall quality of the detected segments. 
 
-\begin{figure}[H]
-     \begin{subfigure}[H]{0.7\textwidth}
-         	\includegraphics[width=12.0cm]{fig_20a.jpg}
-         	\caption{}
-     \end{subfigure}
-     \vspace{1mm}   
-
-     \begin{subfigure}[H]{0.7\textwidth}
-        		 \includegraphics[width=12.0cm]{fig_20b.jpg}
-        		 \caption{}
-     \end{subfigure}
-     \caption{Controlling %MDPI: 1. Please use commas to separate thousands for numbers with five or more digits (not for four digits) in the picture. e.g., "10000" should be "10,000" <-- Authors: Figures 20a and 20b are replotted with used commas to separate thousands for numbers with five or more digits. Added explanation for different color dots: Different color dots are used to separate minute marks (green), hour marks (blue) and margin values and outliers (red).
-     %MDPI:2. please add explanation for different color dot
- digitising results using Python (Matplotlib library). {(\textbf{a})} Quality control for time gaps: missed marks in unrecognised segments. {(\textbf{b})} Correctly identified time gaps controlled by Python's Matplotlib. Different color dots are used to separate minute marks (green), hour marks (blue) and margin values and outliers (red).} \label{fig:20}
-\end{figure}
-
 The misclassified pixels were induced by the distortions of paper which caused the erroneous recognition of pixels in the edge of paper (red dots). Such pixels are classified as noise in the segments of trace in a way that it erroneously depicts the edges of seismic trace, as shown in Figure \ref{fig:20}. The average length of segments {was }divided automatically by DigitSeis, {and then evaluated }and visualised by Matplotlib, Figure \ref{fig:21}. 
 
 \begin{figure}[H]
 \begin{adjustwidth}{-\extralength}{0cm}
 \centering
-\begin{subfigure}{.38\textwidth}
+\begin{subfigure}{.35\textwidth}
 \centering
          	\includegraphics[width=7.0cm]{fig_21a.png}
          \caption{}
 \end{subfigure}
 \hspace{4cm}  
 % include second image
-\begin{subfigure}{.38\textwidth}
+\begin{subfigure}{.35\textwidth}
 \centering
         		 \includegraphics[width=7.0cm]{fig_21b.png}
         	\caption{}
